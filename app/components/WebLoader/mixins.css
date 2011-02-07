@@ -1,0 +1,38 @@
+/* 
+ *  taken from http://css3please.com/
+ *  © 2010; a Paul Irish and Jonathan Neal joint, in association w/ Boaz Sender
+ */
+
+@box_round(@topleft; @topright: @topleft; @bottomleft: @topleft; @bottomright: @topleft) {
+    border-radius-topleft: @topleft;
+    border-radius-topright: @topright;
+    border-radius-bottomleft: @bottomleft;
+    border-radius-bottomright: @bottomright;
+    
+    -moz-border-radius-topleft: @topleft;
+    -moz-border-radius-topright: @topright;
+    -moz-border-radius-bottomleft: @bottomleft;
+    -moz-border-radius-bottomright: @bottomright;
+
+    -webkit-border-top-left-radius: @topleft;
+    -webkit-border-top-right-radius: @topright;
+    -webkit-border-bottom-left-radius: @bottomleft;
+    -webkit-border-bottom-right-radius: @bottomright;
+}
+
+@box_shadow(@top; @left; @blur; @color: #000000){
+     -moz-box-shadow: @top @left @blur @color;
+  -webkit-box-shadow: @top @left @blur @color;
+          box-shadow: @top @left @blur @color;                                                             
+}
+
+@box_gradient(@top; @color_top; @color_bottom) {
+  background-image: -moz-linear-gradient(@top, @color_top, @color_bottom); 
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, @color_top),color-stop(1, @color_bottom)); 
+}
+
+@box_rotate(@deg) {
+     -moz-transform: rotate(@deg);  
+       -o-transform: rotate(@deg);  
+  -webkit-transform: rotate(@deg);                                                   
+}

@@ -1,0 +1,16 @@
+{contentType application/atom+xml; charset=utf-8}
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<title>{_'Slevy'}</title>
+	<link href="{link this}" rel="self" />
+	<link href="{link Homepage:}" />
+	<id>{link Homepage:}</id>
+	<updated>{=Offer::actives()->max("modified")|date:"c"}</updated>
+	{foreach Offer::actives() as $offer}
+	<entry>
+		<title>{$offer["title_"]}</title>
+		<link href="{link Offer: $offer['id'], Nette\String::webalize($offer['title_'])}" />
+		<id>{link Offer: $offer['id']}</id>
+		<updated>{$offer["modified"]|date:"c"}</updated>
+	</entry>
+	{/foreach}
+</feed>

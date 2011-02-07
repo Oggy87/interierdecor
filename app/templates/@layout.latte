@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	<meta name="description" content="{$description}" n:ifset="$description">
+	<meta name="robots" content="{$robots}" n:ifset="$robots">
+        <meta name="keywords" content="{$keywords}" n:ifset="$keywords">
+
+        <meta name="owner" content="Petr Ogurčák ">
+        <meta name="copyright" content="Petr Ogurčák; petr.ogurcak.cz">
+        <meta name="author" content="Petr Ogurčák; petr.ogurcak.cz">
+
+	<title>{$title} | SANDBOX</title>
+
+        {block #css}
+            {control css 'reset.css', 'screen.css'}
+            {control cssPrint 'reset.css'}
+        {/block}
+
+	<link rel="shortcut icon" href="{$basePath}/favicon.ico" type="image/x-icon">
+
+	<script type="text/javascript" src="{$staticUri}/head.min.js"></script>
+        <script type="text/javascript">
+            head.js("http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js",
+                    "{!$staticUri}/analytics.js",
+                    "{!$staticUri}/netteForms.js",
+                    "{!$staticUri}/jquery.livequery.js",
+                    "{!$staticUri}/jquery.nette.js",
+                    "{!$staticUri}/cufon-yui.js",
+                    "{!$staticUri}/TeXGyreHeros.font.js",
+                    function() {
+                        Cufon.replace('.cufon', {
+                            hover: true
+                        });
+
+                        $("form").livequery( function() {
+                            Nette.initForm(this);
+                        });
+                }
+          );
+	</script>
+</head>
+
+<body>
+	<div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+
+	{include #content}
+</body>
+</html>
