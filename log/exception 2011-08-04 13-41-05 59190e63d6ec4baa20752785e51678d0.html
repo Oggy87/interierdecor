@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="robots" content="noindex,noarchive">
+	<meta name="generator" content="Nette Framework">
+
+	<title>PDOException</title><!-- SQLSTATE[HY000] [2013] Lost connection to MySQL server at 'reading authorization packet', system error: 0 #2013 -->
+
+	<style type="text/css" class="nette">body{margin:0 0 2em;padding:0}#netteBluescreen{font:9pt/1.5 Verdana,sans-serif;background:white;color:#333;position:absolute;left:0;top:0;width:100%;z-index:23178;text-align:left}#netteBluescreen *{font:inherit;color:inherit;background:transparent;border:none;margin:0;padding:0;text-align:inherit;text-indent:0}#netteBluescreen b{font-weight:bold}#netteBluescreen i{font-style:italic}#netteBluescreenIcon{position:absolute;right:.5em;top:.5em;z-index:23179;text-decoration:none;background:#CD1818;padding:3px}#netteBluescreenError{background:#CD1818;color:white;font:13pt/1.5 Verdana,sans-serif!important;display:block}#netteBluescreen h1{font-size:18pt;font-weight:normal;text-shadow:1px 1px 0 rgba(0,0,0,.4);margin:.7em 0}#netteBluescreen h2{font:14pt/1.5 sans-serif!important;color:#888;margin:.6em 0}#netteBluescreen a{text-decoration:none;color:#328ADC;padding:2px 4px;margin:-2px -4px}#netteBluescreen a abbr{font-family:sans-serif;color:#BBB}#netteBluescreen h3{font:bold 10pt/1.5 Verdana,sans-serif!important;margin:1em 0;padding:0}#netteBluescreen p,#netteBluescreen pre{margin:.8em 0}#netteBluescreen pre,#netteBluescreen code,#netteBluescreen table{font:9pt/1.5 Consolas,monospace!important}#netteBluescreen pre,#netteBluescreen table{background:#FDF5CE;padding:.4em .7em;border:1px dotted silver;overflow:auto}#netteBluescreen table pre{padding:0;margin:0;border:none}#netteBluescreen pre.nette-dump span{color:#C22}#netteBluescreen pre.nette-dump a{color:#333}#netteBluescreen div.panel{padding:1px 25px}#netteBluescreen div.inner{background:#F4F3F1;padding:.1em 1em 1em;border-radius:8px;-moz-border-radius:8px;-webkit-border-radius:8px}#netteBluescreen table{border-collapse:collapse;width:100%}#netteBluescreen .outer{overflow:auto}#netteBluescreen td,#netteBluescreen th{vertical-align:top;text-align:left;padding:2px 6px;border:1px solid #e6dfbf}#netteBluescreen th{width:10%;font-weight:bold}#netteBluescreen tr:nth-child(2n),#netteBluescreen tr:nth-child(2n) pre{background-color:#F7F0CB}#netteBluescreen ol{margin:1em 0;padding-left:2.5em}#netteBluescreen ul{font:7pt/1.5 Verdana,sans-serif!important;padding:2em 4em;margin:1em 0 0;color:#777;background:#F6F5F3 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFEAAAAjCAMAAADbuxbOAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADBQTFRF/fz24d7Y7Onj5uLd9vPu3drUzMvG09LN39zW8e7o2NbQ3NnT29jS0M7J1tXQAAAApvmsFgAAABB0Uk5T////////////////////AOAjXRkAAAKlSURBVHja7FbbsqQgDAwENEgc//9vN+SCWDtbtXPmZR/Wc6o02mlC58LA9ckFAOszvMV8xNgyUjyXhojfMVKvRL0ZHavxXYy5JrmchMdzou8YlTClxajtK8ZGGpWRoBr1+gFjKfHkJPbizabLgzE3pH7Iu4K980xgFvlrVzMZoVBWhtvouCDdcTDmTgMCJdVxJ9MKO6XxnliM7hxi5lbj2ZVM4l8DqYyKoNLYcfqBB1/LpHYxEcfVG6ZpMDgyFUVWY/Q1sSYPpIdSAKWqLWL0XqWiMWc4hpH0OQOMOAgdycY4N9Sb7wWANQs3rsDSdLAYiuxi5siVfOhBWIrtH0G3kNaF/8Q4kCPE1kMucG/ZMUBUCOgiKJkPuWWTLGVgLGpwns1DraUayCtoBqERyaYtVsm85NActRooezvSLO/sKZP/nq8n4+xcyjNsRu8zW6KWpdb7wjiQd4WrtFZYFiKHENSmWp6xshh96c2RQ+c7Lt+qbijyEjHWUJ/pZsy8MGIUuzNiPySK2Gqoh6ZTRF6ko6q3nVTkaA//itIrDpW6l3SLo8juOmqMXkYknu5FdQxWbhCfKHEGDhxxyTVaXJF3ZjSl3jMksjSOOKmne9pI+mcG5QvaUJhI9HpkmRo2NpCrDJvsktRhRE2MM6F2n7dt4OaMUq8bCctk0+PoMRzL+1l5PZ2eyM/Owr86gf8z/tOM53lom5+nVcFuB+eJVzlXwAYy9TZ9s537tfqcsJWbEU4nBngZo6FfO9T9CdhfBtmk2dLiAy8uS4zwOpMx2HqYbTC+amNeAYTpsP4SIgvWfUBWXxn3CMHW3ffd7k3+YIkx7w0t/CVGvcPejoeOlzOWzeGbawOHqXQGUTMZRcfj4XPCgW9y/fuvVn8zD9P1QHzv80uAAQA0i3Jer7Jr7gAAAABJRU5ErkJggg==') 99% 10px no-repeat;border-top:1px solid #DDD}#netteBluescreen .highlight{background:#CD1818;color:white;font-weight:bold;font-style:normal;display:block;padding:0 .4em;margin:0 -.4em}#netteBluescreen .line{color:#9F9C7F;font-weight:normal;font-style:normal}#netteBluescreen a[href^=editor\:]{color:inherit;border-bottom:1px dotted #328ADC}</style>
+</head>
+
+
+
+<body>
+<div id="netteBluescreen">
+	<a id="netteBluescreenIcon" href="#" rel="next"><abbr>&#x25bc;</abbr></a
+
+	><div>
+		<div id="netteBluescreenError" class="panel">
+			<h1>PDOException #2013</h1>
+
+			<p>SQLSTATE[HY000] [2013] Lost connection to MySQL server at 'reading authorization packet', system error: 0</p>
+		</div>
+
+
+
+				
+			
+												<div class="panel">
+			<h2><a href="#" rel="netteBsPnl1">Source file <abbr>&#x25bc;</abbr></a></h2>
+
+			<div id="netteBsPnl1" class="inner">
+				<p><b>File:</b> <a href="editor://open/?file=%2Fvar%2Fwww%2Fwebtoad%2Finterierdecor%2Fapp%2Fmodels%2FBaseModel.php&amp;line=9">				/var/www/webtoad/interierdecor/app/models/BaseModel.php</a> &nbsp; <b>Line:</b> 9</p>
+				<pre><code><span style="color: #06B"><span style="color: #000"><span class='line'> 2:</span>    </span><span style="color: #999; font-style: italic">//use&nbsp;Nette\Environment,&nbsp;Nette\Debug;
+<span class='line'> 3:</span>    
+<span class='line'> 4:</span>    </span><span style="color: #D24; font-weight: bold">abstract&nbsp;class&nbsp;</span><span style="color: #000">BaseModel&nbsp;</span><span style="color: #D24; font-weight: bold">{
+<span class='line'> 5:</span>    &nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;protected&nbsp;</span><span style="color: #000">$notORM</span><span style="color: #D24; font-weight: bold">;
+<span class='line'> 6:</span>    &nbsp;&nbsp;&nbsp;&nbsp;
+<span class='line'> 7:</span>    &nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;function&nbsp;</span><span style="color: #000">initialize</span><span style="color: #D24; font-weight: bold">()&nbsp;{
+<span class='line'> 8:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$database&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;</span><span style="color: #000">Environment</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">getConfig</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'database'</span><span style="color: #D24; font-weight: bold">);
+<span class='highlight'> 9:    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$pdo&nbsp;=&nbsp;new&nbsp;PDO("mysql:host=$database[server];dbname=$database[database]",&nbsp;$database['login'],&nbsp;$database['password'],&nbsp;array(PDO::MYSQL_ATTR_INIT_COMMAND&nbsp;=&gt;&nbsp;"SET&nbsp;NAMES&nbsp;utf8"));
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"><span class='line'>10:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$pdo</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">setAttribute</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">PDO</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">ATTR_ERRMODE</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">PDO</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">ERRMODE_EXCEPTION</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>11:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #999; font-style: italic">//$pdo-&gt;query("SET&nbsp;time_zone&nbsp;=&nbsp;"&nbsp;.&nbsp;$pdo-&gt;quote(ini_get("date.timezone")));
+<span class='line'>12:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">self</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">$notORM&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;new&nbsp;</span><span style="color: #000">NotORM</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$pdo</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">null</span><span style="color: #D24; font-weight: bold">,&nbsp;new&nbsp;</span><span style="color: #000">NotORM_Cache_File</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">TEMP_DIR&nbsp;</span><span style="color: #D24; font-weight: bold">.&nbsp;</span><span style="color: #080">"/notorm.cache"</span><span style="color: #D24; font-weight: bold">));
+<span class='line'>13:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">self</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">$notORM</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">rowClass&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;</span><span style="color: #080">'NotORM_RowLang'</span><span style="color: #D24; font-weight: bold">;
+<span class='line'>14:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #000">Debug</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">$productionMode</span><span style="color: #D24; font-weight: bold">)&nbsp;{
+<span class='line'>15:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$panel&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;new&nbsp;</span><span style="color: #000">NotORMPanel</span><span style="color: #D24; font-weight: bold">;
+<span class='line'>16:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">self</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">$notORM</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">debug&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;array(</span><span style="color: #000">$panel</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #080">'addQuery'</span><span style="color: #D24; font-weight: bold">);
+</span></span></code></pre>
+			</div></div>
+			
+
+
+									<div class="panel">
+				<h2><a href="#" rel="netteBsPnl2">Call stack <abbr>&#x25bc;</abbr></a></h2>
+
+				<div id="netteBsPnl2" class="inner">
+				<ol>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fvar%2Fwww%2Fwebtoad%2Finterierdecor%2Fapp%2Fmodels%2FBaseModel.php&amp;line=9" title="/var/www/webtoad/interierdecor/app/models/BaseModel.php">
+						models/<b>BaseModel.php</b></a> (9)					
+					<a href="#" rel="netteBsSrc1-0">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+					PDO->					__construct
+					(<a href="#" rel="netteBsArgs1-0">arguments <abbr>&#x25ba;</abbr></a>)
+					</p>
+
+											<div class="nette-collapsed outer" id="netteBsArgs1-0">
+						<table>
+						<tr><th>$dsn</th><td><pre class="nette-dump">"mysql:host=webtoad.cz;dbname=c1interierdecor" (44)
+</pre></td></tr>
+<tr><th>$username</th><td><pre class="nette-dump">"c1interierdecor" (15)
+</pre></td></tr>
+<tr><th>$passwd</th><td><pre class="nette-dump">"interierdecor4836" (17)
+</pre></td></tr>
+<tr><th>$options</th><td><pre class="nette-dump"><a href='#' rel='next'><span>array</span>(1) <abbr>&#x25bc;</abbr> </a><code>{
+   1002 => "SET NAMES utf8" (14)
+}</code>
+</pre></td></tr>
+						</table>
+						</div>
+					
+
+											<pre class="nette-collapsed" id="netteBsSrc1-0"><code><span style="color: #06B"><span style="color: #000"><span class='line'> 2:</span>    </span><span style="color: #999; font-style: italic">//use&nbsp;Nette\Environment,&nbsp;Nette\Debug;
+<span class='line'> 3:</span>    
+<span class='line'> 4:</span>    </span><span style="color: #D24; font-weight: bold">abstract&nbsp;class&nbsp;</span><span style="color: #000">BaseModel&nbsp;</span><span style="color: #D24; font-weight: bold">{
+<span class='line'> 5:</span>    &nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;protected&nbsp;</span><span style="color: #000">$notORM</span><span style="color: #D24; font-weight: bold">;
+<span class='line'> 6:</span>    &nbsp;&nbsp;&nbsp;&nbsp;
+<span class='line'> 7:</span>    &nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;function&nbsp;</span><span style="color: #000">initialize</span><span style="color: #D24; font-weight: bold">()&nbsp;{
+<span class='line'> 8:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$database&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;</span><span style="color: #000">Environment</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">getConfig</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'database'</span><span style="color: #D24; font-weight: bold">);
+<span class='highlight'> 9:    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$pdo&nbsp;=&nbsp;new&nbsp;PDO("mysql:host=$database[server];dbname=$database[database]",&nbsp;$database['login'],&nbsp;$database['password'],&nbsp;array(PDO::MYSQL_ATTR_INIT_COMMAND&nbsp;=&gt;&nbsp;"SET&nbsp;NAMES&nbsp;utf8"));
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"><span class='line'>10:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$pdo</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">setAttribute</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">PDO</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">ATTR_ERRMODE</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">PDO</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">ERRMODE_EXCEPTION</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>11:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #999; font-style: italic">//$pdo-&gt;query("SET&nbsp;time_zone&nbsp;=&nbsp;"&nbsp;.&nbsp;$pdo-&gt;quote(ini_get("date.timezone")));
+<span class='line'>12:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">self</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">$notORM&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;new&nbsp;</span><span style="color: #000">NotORM</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$pdo</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">null</span><span style="color: #D24; font-weight: bold">,&nbsp;new&nbsp;</span><span style="color: #000">NotORM_Cache_File</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">TEMP_DIR&nbsp;</span><span style="color: #D24; font-weight: bold">.&nbsp;</span><span style="color: #080">"/notorm.cache"</span><span style="color: #D24; font-weight: bold">));
+<span class='line'>13:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">self</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">$notORM</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">rowClass&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;</span><span style="color: #080">'NotORM_RowLang'</span><span style="color: #D24; font-weight: bold">;
+<span class='line'>14:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #000">Debug</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">$productionMode</span><span style="color: #D24; font-weight: bold">)&nbsp;{
+<span class='line'>15:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$panel&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;new&nbsp;</span><span style="color: #000">NotORMPanel</span><span style="color: #D24; font-weight: bold">;
+<span class='line'>16:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">self</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">$notORM</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">debug&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;array(</span><span style="color: #000">$panel</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #080">'addQuery'</span><span style="color: #D24; font-weight: bold">);
+</span></span></code></pre>
+					
+					</li>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fvar%2Fwww%2Fwebtoad%2Finterierdecor%2Fapp%2Fbootstrap.php&amp;line=44" title="/var/www/webtoad/interierdecor/app/bootstrap.php">
+						app/<b>bootstrap.php</b></a> (44)					
+					<a href="#" rel="netteBsSrc1-1">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+					BaseModel::					initialize
+					()
+					</p>
+
+					
+
+											<pre class="nette-collapsed" id="netteBsSrc1-1"><code><span style="color: #06B"><span style="color: #999; font-style: italic"><span class='line'>37:</span>    </span><span style="color: #000">Environment</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">loadConfig</span><span style="color: #D24; font-weight: bold">();
+<span class='line'>38:</span>    
+<span class='line'>39:</span>    
+<span class='line'>40:</span>    </span><span style="color: #999; font-style: italic">//&nbsp;Step&nbsp;3:&nbsp;Configure&nbsp;application
+<span class='line'>41:</span>    //&nbsp;3a)&nbsp;get&nbsp;and&nbsp;setup&nbsp;a&nbsp;front&nbsp;controller
+<span class='line'>42:</span>    </span><span style="color: #000">$application&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;</span><span style="color: #000">Environment</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">getApplication</span><span style="color: #D24; font-weight: bold">();
+<span class='line'>43:</span>    </span><span style="color: #000">$application</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">errorPresenter&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;</span><span style="color: #080">'Error'</span><span style="color: #D24; font-weight: bold">;
+<span class='highlight'>44:    BaseModel::initialize();
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"><span class='line'>45:</span>    </span><span style="color: #999; font-style: italic">//$application-&gt;onStartup[]&nbsp;=&nbsp;array('BaseModel',&nbsp;'initialize');
+<span class='line'>46:</span>    //$application-&gt;catchExceptions&nbsp;=&nbsp;TRUE;
+<span class='line'>47:</span>    
+<span class='line'>48:</span>    
+<span class='line'>49:</span>    //&nbsp;Step&nbsp;4:&nbsp;Setup&nbsp;application&nbsp;router
+<span class='line'>50:</span>    </span><span style="color: #000">AppRouter</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">initialize</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$application</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>51:</span>    
+</span></span></code></pre>
+					
+					</li>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fvar%2Fwww%2Fwebtoad%2Finterierdecor%2Findex.php&amp;line=19" title="/var/www/webtoad/interierdecor/index.php">
+						interierdecor/<b>index.php</b></a> (19)					
+					<a href="#" rel="netteBsSrc1-2">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+										require
+					(<a href="#" rel="netteBsArgs1-2">arguments <abbr>&#x25ba;</abbr></a>)
+					</p>
+
+											<div class="nette-collapsed outer" id="netteBsArgs1-2">
+						<table>
+						<tr><th>#0</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor/app/bootstrap.php" (48)
+</pre></td></tr>
+						</table>
+						</div>
+					
+
+											<pre class="nette-collapsed" id="netteBsSrc1-2"><code><span style="color: #06B"><span style="color: #D24; font-weight: bold"><span class='line'>12:</span>    </span><span style="color: #999; font-style: italic">//&nbsp;absolute&nbsp;filesystem&nbsp;path&nbsp;to&nbsp;the&nbsp;libraries
+<span class='line'>13:</span>    </span><span style="color: #000">define</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'LIBS_DIR'</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">WWW_DIR&nbsp;</span><span style="color: #D24; font-weight: bold">.&nbsp;</span><span style="color: #080">'/libs'</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>14:</span>    
+<span class='line'>15:</span>    </span><span style="color: #999; font-style: italic">//&nbsp;absolute&nbsp;filesystem&nbsp;path&nbsp;to&nbsp;the&nbsp;temporary&nbsp;files
+<span class='line'>16:</span>    </span><span style="color: #000">define</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'TEMP_DIR'</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">WWW_DIR&nbsp;</span><span style="color: #D24; font-weight: bold">.&nbsp;</span><span style="color: #080">'/temp'</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>17:</span>    
+<span class='line'>18:</span>    </span><span style="color: #999; font-style: italic">//&nbsp;load&nbsp;bootstrap&nbsp;file
+<span class='highlight'>19:    require&nbsp;APP_DIR&nbsp;.&nbsp;'/bootstrap.php';
+</span></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"><span class='line'>20:</span>    </span>
+</span></code></pre>
+					
+					</li>
+									</ol>
+			</div></div>
+			
+
+
+			
+
+
+			
+				
+
+
+				<div class="panel">
+		<h2><a href="#" rel="netteBsPnl3">Nette Application <abbr>&#x25ba;</abbr></a></h2>
+
+		<div id="netteBsPnl3" class="nette-collapsed inner">
+			<h3>Requests</h3>
+			<pre class="nette-dump"><span>array</span>(0) 
+</pre>
+			<h3>Presenter</h3>
+			<pre class="nette-dump">NULL
+</pre>		</div></div>
+		
+
+
+		<div class="panel">
+		<h2><a href="#" rel="netteBsPnl4">Environment <abbr>&#x25ba;</abbr></a></h2>
+
+		<div id="netteBsPnl4" class="nette-collapsed inner">
+						<h3><a href="#" rel="netteBsPnl-env-const">Constants <abbr>&#x25bc;</abbr></a></h3>
+			<div class="outer">
+			<table id="netteBsPnl-env-const">
+			<tr><th>SITE</th><td><pre class="nette-dump">""
+</pre></td></tr>
+<tr><th>WWW_DIR</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor" (30)
+</pre></td></tr>
+<tr><th>APP_DIR</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor/app" (34)
+</pre></td></tr>
+<tr><th>LIBS_DIR</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor/libs" (35)
+</pre></td></tr>
+<tr><th>TEMP_DIR</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor/temp" (35)
+</pre></td></tr>
+<tr><th>NETTE</th><td><pre class="nette-dump">TRUE
+</pre></td></tr>
+<tr><th>NETTE_DIR</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor/libs/Nette/Nette" (47)
+</pre></td></tr>
+<tr><th>NETTE_VERSION_ID</th><td><pre class="nette-dump">20000
+</pre></td></tr>
+<tr><th>NETTE_PACKAGE</th><td><pre class="nette-dump">"PHP 5.2" (7)
+</pre></td></tr>
+			</table>
+			</div>
+			
+
+			<h3><a href="#" rel="netteBsPnl-env-files">Included files <abbr>&#x25ba;</abbr></a> (4)</h3>
+			<div class="outer">
+			<table id="netteBsPnl-env-files" class="nette-collapsed">
+			<tr><td>/var/www/webtoad/interierdecor/index.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/app/bootstrap.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/Nette/Nette/loader.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/app/models/BaseModel.php</td></tr>
+			</table>
+			</div>
+
+
+			<h3>$_SERVER</h3>
+						<div class="outer">
+			<table>
+			<tr><th>REDIRECT_STATUS</th><td><pre class="nette-dump">"200" (3)
+</pre></td></tr>
+<tr><th>HTTP_HOST</th><td><pre class="nette-dump">"localhost" (9)
+</pre></td></tr>
+<tr><th>HTTP_USER_AGENT</th><td><pre class="nette-dump">"Mozilla/5.0 (X11; Linux x86_64; rv:5.0) Gecko/20100101 Firefox/5.0" (66)
+</pre></td></tr>
+<tr><th>HTTP_ACCEPT</th><td><pre class="nette-dump">"application/json, text/javascript, */*; q=0.01" (46)
+</pre></td></tr>
+<tr><th>HTTP_ACCEPT_LANGUAGE</th><td><pre class="nette-dump">"cs,en-us;q=0.7,en;q=0.3" (23)
+</pre></td></tr>
+<tr><th>HTTP_ACCEPT_ENCODING</th><td><pre class="nette-dump">"gzip, deflate" (13)
+</pre></td></tr>
+<tr><th>HTTP_ACCEPT_CHARSET</th><td><pre class="nette-dump">"ISO-8859-2,utf-8;q=0.7,*;q=0.7" (30)
+</pre></td></tr>
+<tr><th>HTTP_CONNECTION</th><td><pre class="nette-dump">"keep-alive" (10)
+</pre></td></tr>
+<tr><th>HTTP_X_REQUESTED_WITH</th><td><pre class="nette-dump">"XMLHttpRequest" (14)
+</pre></td></tr>
+<tr><th>HTTP_REFERER</th><td><pre class="nette-dump">"http://localhost/webtoad/interierdecor/basket/" (46)
+</pre></td></tr>
+<tr><th>HTTP_COOKIE</th><td><pre class="nette-dump">"__utma=1.346659451.1312141126.1312213689.1312266693.3; __utmz=1.1312141126.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=hf2vs69mhvlt41 ... " (259)
+</pre></td></tr>
+<tr><th>PATH</th><td><pre class="nette-dump">"/usr/local/bin:/usr/bin:/bin" (28)
+</pre></td></tr>
+<tr><th>SERVER_SIGNATURE</th><td><pre class="nette-dump">"&lt;address&gt;Apache/2.2.17 (Ubuntu) Server at localhost Port 80&lt;/address&gt;
+" (70)
+</pre></td></tr>
+<tr><th>SERVER_SOFTWARE</th><td><pre class="nette-dump">"Apache/2.2.17 (Ubuntu)" (22)
+</pre></td></tr>
+<tr><th>SERVER_NAME</th><td><pre class="nette-dump">"localhost" (9)
+</pre></td></tr>
+<tr><th>SERVER_ADDR</th><td><pre class="nette-dump">"::1" (3)
+</pre></td></tr>
+<tr><th>SERVER_PORT</th><td><pre class="nette-dump">"80" (2)
+</pre></td></tr>
+<tr><th>REMOTE_ADDR</th><td><pre class="nette-dump">"::1" (3)
+</pre></td></tr>
+<tr><th>DOCUMENT_ROOT</th><td><pre class="nette-dump">"/var/www" (8)
+</pre></td></tr>
+<tr><th>SERVER_ADMIN</th><td><pre class="nette-dump">"webmaster@localhost" (19)
+</pre></td></tr>
+<tr><th>SCRIPT_FILENAME</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor/index.php" (40)
+</pre></td></tr>
+<tr><th>REMOTE_PORT</th><td><pre class="nette-dump">"36570" (5)
+</pre></td></tr>
+<tr><th>REDIRECT_QUERY_STRING</th><td><pre class="nette-dump">"do=changeAmount&amp;product_id=27&amp;amount=2" (38)
+</pre></td></tr>
+<tr><th>REDIRECT_URL</th><td><pre class="nette-dump">"/webtoad/interierdecor/basket/" (30)
+</pre></td></tr>
+<tr><th>GATEWAY_INTERFACE</th><td><pre class="nette-dump">"CGI/1.1" (7)
+</pre></td></tr>
+<tr><th>SERVER_PROTOCOL</th><td><pre class="nette-dump">"HTTP/1.1" (8)
+</pre></td></tr>
+<tr><th>REQUEST_METHOD</th><td><pre class="nette-dump">"GET" (3)
+</pre></td></tr>
+<tr><th>QUERY_STRING</th><td><pre class="nette-dump">"do=changeAmount&amp;product_id=27&amp;amount=2" (38)
+</pre></td></tr>
+<tr><th>REQUEST_URI</th><td><pre class="nette-dump">"/webtoad/interierdecor/basket/?do=changeAmount&amp;product_id=27&amp;amount=2" (69)
+</pre></td></tr>
+<tr><th>SCRIPT_NAME</th><td><pre class="nette-dump">"/webtoad/interierdecor/index.php" (32)
+</pre></td></tr>
+<tr><th>PHP_SELF</th><td><pre class="nette-dump">"/webtoad/interierdecor/index.php" (32)
+</pre></td></tr>
+<tr><th>REQUEST_TIME</th><td><pre class="nette-dump">1312458051
+</pre></td></tr>
+			</table>
+			</div>
+					</div></div>
+
+
+
+		<div class="panel">
+		<h2><a href="#" rel="netteBsPnl5">HTTP request <abbr>&#x25ba;</abbr></a></h2>
+
+		<div id="netteBsPnl5" class="nette-collapsed inner">
+						<h3>Headers</h3>
+			<div class="outer">
+			<table>
+			<tr><th>Host</th><td>localhost</td></tr>
+<tr><th>User-Agent</th><td>Mozilla/5.0 (X11; Linux x86_64; rv:5.0) Gecko/20100101 Firefox/5.0</td></tr>
+<tr><th>Accept</th><td>application/json, text/javascript, */*; q=0.01</td></tr>
+<tr><th>Accept-Language</th><td>cs,en-us;q=0.7,en;q=0.3</td></tr>
+<tr><th>Accept-Encoding</th><td>gzip, deflate</td></tr>
+<tr><th>Accept-Charset</th><td>ISO-8859-2,utf-8;q=0.7,*;q=0.7</td></tr>
+<tr><th>Connection</th><td>keep-alive</td></tr>
+<tr><th>X-Requested-With</th><td>XMLHttpRequest</td></tr>
+<tr><th>Referer</th><td>http://localhost/webtoad/interierdecor/basket/</td></tr>
+<tr><th>Cookie</th><td>__utma=1.346659451.1312141126.1312213689.1312266693.3; __utmz=1.1312141126.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=hf2vs69mhvlt4165mpalbuj720; nette-browser=53wmitrr6c; nette-debug-panel-RoutingDebugger=; nette-debug-panel-dumps=-105:-153</td></tr>
+			</table>
+			</div>
+			
+
+						<h3>$_GET</h3>
+						<div class="outer">
+			<table>
+			<tr><th>do</th><td><pre class="nette-dump">"changeAmount" (12)
+</pre></td></tr>
+<tr><th>product_id</th><td><pre class="nette-dump">"27" (2)
+</pre></td></tr>
+<tr><th>amount</th><td><pre class="nette-dump">"2"
+</pre></td></tr>
+			</table>
+			</div>
+									<h3>$_POST</h3>
+						<p><i>empty</i></p>
+									<h3>$_COOKIE</h3>
+						<div class="outer">
+			<table>
+			<tr><th>__utma</th><td><pre class="nette-dump">"1.346659451.1312141126.1312213689.1312266693.3" (46)
+</pre></td></tr>
+<tr><th>__utmz</th><td><pre class="nette-dump">"1.1312141126.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)" (62)
+</pre></td></tr>
+<tr><th>PHPSESSID</th><td><pre class="nette-dump">"hf2vs69mhvlt4165mpalbuj720" (26)
+</pre></td></tr>
+<tr><th>nette-browser</th><td><pre class="nette-dump">"53wmitrr6c" (10)
+</pre></td></tr>
+<tr><th>nette-debug-panel-RoutingDebugger</th><td><pre class="nette-dump">""
+</pre></td></tr>
+<tr><th>nette-debug-panel-dumps</th><td><pre class="nette-dump">"-105:-153" (9)
+</pre></td></tr>
+			</table>
+			</div>
+								</div></div>
+
+
+
+		<div class="panel">
+		<h2><a href="#" rel="netteBsPnl6">HTTP response <abbr>&#x25ba;</abbr></a></h2>
+
+		<div id="netteBsPnl6" class="nette-collapsed inner">
+			<h3>Headers</h3>
+						<pre>X-Powered-By: Nette Framework<br></pre>
+					</div></div>
+
+
+		<ul>
+			<li>Report generated at 2011/08/04 13:40:51</li>
+							<li><a href="http://localhost/webtoad/interierdecor/basket/?do=changeAmount&amp;product_id=27&amp;amount=2">http://localhost/webtoad/interierdecor/basket/?do=changeAmount&amp;product_id=27&amp;amount=2</a></li>
+						<li>PHP 5.3.5-1ubuntu7.2</li>
+			<li>Apache/2.2.17 (Ubuntu)</li>			<li>Nette Framework 2.0-dev <i>(revision 9f535f9 released on 2011-01-10)</i></li>		</ul>
+	</div>
+</div>
+
+<script type="text/javascript">/*<![CDATA[*/var bs=document.getElementById("netteBluescreen");document.body.appendChild(bs);document.onkeyup=function(b){b=b||window.event;b.keyCode==27&&bs.onclick({target:document.getElementById("netteBluescreenIcon")})};
+for(var i=0,styles=document.styleSheets;i<styles.length;i++)if((styles[i].owningElement||styles[i].ownerNode).className!=="nette"){styles[i].oldDisabled=styles[i].disabled;styles[i].disabled=true}else styles[i].addRule?styles[i].addRule(".nette-collapsed","display: none"):styles[i].insertRule(".nette-collapsed { display: none }",0);
+bs.onclick=function(b){b=b||window.event;for(var a=b.target||b.srcElement;a&&a.tagName&&a.tagName.toLowerCase()!=="a";)a=a.parentNode;if(!a||!a.rel)return true;for(var d=a.getElementsByTagName("abbr")[0],c=a.rel==="next"?a.nextSibling:document.getElementById(a.rel);c.nodeType!==1;)c=c.nextSibling;b=c.currentStyle?c.currentStyle.display=="none":getComputedStyle(c,null).display=="none";try{d.innerHTML=String.fromCharCode(b?9660:9658)}catch(e){}c.style.display=b?c.tagName.toLowerCase()==="code"?"inline":
+"block":"none";if(a.id==="netteBluescreenIcon"){a=0;for(d=document.styleSheets;a<d.length;a++)if((d[a].owningElement||d[a].ownerNode).className!=="nette")d[a].disabled=b?true:d[a].oldDisabled}return false};/*]]>*/</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{snippet}
+
+{foreach $flashes as $flash}
+<div class="flash alert-message {$flash->type}">
+    <a class="close" href="#">×</a>
+    {$flash->message}
+</div>
+{/foreach}
+
+{widget $control begin}
+{widget $control errors}
+{widget $control body}
+{widget $control end}
+
+{/snippet}

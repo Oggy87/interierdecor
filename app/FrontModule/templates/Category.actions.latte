@@ -1,0 +1,73 @@
+{extends 'Category.layout.latte'}
+
+{block #breadcrumbs}
+<a n:href=":Front:Homepage:" n:class="first">
+    <div class="left"></div>
+    <div class="center">interierdecor</div>
+    <div class="right"></div>
+</a>
+<a n:href=":Front:Category: 'id' => $category['id']">
+    <div class="left"></div>
+    <div class="center">{$category['name']|lower}</div>
+    <div class="right"></div>
+</a>
+<a n:href=":Front:Category:actions 'id' => $category['id']" n:class="active">
+    <div class="left"></div>
+    <div class="center">{='v akci'|lower}</div>
+    <div class="right"></div>
+</a>
+{/block}
+
+{block #tips}{/block}
+
+{block main}
+<div class="products">
+        
+        <div class="hd">
+            <a n:href=":Front:Category: 'id' => $category['id'], 'razeni' => NULL" n:class="back"> « zpět </a>
+            <h1>{='v akci'|upper}</h1>
+        </div>
+    
+        <div class="order">
+            seřadit: 
+            <a n:href="this 'razeni' => 'od-nejlevnejsich'" n:class="$presenter->linkCurrent ? active">od nejlevnějších</a>
+            <a n:href="this 'razeni' => 'od-nejdrazsich'" n:class="$presenter->linkCurrent ? active">od nejdražších</a>
+            <a n:href="this 'razeni' => NULL" n:class="$presenter->linkCurrent ? active">abecedně</a>
+        </div>
+    {*cache [$presenter->id, $presenter->tags,$presenter->getComponent('stranka')->page,$presenter->razeni] ,tags => [products]*}
+    {snippet products}
+    
+         <div n:foreach="$products as $product" n:class="product,$iterator->getCounter() % 3 == 0 ? last">
+            <div class="image">
+                <div class="label-recommended" n:if="$product['recommended']"></div>
+                <div class="label-action" n:if="$product['newprice']"></div>
+                <div class="label-new" n:if="$product['saved'] >= $onemonthago"></div>
+                <a class="todetail" n:href="Product: 'id' => $product['id']">detail produktu</a>
+                {var $pr_tg = $product->product_tag()->where('tag.tagGroup_id',Front_BasePresenter::TAG_KOLEKCE_ID)->fetch()}
+                <a n:if="$product['visualisation_path']" class="tovisualisation" n:href="Visualisation:#choose  'id'=> $pr_tg['tag_id']">do vizualizace</a>
+                
+                {*<a class="addbasket ajax" n:href="addToBasket! 'product_id' => $product['id']"><span>přidat do košíku</span></a>*}
+                {if $product['productPhoto_id']}
+                    <a class="img" n:href="Product: 'id' => $product['id']">
+                    {$product->productPhoto['image_path']|image:195,140,$product['name'],FALSE,TRUE,FALSE,FALSE}
+                    </a>
+                {/if}
+                <div class="name"><a n:href="Product: 'id' => $product['id']">{$product['name']}</a></div>
+            </div>
+             <div class="price">
+                {if $product["newprice"]}
+                    <span>{$product['price']|dph:BasePresenter::DPH|currency}</span><strong>{$product['newprice']|dph:BasePresenter::DPH|currency}</strong> {*/ {$product->unit['name']}*}
+                {else}
+                    <strong>{$product['price']|dph:BasePresenter::DPH|currency}</strong> / {$product->unit['name']}
+                {/if}
+            </div>
+            <a class="addtobasket ajax" n:href="addToBasket! 'product_id' => $product['id']">přidat do košíku</a>
+            {*<a class="detail" n:href="Product: 'id' => $product['id']">detail produktu</a>*}
+        </div>
+        <div class="clear"></div>
+        {control stranka}
+    
+    {/snippet}
+    {*/cache*}
+</div>
+{/block}

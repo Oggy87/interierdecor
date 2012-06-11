@@ -1,0 +1,85 @@
+{var $title = 'Skupiny štítků'}
+
+{block #js}
+    {include #parent}
+    <script type="text/javascript">
+        head.js("{!$staticUri}/js/datagrid.js");
+        
+    head.ready(function() {
+    $(document).ready(function(){
+
+        $('a[title=smazat]').livequery( function() {
+            $(this).click(function() {
+                $('#snippet-confirmForm-').dialog('open');
+            });
+        });
+
+        $("#snippet-confirmForm-").dialog("destroy");
+
+        $("#snippet-confirmForm-").dialog({
+                            autoOpen: false,
+                            modal: true,
+                            title: 'Potvrzení akce',
+                            width:590,
+                            buttons: {
+
+                            }
+        });
+
+        $("#frmform-no").livequery('click', function(event) {
+            event.preventDefault();
+            $("#snippet-confirmForm-").dialog('close')
+        });
+
+    });
+    });
+    </script>
+{/block}
+
+{block layout}
+<div class="container-fluid">
+    <div class="sidebar">
+        
+        <div class="well">
+            <a n:href="new" class="btn large primary">nová skupina</a>
+        </div>
+        
+        <div class="well">
+            
+            <h5>skupiny kategorie:</h5>
+            <ul>
+                <li n:foreach="CategoryModel::fetch() as $cat"><a n:href="this 'category_id' => $cat['id']" n:class="$presenter->linkCurrent ? active">{$cat['name']|lower}</a></li>
+            </ul>
+        </div>
+       
+    </div>
+    <div class="content">
+        <div class="page-header">
+            <h1>Skupiny štítků {ifset $category}kategorie {$category['name']}{/ifset}</h1>
+        </div>
+        
+        {snippet flashes}
+            <div n:foreach="$flashes as $flash" class="flash alert-message {$flash->type}">
+                <a class="close" href="#">×</a>
+                {$flash->message}
+            </div>
+        {/snippet}
+        
+        {if $presenter->getParam('category_id')}
+            
+            {snippet grid}{control tagGroupesGrid}{/snippet}
+
+            {control confirmForm}
+        {else}
+            <div class="hero-unit">
+            <p>Vyberte u které kategorie chcete skupiny štítků editovat...</p>
+            <p><ul>
+                <li n:foreach="CategoryModel::fetch() as $category"><a n:href="this 'category_id' => $category['id']" n:class="$presenter->linkCurrent ? active">{$category['name']|lower}</a></li>
+            </ul>
+            </p>
+
+            </div>
+        {/if}
+    </div>
+</div>
+

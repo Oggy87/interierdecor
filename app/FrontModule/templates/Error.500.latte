@@ -1,0 +1,44 @@
+{var $robots = noindex}
+{var $title = 'Chyba 500'}
+{block #content}
+<div id="error">
+    <div class="top">
+        <h1>{='Server Error'|ucfirst}</h1>
+
+        <div class="clear"></div>
+
+        <div id="breadcrumbs" n:inner-block="breadcrumbs">
+            <a n:href=":Front:Homepage:" n:class="first">
+                <div class="left"></div>
+                <div class="center">interierdecor</div>
+                <div class="right"></div>
+            </a>
+            <span n:class="active">
+                <div class="left"></div>
+                <div class="center">chyba 500</div>
+                <div class="right"></div>
+            </span>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+
+    <div class="mainpanel">
+        <div class="fullbox">
+            <div class="cont">
+                <h2>Velice se omlouváme. Nastala chyba na serveru a nemůžeme váš požadavek zpracovat. Zkuste to prosím později.</h2>
+                <p>Můžete zkusit hledat Vámi požadovaný produkt ...</p>
+                <div class="search">
+                    {var searchform => $control['searchForm']}
+                    {control $searchform begin}
+                        {$searchform['text']->control}{$searchform['search']->control}
+                    {control $searchform end}
+                </div>
+                <p>... nebo přejít na <a n:href=":Front:Homepage:">úvodní stránku</a> nebo přímo do některé
+                kategorie: {foreach CategoryModel::fetch() as $category}<a n:href=":Front:Category: 'id' => $category['id'], 'tags' => NULL, 'razeni' => NULL, 'from' => NULL,'to' => NULL">{$category['name']|lower}</a>{sep},{/sep}{/foreach}.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+

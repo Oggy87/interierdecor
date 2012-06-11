@@ -1,0 +1,301 @@
+{extends '../../templates/@layout.latte'}
+
+{block #css}
+    {include #parent}
+    {control css 'screen.css'}
+{/block}
+
+{block #layout}
+<div id="head-container">
+    <div id="head">
+        <a class="logo" n:href=":Front:Homepage:">úvodní stránka</a>
+       {* <div id="topmenu">
+            <a n:href="Contact:">kontakty</a>
+        </div>*}
+        {if $user->isLoggedIn()}
+            <div id="user">{var $customer = $user->getIdentity()}
+                <a n:href=":Front:Customer:">{$customer->name} {$customer->surname}</a>
+                <span>|</span>
+                <a n:href="out 'backlink' => $presenter->getApplication()->storeRequest()">odhlásit</a>
+            </div>
+        {else}
+            <div id="user">
+                <a n:href=":Front:Customer:signin">Přihlášení</a>
+                <span>|</span>
+                <a n:href=":Front:Customer:register">Registrovat</a>
+            </div>
+        {/if}
+        
+        {snippet basket}
+        {if $user->isLoggedIn()}
+            
+            <div id="basket">                
+                <a n:if="$basketamount > 0" n:href="Basket:" n:class="basket">{$basketsum|dph:BasePresenter::DPH|currency} s DPH</a>
+                <a n:href="Basket:">košík</a>  
+            </div>
+        {else}
+            
+            <div id="basket">
+                <a n:if="$basketamount > 0" n:href="Basket:" n:class="basket">{$basketsum|dph:BasePresenter::DPH|currency} s DPH</a>
+                <a n:href="Basket:">košík</a>
+            </div>
+        {/if}
+        {/snippet}
+        <div class="search">
+            {var searchform => $control['searchForm']}
+            {control $searchform begin}
+                {$searchform['text']->control}{$searchform['search']->control}
+            {control $searchform end}
+        </div>
+    </div>
+</div>
+<div id="menu-container">
+    <div id="menu">
+        <a n:href=":Front:Homepage:" n:class="cufon,$presenter->linkCurrent ? active">úvod</a>
+        <a n:href=":Front:Inspiration: 'category_id' => NULL, 'tagGroup_id'=>NULL" n:class="cufon,$presenter->isLinkCurrent(':Front:Inspiration:') ? active">inspirace</a>
+        <a n:href=":Front:Visualisation:" n:class="cufon,$presenter->linkCurrent ? active">vizualizace</a>
+        <a n:foreach="CategoryModel::fetch() as $category" n:href=":Front:Category: 'id' => $category['id'], 'tags' => NULL, 'razeni' => NULL, 'from' => NULL,'to' => NULL"  n:class="cufon,$presenter->isLinkCurrent(':Front:Category:', array('id' =>$category['id'])) ? active,(isset($product) AND $product['category_id'] == $category['id']) ? active">{$category['name']|lower}</a>
+        <a n:href="Contact:" n:class="cufon,$presenter->linkCurrent ? active">kontakty</a>
+    </div>
+</div>
+<div id="page-container">
+    {include #content}
+</div>
+
+<div class="modal">
+    <div id="basketbox">
+        <div class="notice">Právě jste vložili do košíku:</div><div class="right"></div>
+        {snippet basketproduct}
+            {ifset $basketproduct}
+                <div class="image">
+                {if $basketproduct['productPhoto_id']}
+                    {$basketproduct->productPhoto['image_path']|image:195,140,$basketproduct['name'],FALSE,TRUE,FALSE,FALSE}
+                {/if}
+                </div>
+                <div class="product">
+                    <div class="name"><a n:href="Product: 'id' => $basketproduct['id']">{$basketproduct['name']}</div></a>
+                    <div class="price">
+                        v ceně 
+                         {if $basketproduct["newprice"]}
+                            <strong>{$basketproduct['newprice']|dph:BasePresenter::DPH|currency}</strong> 
+                         {else}
+                            <strong>{$basketproduct['price']|dph:BasePresenter::DPH|currency}</strong> 
+                         {/if}
+                         / {$basketproduct->unit['name']}
+                    </div>
+                    <div class="addbasketbox">
+                        {var form => $control['addBasketForm']}
+                        {control $form begin}
+                            {$form['product_id']->control->setValue($basketproduct['id'])}
+                            v košíků {$form['amount']->control->setValue("{$basketproductamount}")} {$form['amount']->label->setText($basketproduct->unit['name'])}
+                            {$form['add']->control->setText('přidat')}
+                        {control $form end}
+                       {* <div class="howmany">
+                            <a class="img" n:href=""><img src="{$staticUri}/images/icon-question.png" alt="icon question"> </a>
+                            <a n:href="">Kolik potřebuji?</a>
+                        </div>*}
+                    </div>
+                    <div class="basket">
+                        <div class="h">Celkem v košíku:</div>
+                        {snippet bask}
+                        {if $user->isLoggedIn()}
+                            <a n:if="$basketamount > 0" n:href="Basket:" >{$basketsum|dph:BasePresenter::DPH|currency} s DPH</a>
+ 
+                        {else}
+                            <a n:if="$basketamount > 0" n:href="Basket:" >{$basketsum|dph:BasePresenter::DPH|currency} s DPH</a>
+                        {/if}
+                        {/snippet}
+                    </div>
+                </div>
+                <div class="clear"></div>
+            {/ifset}
+        {/snippet}
+        <div class="clear"></div>
+        <div class="bottom">
+            <div class="back">
+                <div class="left"></div>
+                <a class="close" href="#">zpět</a>
+            </div>
+            <div class="order">
+                <a class="order" n:href="Basket:">objednat</a>
+                <div class="right"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+{*
+{block modalvisual}
+<div class="modal">
+    <div id="visualbox">
+        <div class="notice">Ukázat ve vizualizaci:</div><div class="right"></div>
+        {snippet visualproduct}
+            {ifset $visualproduct}
+                <div class="product" id="visualproduct" rel="{$visualproduct['id']}">
+                    <div class="name"><a n:href="Product: 'id' => $visualproduct['id']">{$visualproduct['name']}</div></a>
+                    <div class="price">
+                        v ceně 
+                         {if $visualproduct["newprice"]}
+                            <strong>{$visualproduct['newprice']|dph:BasePresenter::DPH|currency}</strong> 
+                         {else}
+                            <strong>{$visualproduct['price']|dph:BasePresenter::DPH|currency}</strong> 
+                         {/if}
+                         / {$visualproduct->unit['name']}
+                    </div>
+                </div>
+            {/ifset}
+        {/snippet}
+                <div class="clear"></div>
+                <div class="h">Vyberte kam chcete ve vizualizaci produkt umístit:</div>
+        
+                <div class="interier-container">
+                    <div id="interiermodal">
+                        
+                        <div class="wall leftwall" id="wall1" {if $visualisation->wall1}style="background-image: url('{!$staticUri}/{!$visualisation->wall1->backgroundimage}')"{/if}>
+                                <div></div>
+                        </div>
+                        <div class="wall leftwall" id="wall2" {if $visualisation->wall2}style="background-image: url('{!$staticUri}/{!$visualisation->wall2->backgroundimage}')"{/if}>
+                                <div></div>
+                        </div>
+                        <div class="wall leftwall" id="wall3" {if $visualisation->wall3}style="background-image: url('{!$staticUri}/{!$visualisation->wall3->backgroundimage}')"{/if}>
+                                <div></div>
+                        </div>
+                        <div class="wall leftwall" id="wall4" {if $visualisation->wall4}style="background-image: url('{!$staticUri}/{!$visualisation->wall4->backgroundimage}')"{/if}>
+                                <div></div>
+                        </div>
+                        <div class="wall" id="wall5" {if $visualisation->wall5}style="background-image: url('{!$staticUri}/{!$visualisation->wall5->backgroundimage}')"{/if}>
+                                <div></div>
+                        </div>
+                        <div class="wall" id="wall6" {if $visualisation->wall6}style="background-image: url('{!$staticUri}/{!$visualisation->wall6->backgroundimage}')"{/if}>
+                                <div></div>
+                        </div>
+                        <div class="wall" id="wall7" {if $visualisation->wall7}style="background-image: url('{!$staticUri}/{!$visualisation->wall7->backgroundimage}')"{/if}>
+                                <div></div>
+                        </div>
+                        <div class="wall" id="wall8" {if $visualisation->wall8}style="background-image: url('{!$staticUri}/{!$visualisation->wall8->backgroundimage}')"{/if}>
+                                <div></div>
+                        </div>
+                        <div class="wall" id="wall9" {if $visualisation->wall9}style="background-image: url('{!$staticUri}/{!$visualisation->wall9->backgroundimage}')"{/if}>
+                                <div></div>
+                        </div>
+                        <div class="wall" id="wall10" {if $visualisation->wall10}style="background-image: url('{!$staticUri}/{!$visualisation->wall10->backgroundimage}')"{/if}>
+                                <div></div>
+                        </div>
+                        <div class="wall" id="wall11" {if $visualisation->wall11}style="background-image: url('{!$staticUri}/{!$visualisation->wall11->backgroundimage}')"{/if}>
+                                <div></div>
+                        </div>
+                        <div class="wall" id="wall12" {if $visualisation->wall12}style="background-image: url('{!$staticUri}/{!$visualisation->wall12->backgroundimage}')"{/if}>
+                                <div></div>
+                        </div>
+                        <div class="wall" id="wall13" {if $visualisation->wall13}style="background-image: url('{!$staticUri}/{!$visualisation->wall13->backgroundimage}')"{/if}>
+                                <div></div>
+                        </div>
+                        <div class="wall" id="wall14" {if $visualisation->wall14}style="background-image: url('{!$staticUri}/{!$visualisation->wall14->backgroundimage}')"{/if}>
+                                <div></div>
+                        </div>
+                        <div class="wall" id="wall15" {if $visualisation->wall15}style="background-image: url('{!$staticUri}/{!$visualisation->wall15->backgroundimage}')"{/if}>
+                                <div></div>
+                        </div>
+                        <div class="wall" id="wall16" {if $visualisation->wall16}style="background-image: url('{!$staticUri}/{!$visualisation->wall16->backgroundimage}')"{/if}>
+                                <div></div>
+                        </div>
+
+                        <div class="floor" style="background-image: url('{$staticUri}/images/podlaha2.png');"></div>
+                        <div class="shadows"></div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+        <div class="visualisation">
+                
+        </div>
+        <div class="clear"></div>
+        <div class="bottom">
+            <div class="back">
+                <div class="left"></div>
+                <a class="close" href="#">zpět</a>
+            </div>
+            <div class="order">
+                <a class="order" n:href="Visualisation:">do vizualizace</a>
+                <div class="right"></div>
+            </div>
+        </div>
+        
+        <div class="clear"></div>
+    </div>
+</div>
+{/block}*}
+<div id="footer-container">
+    {*<div>
+        <a n:href="Homepage:">úvod</a> |
+        <a n:href="Visualisation:">vizualizace</a> |
+        <a n:foreach="CategoryModel::fetch() as $category" n:href=":Front:Category: 'id' => $category['id'], 'tags' => NULL, 'razeni' => NULL, 'from' => NULL,'to' => NULL"  n:class="cufon,$presenter->isLinkCurrent(':Front:Category:', array('id' =>$category['id'])) ? active,(isset($product) AND $product['category_id'] == $category['id']) ? active">{$category['name']|lower}</a>
+        <a n:href="Contatc:">kontakt</a> | 
+        <a n:href="Search:">hledat produkt</a> |
+        <a n:href="Customer:">zákaznický účet</a>
+    </div>*}
+</div>
+{/block}
+
+{block #scripts}
+{include #parent}
+<script type="text/javascript">
+        head.ready(function() {
+            $("#basketbox").dialog("destroy");
+
+            $("#basketbox").dialog({
+                        autoOpen: false,
+			modal: true,
+                        minWidth: 800,
+                        resizable: false,
+                        dialogClass: 'modal',
+                        zIndex : 2000
+            });
+
+            $('a.addtobasket').live('click', function() {
+                    $("#basketbox").dialog('open');
+            });
+
+            $('#basketbox a.close').live('click', function() {
+                    $("#basketbox").dialog('close');
+            });
+            
+            $("#visualbox").dialog("destroy");
+
+            $("#visualbox").dialog({
+                        autoOpen: false,
+			modal: true,
+                        width: 1219,
+                        resizable: false,
+                        dialogClass: 'modal'
+            });
+
+            $('a.tovisualisation').live('click', function() {
+                    $("#visualbox").dialog('open');
+            });
+
+            $('#visualbox a.close').live('click', function() {
+                    $("#visualbox").dialog('close');
+            });
+
+            $("#interiermodal .wall").live('mouseenter',function() {
+                $(this).children().addClass( "highlight" );
+                $(this).children().addClass( "cursor-paint-texture" );
+            });
+            $("#interiermodal .wall").mouseleave(function() {
+                $(this).children().removeClass( "highlight" );
+                $(this).children().removeClass( "cursor-paint-texture" );
+            });
+            $("#interiermodal .wall").livequery('click',function() {
+                var id = $("#visualproduct").attr("rel");
+                var wall = $(this);
+
+                    $.get({link wall!},{'productid': id, 'name': wall.attr("id")}, function(payload) {
+                        wall.children().removeClass( "highlight" );
+                        wall.css("background-image", "url({!$staticUri}/"+payload.backgroundimage+")" );
+                        //wall.html('<div><div class="cloud"><a class="name" href="'+payload.product.link+'">'+payload.product.text+'</a><span class="price">'+payload.product.price+'</span><a class="addtobasket ajax" href="'+payload.product.basketlink+'"></a></div></div>');
+                    });
+            });
+
+    });
+</script>
+{/block}

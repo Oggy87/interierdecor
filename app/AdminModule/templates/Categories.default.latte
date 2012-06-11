@@ -1,0 +1,276 @@
+{var $title = 'Kategorie'}
+
+{block #js}
+    {include #parent}
+    <script type="text/javascript">
+        head.js("{!$staticUri}/js/datagrid.js",
+                "{!$staticUri}/js/bootstrap-modal.js",
+                "{!$staticUri}/js/jquery.tourl.js");
+        
+    head.ready(function() {
+    $(document).ready(function(){
+        
+        $('[name="name"]').tourl({ id : 'frm-datagrid-categoriesGrid-newCategoryForm-url_slug'});
+
+        $('a[title=smazat]').livequery( function() {
+            $(this).click(function() {
+                $('#snippet-confirmForm-').dialog('open');
+            });
+        });
+        
+        
+        $("a[title=editovat]").livequery('click',function(){
+            $("#modal-edit").modal({ backdrop:true,show:true });
+        })
+
+        $("#snippet-confirmForm-").dialog("destroy");
+
+        $("#snippet-confirmForm-").dialog({
+                            autoOpen: false,
+                            modal: true,
+                            title: 'Potvrzení akce',
+                            width:590,
+                            buttons: {
+
+                            }
+        });
+
+        $("#frmform-no").livequery('click', function(event) {
+            event.preventDefault();
+            $("#snippet-confirmForm-").dialog('close')
+        });
+
+    });
+    });
+    </script>
+{/block}
+
+{block layout}
+<div class="container-fluid">
+    <div class="sidebar">
+        
+        <div class="well">
+            <a data-controls-modal="modal-new"  data-backdrop="static" href="#" class="btn large primary new">nová kategorie</a>
+        </div>
+       
+    </div>
+    <div class="content">
+        <div class="page-header">
+            <h1>Kategorie</h1>
+        </div>
+        
+        {snippet flashes}
+            <div n:foreach="$flashes as $flash" class="flash alert-message {$flash->type}">
+                <a class="close" href="#">×</a>
+                {$flash->message}
+            </div>
+        {/snippet}
+            
+        {snippet grid}{control categoriesGrid}{/snippet}
+
+        {control confirmForm}
+    </div>
+</div>
+    
+<div class="modal hide fade" id="modal-new" style="display: none;">
+    {snippet new}
+    {control $newForm begin}
+    <div class="modal-header">
+        <a class="close" href="#">×</a>
+        <h3>Nová kategorie</h3>
+    </div>
+    <div class="modal-body">
+        <!-- errors -->
+        {snippet errorsnew}
+        <div n:if="$newForm->hasErrors()">
+            <div class="alert-message error" n:foreach="$newForm->errors as $error">{$error}</div>
+        </div>
+        {/snippet}
+        
+        <fieldset>
+            <div class="clearfix">
+                {$newForm['name']->label}
+                <div class="input">{$newForm['name']->control}</div>
+            </div>
+            <div class="clearfix">
+                {$newForm['url_slug']->label}
+                <div class="input">
+                    {$newForm['url_slug']->control}
+                </div>
+            </div>
+            <div class="clearfix">
+                {$newForm['sort']->label}
+                <div class="input">
+                    {$newForm['sort']->control}
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="input">
+                    <div class="inputs-list">
+                        <label>
+                        {$newForm['active']->control}
+                            <span>{$newForm['active']->label->getText()}</span>
+                        </label>
+                       
+                    </div>
+
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="modal-footer">
+         {$newForm['save']->control->class('btn primary')}
+    </div>
+    {control $newForm end}
+    {/snippet}
+</div>
+    
+<div class="modal hide fade" id="modal-edit" style="display: none;">
+    {snippet edit}
+    {control $editForm begin}
+    <div class="modal-header">
+        <a class="close" href="#">×</a>
+        <h3>Nová kategorie</h3>
+    </div>
+    <div class="modal-body">
+        <!-- errors -->
+        {snippet errorsedit}
+        <div n:if="$editForm->hasErrors()">
+            <div class="alert-message error" n:foreach="$editForm->errors as $error">{$error}</div>
+        </div>
+        {/snippet}
+        {$editForm['id']->control}
+        <fieldset>
+            <div class="clearfix">
+                {$editForm['name']->label}
+                <div class="input">{$editForm['name']->control}</div>
+            </div>
+            <div class="clearfix">
+                {$editForm['url_slug']->label}
+                <div class="input">
+                    {$editForm['url_slug']->control}
+                </div>
+            </div>
+            <div class="clearfix">
+                {$editForm['sort']->label}
+                <div class="input">
+                    {$editForm['sort']->control}
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="input">
+                    <div class="inputs-list">
+                        <label>
+                        {$editForm['active']->control}
+                            <span>{$editForm['active']->label->getText()}</span>
+                        </label>
+                       
+                    </div>
+
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="modal-footer">
+         {$editForm['update']->control->class('btn primary')}
+    </div>
+    {control $editForm end}
+    {/snippet}
+</div>
+
+
+
+{*{var $title = 'Kategorie | administrace '}
+
+{block #js}
+    {include #parent}
+    <script type="text/javascript">
+        head.js("{!$staticUri}/js/jquery.tourl.js");
+    </script>
+{/block}
+
+<div n:block="layout">
+
+    <div id="category">
+    <h1>Přehled kategorií</h1>
+    {snippet flashes}
+        <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+    {/snippet}
+
+    <div class="header">
+        <div class="order">pořadí</div>
+        <div class="name">název</div>
+        <div class="products">produktů</div>
+        <div class="actions">akce</div>
+    </div>
+    {snippet categories}
+    <ul id="sortable">
+        <li n:foreach="CategoryModel::fetch() as $category" id="item_{$category['id']}">
+            <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
+            <span class="name">{$category['name']|lower}</span>
+            <a n:href="confirmForm:confirmDelete! 'id' => $category['id']" n:class="delete,ajax,nohover"><span class="ui-icon ui-icon-circle-close">smazat</span></a>
+            <a n:href="Category:edit 'id' => $category['id']" n:class="nohover"><span class="ui-icon ui-icon-wrench">editovat</span></a>
+            <a n:href="Products:">{=count($category->product())}</a>
+        </li>
+    </ul>
+    {/snippet}
+    <div class="new">
+        {var form => $presenter['newCategoryForm']}
+        {control $newForm begin}
+        <!-- hidden fields -->
+        <div n:foreach="$newForm->getComponents(TRUE, 'Nette\Forms\HiddenField') as $contrl">{$contrl->control}</div>
+        <!-- errors -->
+        {assign errors => $newForm->errors}
+        <ul class="error" n:if="$errors" n:block="#entryerrors">
+            <li n:foreach="$errors as $error">{$error}</li>
+        </ul>
+        <!-- form -->
+        <span class="ui-icon ui-icon-plusthick"></span>
+        {$newForm['name']->control}
+        {$newForm['url_slug']->control}
+        {$newForm['save']->control}
+        {control $newForm end}
+    </div>
+    {control confirmForm}
+
+    </div>
+</div>
+
+{block #scripts}
+    {include #parent}
+    <script type="text/javascript">
+    head.ready(function() {
+
+        $(function() {
+            $( "#sortable" ).livequery(function() {
+                $(this).sortable({
+                    update : function (event, ui) {
+                        $.get({link sort!}, {'items': $( "#sortable" ).sortable('serialize')});
+                    }
+
+                });
+            });
+            
+            $('[name=name]').tourl({ id : 'frmnewCategoryForm-url_slug'});
+
+           /* $("#snippet-confirmForm-").dialog("destroy");
+
+            $("#snippet-confirmForm-").dialog({
+                autoOpen: false,
+                modal: true,
+                title: 'Potvrzení akce',
+                width:590,
+                buttons: {
+
+                }
+            });
+
+            $('.delete').live('click',function() {
+                $('#snippet-confirmForm-').dialog('open');
+            });*/
+        });
+
+    });
+    </script>
+{/block}
+*}

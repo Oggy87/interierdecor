@@ -1,0 +1,63 @@
+{var $title = 'Editovat produkt'}
+
+{block #css}
+    {include #parent}
+    {control css 'plupload.queue.css'}
+{/block}
+
+{block #js}
+    {include #parent}
+    <script type="text/javascript">
+        head.js("{!$staticUri}/js/plupload.full.js",
+                "{!$staticUri}/js/cs.js",
+                "{!$staticUri}/js/jquery.plupload.queue.js"
+        );
+    </script>
+{/block}
+
+{block layout}
+    <div id="product" class="container-fluid">
+        <div class="sidebar">
+            <div  class="pagination">
+            <ul>
+                <li class="prev"><a n:href="Inspiration:">← Zpět</a></li>
+            </ul>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="page-header">
+                <h1>Nahrát inspirační obrázky</h1>
+            </div>
+            
+            
+            {snippet flashes}
+            <div n:foreach="$flashes as $flash" class="flash alert-message {$flash->type}">
+                <a class="close" href="#">×</a>
+                {$flash->message}
+            </div>
+            {/snippet}
+            
+            {control $form begin}
+
+            {snippet formerrors}
+            {assign errors => $form->errors}
+            <div class="alert-message error block-message"  n:if="$errors">
+                <ul>
+                    <li n:foreach="$errors as $error">{$error}</li>
+                </ul>
+            </div>
+            {/snippet}
+
+            <div class="row">
+                <div class="span16">
+                    <fieldset>
+                        {control upload:inspiration}
+                    </fieldset>
+                </div>
+            </div>  
+
+            {control $form end}
+        </div>
+{/block}
+

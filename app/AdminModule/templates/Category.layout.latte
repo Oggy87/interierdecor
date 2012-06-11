@@ -1,0 +1,157 @@
+{extends '@layout.latte'}
+
+{var $title = $category['name']}
+
+<div id="category" class="container-fluid" n:block="layout">
+    <div class="sidebar">
+        <div class="leftpanel" n:inner-block="left">
+            <div class="leftbox">
+                <div class="name">Naše tipy</div>
+                <div class="content">
+                    <a n:href="recommended" n:class="$presenter->linkCurrent ? active"><span>doporučujeme</span></a>
+                    <a n:href="new" n:class="$presenter->linkCurrent ? active"><span>novinky</span></a>
+                    <a n:href="actions" n:class="$presenter->linkCurrent ? active"><span>v akci</span></a>
+                </div>
+            </div>
+            {*cache [$presenter->id,$presenter->tags],tags => [tags,tagGroups]*}
+            {foreach $category_tagGroupes as $category_tagGroup}
+            {var $tags = BaseModel::fetchAll('tag')->where("tagGroup_id",$category_tagGroup->tagGroup['id'])->order("value")}
+            <div n:class="tag-group" n:if="$tags->count('*') > 0">
+                <div class="name">{$category_tagGroup->tagGroup['name']|ucfirst}</div>
+                <div class="tags">
+                    {foreach  $tags as $tag}
+                        {if $presenter->tags}
+                            {var $tagsurl = $presenter->tags.'+'.$tag['id']}
+                        {else}
+                            {var $tagsurl = $tag['id']}                        
+                        {/if}
+                        <a n:class="$iterator->isLast() ? last" n:href="this 'tags' => $tagsurl"><span>{$tag['value']}</span></a>
+                    {/foreach}
+                </div>
+            </div>
+            {/foreach}
+            {*/cache*}
+            <div class="leftbox slider">
+                <div class="name">Cenové rozmezí</div>
+                <div class="slide">
+                    <label for="amount">Cena: </label>
+                    <input type="text" id="amount">
+                    <div id="slider"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="content">
+        <div class="top">
+            <div class="lefttop">
+            <h1>{$category['name']|ucfirst}</h1>
+            <div class="clear"></div>
+            <div id="breadcrumbs" n:inner-block="breadcrumbs">
+                <a n:href=":Front:Homepage:" n:class="first">
+                    <div class="left"></div>
+                    <div class="center">interierdecor</div>
+                    <div class="right"></div>
+                </a>
+                <a n:href=":Front:Category: 'id' => $category['id']" n:class="active">
+                    <div class="left"></div>
+                    <div class="center">{$category['name']|lower}</div>
+                    <div class="right"></div>
+                </a>
+            </div>
+            </div>
+            {*cache [$presenter->id, $presenter->tags],tags => [tags,tagGroups]*}
+            {if $presenter->tags}
+            <div class="filters">
+                <div class="title">{='Váš filtr'|upper}:</div>
+                <div n:foreach="$tagGroupes as $tagGroup" n:class="filterline">
+                    <span class="taggroup">{$tagGroup['name']}:</span>
+                    {var $groupTags = clone $tags}
+                    {foreach $groupTags->where('tagGroup_id',$tagGroup['id']) as $tag}
+                        {var $ids = explode('+',$presenter->tags)}
+                        {? unset($ids[array_search($tag['id'], $ids)])}
+                        <a n:href="this 'tags' => implode('+',$ids)" n:class="removeTag">{$tag['value']}</a>
+                        <a n:href="this 'tags' => implode('+',$ids)" n:class="img, removeTag"><img src="{$staticUri}/images/tag-cross.png" alt="remove tag"></a>
+                        {sep} + {/sep}
+                    {/foreach}
+                </div>
+                {*{foreach $tags as $tag}
+                    {var $ids = explode('+',$presenter->tags)}
+                    {? unset($ids[array_search($tag['id'], $ids)])}
+                    <a n:href="this 'tags' => implode('+',$ids)" n:class="removeTag">{$tag['value']}</a>
+                {/foreach}*}
+                <div class="all">
+                    <div class="filtercount" n:inner-snippet="filtercount">Filtru odpovídá: {$products->count("*")} produktů</div>
+                    <a n:if="count($tags) > 0" n:href="this 'tags' => NULL " n:class="removeTag">odebrat vše</a>
+                    <a n:if="count($tags) > 0" n:href="this 'tags' => NULL " n:class="removeTag,img"><img src="{$staticUri}/images/tag-cross.png" alt="remove tags"></a>
+                </div>
+
+            </div>
+            {else}
+            <div class="filters">
+                <p class="title">Vybírejte si produkty přesně podle vašich představ.</p>
+                <p>Vyfiltrujte si produkty podle kriterií v levé části.</p>
+            </div>
+            {/if}
+            {*/cache*}
+            <div class="clear"></div>
+        </div>
+
+        <div class="mainpanel" n:inner-block="content">
+            {include #content}
+        </div>
+
+    
+
+    </div>
+    
+</div>
+
+{block #scripts}
+{include #parent}
+<script type="text/javascript">
+    head.ready(function() {
+
+        $(".tag-group .tags").hide();
+        $(".tag-group .name").addClass("closed");
+
+        /*$(".tag-group").hover(function() {
+            $(this).children(".name").removeClass("closed");
+            $(this).children(".name").addClass("open");
+            $(this).children(".tags").slideDown('slow');
+        }, function(){
+             
+        });*/
+         
+        $(".tag-group .closed").live('click',function() {
+            $(this).removeClass("closed");
+            $(this).addClass("open");
+            $(this).next(".tags").slideDown('slow');
+        });
+        $(".tag-group .open").live('click',function() {
+            $(this).removeClass("open");
+            $(this).addClass("closed");
+            $(this).next(".tags").slideUp('slow');
+        });
+        
+        $( "#slider" ).slider({
+            range: true,
+            min: 0,
+            max: {!$maxprice},
+            values: [ 0, {!$maxprice} ],
+            slide: function( event, ui ) {
+                $( "#amount" ).val( ui.values[ 0 ] + " Kč - " + ui.values[ 1 ] + " Kč");
+            },
+            change: function(event, ui) {
+                $.get({link priceRange!}, {'from': ui.values[ 0 ], 'to': ui.values[ 1 ]}, function(payload) {
+                    for(var id in payload.snippets) {
+                        $.nette.updateSnippet(id, payload.snippets[id]);
+                    }
+                });
+            }
+	});
+	$( "#amount" ).val( $( "#slider" ).slider( "values", 0 ) + " Kč - " + $( "#slider" ).slider( "values", 1 ) + " Kč" );
+    });
+</script>
+{/block}

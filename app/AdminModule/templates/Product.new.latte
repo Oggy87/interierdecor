@@ -1,0 +1,369 @@
+{var $title = 'Nový produkt'}
+
+{block #css}
+    {include #parent}
+    {control css '../texyla/css/style.css', 'plupload.queue.css'}
+{/block}
+
+{block #js}
+    {include #parent}
+    <script type="text/javascript">
+        head.js("http://www.google.com/jsapi",
+                "{!$staticUri}/js/plupload.full.js",
+                "{!$staticUri}/js/jquery.plupload.queue.js",
+                "{!$staticUri}/js/cs.js",
+                "{!$staticUri}/js/jquery.tourl.js",
+                "{!$staticUri}/texyla/js/texyla.js",
+                "{!$staticUri}/texyla/js/selection.js",
+                "{!$staticUri}/texyla/js/texy.js",
+                "{!$staticUri}/texyla/js/buttons.js",
+                "{!$staticUri}/texyla/js/dom.js",
+                "{!$staticUri}/texyla/js/view.js",
+                "{!$staticUri}/texyla/js/ajaxupload.js",
+                "{!$staticUri}/texyla/js/window.js",
+                "{!$staticUri}/texyla/languages/cs.js",
+                "{!$staticUri}/texyla/plugins/table/table.js"
+        );
+    </script>
+{/block}
+
+{block layout}
+    <div id="product" class="container-fluid">
+        <div class="sidebar">
+            <div  class="pagination">
+            <ul>
+                <li class="prev"><a n:href="Product:">← Zpět na Přehled produktů</a></li>
+            </ul>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="page-header">
+                <h1>Nový produkt</h1>
+            </div>
+            
+            
+            {snippet flashes}
+            <div n:foreach="$flashes as $flash" class="flash alert-message {$flash->type}">
+                <a class="close" href="#">×</a>
+                {$flash->message}
+            </div>
+            {/snippet}
+            
+            {control $form begin}
+            
+            {snippet formerrors}
+                {assign errors => $form->errors}
+                <div class="alert-message error block-message"  n:if="$errors" n:block="#entryerrors">
+                    <ul>
+                        <li n:foreach="$errors as $error">{$error}</li>
+                    </ul>
+                </div>
+            {/snippet}
+
+            {$form['product']['productType_id']->control}
+            <div class="row">
+                <div class="span no-margin">
+                <div class="row no-margin">
+                <div class="span7">
+                    <fieldset>
+                        <legend>Obrázek</legend>
+                        
+                        {$form['productPhoto']['name']->control}
+                        {$form['productPhoto']['tmpname']->control}
+                        
+                        <div class="clearfix">
+                        {snippet perexPhoto}
+                            {if isset($image)}
+                                {$image['thumb']}
+                            {else}
+                                <ul class="media-grid">
+                                    <li><div class="a"><img class="thumbnail" src="http://placehold.it/355x262" alt="" /></div></li>
+                                </ul>
+                            {/if}
+                        {/snippet}
+                        </div>
+                        {control upload:perexPhoto}
+
+                              
+                    </fieldset>
+                </div>
+                
+                <div class="span8">
+                    <fieldset>
+                        <legend>Základní údaje</legend>
+                        <div class="clearfix">
+                            {$form['product']['category_id']->label}
+                            <div class="input">
+                                {$form['product']['category_id']->control}
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            {$form['product']['name']->label}
+                            <div class="input">
+                                {$form['product']['name']->control}
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            {$form['product']['url_slug']->label}
+                            <div class="input">
+                                {$form['product']['url_slug']->control}
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            {$form['product']['price']->label}
+                            <div class="input">
+                                <div class="inline-inputs">
+                                {$form['product']['price']->control->class('mini')}
+                                {snippet unit span}
+                                    {$form['product']['unit_id']->control->class('mini')}
+
+                                    {$form['unit']['name']->control->class('mini')}
+                                    {$form['sendUnit']->control->class('btn')}
+                                {/snippet}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            {$form['product']['newprice']->label}
+                            <div class="input">
+                                {$form['product']['newprice']->control->class('mini')}
+                                <span class="help-inline">Produkt bude označen značkou Akce.</span>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            {$form['product']['recommended']->label}
+                            <div class="input">
+                                <div class="inputs-list">
+                                    <label>
+                                        {$form['product']['recommended']->control}
+                                        <span>Produkt bude označen značkou Doporučujeme a zobrazen v sekci Doporučujeme.</span>
+                                    </label>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </fieldset>
+                    
+                </div>
+                </div>
+                
+                <div class="row no-margin">
+                <div class="span15">
+                    <fieldset>
+                        <legend>Popis produktu</legend>
+                        <div class="form-stacked">
+                        <div class="clearfix">
+
+                            <div class="input">
+                                {$form['product']['description_html']->control->class('span14')->rows(8)}
+                                <span class="help-block">Textový popis produktu je velmi důležitým prvkem, jak pro zákazníka, tak pro vyhledávače.</span>
+                            </div>
+                        </div>
+                        </div>
+                    </fieldset>
+                </div>
+                </div>
+                </div>
+                <div class="span12">
+                    <fieldset>
+                        <legend>Specifikace:</legend>
+                        {var $tags = $form['tags']}
+                        <div n:foreach="$tags->getComponents() as $tag" id="{$tag->getName()}">
+
+                            <div class="clearfix" n:foreach="$tag->controls as $ctl" n:if="!$ctl->getOption('rendered') && $ctl->getForm(FALSE) === $form">
+                                {*<div n:class="label,$ctl->getOption('required') ? required"></div>*}
+                                    {if $ctl instanceof Button || $ctl instanceof Checkbox}&nbsp;{else}{!$ctl->label}{/if}
+                                
+                                <div class="input">
+                                    {!$ctl->control->class('span9')}{if $ctl instanceof Checkbox}{!$ctl->label}{/if}
+                                </div>
+                                <script type="text/javascript">
+                                    head.ready(function() {
+
+                                            function split( val ) {
+                                                    return val.split( /,\s*/ );
+                                            }
+                                            function extractLast( term ) {
+                                                    return split( term ).pop();
+                                            }
+
+                                            $('input[name="tags[{!$tag->getName()}][{!$ctl->getName()}]"]').livequery(function() {
+                                                $(this)// don't navigate away from the field on tab when selecting an item
+                                                    .bind( "keydown", function( event ) {
+                                                            if ( event.keyCode === $.ui.keyCode.TAB &&
+                                                                            $( this ).data( "autocomplete" ).menu.active ) {
+                                                                    event.preventDefault();
+                                                            }
+                                                    })
+                                                    .autocomplete({
+                                                            minLength: 0,
+                                                            source: function( request, response ) {
+                                                                    $.getJSON( {plink availableTags!}, {
+                                                                        tagGroup: {$ctl->getName()}
+                                                                    }, function(payload) {
+                                                                        // delegate back to autocomplete, but extract the last term
+                                                                        response( $.ui.autocomplete.filter(
+                                                                            payload.availableTags, extractLast( request.term ) ) );
+                                                                    });
+                                                            },
+                                                            focus: function() {
+                                                                    // prevent value inserted on focus
+                                                                    return false;
+                                                            },
+                                                            select: function( event, ui ) {
+                                                                    var terms = split( this.value );
+
+                                                                    var i = terms.indexOf(ui.item.value);
+                                                                    if(i!=-1) {
+                                                                        terms.splice(i, 1);
+                                                                        this.value = terms;
+                                                                    }
+                                                                    else {
+                                                                        // remove the current input
+                                                                        terms.pop();
+                                                                        // add the selected item
+                                                                        terms.push( ui.item.value );
+                                                                        // add placeholder to get the comma-and-space at the end
+                                                                        terms.push( "" );
+                                                                        this.value = terms.join( ", " );
+                                                                    }
+
+                                                                    return false;
+                                                            },
+                                                            close: function(event) {
+                                                               /* if (typeof(event.handler) != '') {
+                                                                    if (event.handler.guid == 26) {
+                                                                        $(this).autocomplete("search","");
+                                                                        return false;
+                                                                    }
+                                                                }*/
+                                                            },
+                                                            appendTo:".tags-autocomplete"
+                                                    }).focus(function(){
+                                                        $(this).autocomplete("search","");
+                                                    })/*.mouseout(function() {
+                                                        $(this).autocomplete("close");
+                                                    }).data( "autocomplete" )._renderItem = function( ul, item ) {
+                                                        var insert = '';
+                                                        if(item.value.substr(item.value.length-1) == '*')
+                                                            insert = item.value.substr(0,item.value.length-1) + '<span class="star">*</span>';
+                                                        else insert = item.value;
+                                                        return $( "<li></li>" )
+                                                            .data( "item.autocomplete", item )
+                                                            .append( "<a class=tag>" + insert + "</a>")
+                                                            .appendTo( ul );
+                                                    };*/
+                                            });
+                                });
+                                </script>
+                                
+                            </div>
+                        </div><div class="tags-autocomplete"></div>
+                    </fieldset>  
+                </div>
+                
+            </div>
+            
+            <div class="row">             
+                <div class="span8">
+                    <fieldset>
+                        <legend>Soubor:</legend>
+                        <div class="clearfix">
+                            {$form['product']['file_path']->label}
+                            <div class="input">
+                                {$form['product']['file_path']->control}
+                            </div>
+                        </div>
+
+                        <div class="clearfix">
+                            {$form['product']['file_name']->label}
+                            <div class="input">
+                                {$form['product']['file_name']->control}
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+          
+            <div class="row">             
+                <div class="span8">
+                    <fieldset>
+                        <legend>Další nastavení:</legend>
+                        <div class="clearfix">
+                            {$form['product']['active']->label}
+                            <div class="input">
+                                <ul class="inputs-list">
+                                    <li>
+                                        <label>
+                                            {!$form['product']['active']->getControl('1')}
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            {!$form['product']['active']->getControl('0')}
+                                        </label>
+                                    </li>
+                                </ul>
+                                <span class="help-block">Pokud zvolíte, že produkt není aktivní, uloží se, ale než bude aktivován nebude v nabídce eshopu zobrazen.</span>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            
+            <div class="actions">
+                
+                {if isset($form['sendNext'])}{$form['sendNext']->control->class('btn primary large')}{/if}
+                {$form['send']->control->class('btn primary large')}
+            </div>
+
+            {control $form end}
+            
+        </div>
+       
+
+</div>
+{/block}
+
+{block #scripts}
+    {include #parent}
+    <script type="text/javascript">
+    head.ready(function() {
+    $(document).ready(function(){
+
+        var defaultOptions = {
+            baseDir: '{!$staticUri}/texyla',
+            previewPath: '{!$presenter->link("Texyla:preview")}',
+            filesPath: '{!$presenter->link("Texyla:listFiles")}',
+            filesUploadPath: '{!$presenter->link("Texyla:upload")}',
+            filesMkDirPath: '{!$presenter->link("Texyla:mkDir")}',
+            filesRenamePath: '{!$presenter->link("Texyla:rename")}',
+            filesDeletePath: '{$presenter->link("Texyla:delete")}',
+
+            toolbar: ['h2','h3','h4','bold', 'italic', null, 'ul', 'ol', null, 'sup','sub',null,'link', null, "table", null]
+        };
+
+        var perex_options = {
+            toolbar: ['bold', 'italic', null,'ul', 'ol', null,'sup','sub',null,'link', "table", null]
+        }
+
+        $.texyla.setDefaults(defaultOptions);
+
+        $('[name="product[description_html]"]').texyla(perex_options);
+
+        $('[name="product[name]"]').tourl({ id : 'frmnewProduct-product-url_slug'});
+
+        $("#deletevisual").livequery('click', function() {
+             $("div.visualisation").find(':input').each(function() {
+                $(this).val('');
+                $("div.visualisation .thumb").replaceWith("<ul class=media-grid><li><div class=a><img class=thumbnail src=http://placehold.it/50x67 /></div></li></ul>");
+                $('#filelis > table').replaceWith("<table class=condensed-table></table>");
+            });
+        });
+
+    });
+    });
+    </script>
+{/block}
+

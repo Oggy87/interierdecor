@@ -1,0 +1,368 @@
+{var $title = 'Vizualizace tapet'}
+
+{block #content}
+<div id="visualisation">
+    <div class="top">
+        <div class="lefttop">
+        <h1>Vizualizace tapet</h1>
+        <div class="clear"></div>
+        <div id="breadcrumbs">
+            <a n:href=":Front:Homepage:" n:class="first">
+                <div class="left"></div>
+                <div class="center">interierdecor</div>
+                <div class="right"></div>
+            </a>
+            <a n:href=":Front:Visualisation:" n:class="active">
+                <div class="left"></div>
+                <div class="center">vizualizace</div>
+                <div class="right"></div>
+            </a>
+        </div>
+        </div>
+        <div class="filters">
+            <img src="{$staticUri}/images/vizualizace-image.png" width="177" height="122" alt="vizualizace">
+            <h2>Vyzkoušejte náš unikátní online nástroj pro vizualizaci tapet přímo v interiéru</h2>
+            <div class="text">Vyberte si z našich produktů a jednoduchým <strong>přetažením</strong> je umístěte přímo do
+                iteriéru.</div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    
+    
+        <div class="fullbox"  id="choose">
+            <div class="h"><h2>{='Výběr kolekce'|upper}</h2></div>
+            
+            <a class="prev browse left disabled"></a>
+
+            <div class="tagGroup-scrollable">
+                <div class="items">                  
+                {foreach $collections as $tag} 
+                    {var $modulus = $iterator->getCounter() % 6}
+                    {if $iterator->isFirst()}<div class="group">{/if}
+                        <div n:class="tag,$iterator->getCounter() % 6 == 0 ? last">
+                            <div n:class="image,$iterator->getCounter() % 6 == 0 ? last">
+                                <a class="img" n:href="this#choose 'id'=> $tag['id']">
+                                    {if $tag['picture_path']}
+                                        {$tag['picture_path']|image:150,109,$tag['value'],FALSE,FALSE,FALSE,FALSE,NULL,NULL,NULL,Image::PNG}  
+                                    {/if}
+                                </a>
+
+                                <div n:class="name,$presenter->getParam('id') == $tag['id']  ? active">
+                                    <a n:href="this#choose 'id'=> $tag['id']">{$tag['value']}</a>
+                                </div>
+                            </div>
+                        </div>
+                    {if $modulus == 0}
+                        {if $iterator->isLast()}</div>
+                        {else}</div><div class="group">
+                        {/if}
+                    {elseif $iterator->isLast()}
+                        </div>
+                    {/if}
+                {/foreach}
+                </div>
+            </div>
+            
+            <a class="next browse right disabled"></a>
+
+
+            <div class="clear"></div>
+        </div>
+        
+    
+    <div class="products">
+        {*<div class="collection">
+            <div class="header">VÝBĚR KOLEKCE</div>
+            <div class="box">
+                <a n:href="this#choose 'id'=> $collection['id']" n:foreach="$collections as $collection" n:class="item,$presenter->linkCurrent ? active">{$collection['value']}</a>
+            </div>
+        </div>*}
+
+        <div class="choose">
+            {snippet choose}
+            <a class="prev browse left disabled"></a>
+            {ifset $products}
+            <div id="products-scrollable">
+                <div class="items">
+                    {if count($products) > 0 }
+                    {foreach $products as $product}
+                        {var $modulus = $iterator->getCounter() % 7}
+                        
+                        {if $iterator->isFirst()}<div class="group">{/if}
+                            <div n:class="productvis,$product['visualisation_path'] ? visualable,$iterator->getCounter() % 7 == 0 ? last" rel="{$product['id']}">
+                                <div n:class="$product['visualisation_path'] ? drag : nodrag"></div>
+                                <div class="image">
+                                    <a class="addbasket" n:href="addToBasket! 'product_id' => $product['id']"><span>přidat do košíku</span></a>
+                                    {if $product['productPhoto_id']}
+                                        <a class="img" n:href="Product: 'id' => $product['id']">
+                                        {$product->productPhoto['image_path']|image:103,103,$product['name'],FALSE,TRUE,FALSE,FALSE}
+                                        </a>
+                                    {/if}
+                                    {*<div class="name"><a n:href="Product: 'id' => $product['id']">{$product['name']}</a></div>*}
+                                </div>
+                                <div class="price">
+                                    {if $product["newprice"]}
+                                        <strong>{$product['newprice']|dph:BasePresenter::DPH|currency}</strong>
+                                    {else}
+                                        <strong>{$product['price']|dph:BasePresenter::DPH|currency}</strong>
+                                    {/if}
+                                     / {$product->unit['name']}
+                                </div>
+                                {*<a class="detail" n:href="Product: 'id' => $product['id']">detail produktu</a>*}
+                            </div>
+                        {if $modulus == 0}
+                            {if $iterator->isLast()}</div>
+                            {else}</div><div class="group">
+                            {/if}
+                        {elseif $iterator->isLast()}
+                            </div>
+                        {/if}
+                    {/foreach}
+                    {/if}
+                </div>
+            </div>
+            {/ifset}
+            <a class="next browse right disabled"></a>
+
+            <div class="clear"></div>
+            {/snippet}
+        </div>
+    
+    </div>
+        
+    <div class="clear"></div>
+    {snippet visualisation}
+    <div class="interier-container">
+        <div id="interier">
+            <div class="wall leftwall" id="wall1" {if $visualisation->wall1}style="background-image: url('{!$staticUri}/{!$visualisation->wall1->backgroundimage}')" data-product_id="{$visualisation->wall1->product['id']}" data-rotate="{$visualisation->wall1->rotate}"{/if}>
+                    <div class="frame"></div>
+                    {if $visualisation->wall1}
+                    <div class="tools">
+                        <a class="clean" n:href="clear!#choose 'wall'=>'wall1'">odebrat</a>
+                        <a class="rotate" href="#choose">otočit</a>
+                    </div>
+                    {/if}
+            </div>
+            <div class="wall leftwall" id="wall2" {if $visualisation->wall2}style="background-image: url('{!$staticUri}/{!$visualisation->wall2->backgroundimage}')" data-product_id="{$visualisation->wall2->product['id']}" data-rotate="{$visualisation->wall2->rotate}"{/if}>
+                    <div class="frame"></div>
+                    {if $visualisation->wall2}
+                    <div class="tools">
+                        <a class="clean" n:href="clear!#choose 'wall'=>'wall2'">odebrat</a>
+                        <a class="rotate" href="#choose">otočit</a>
+                    </div>
+                    {/if}
+            </div>
+            <div class="wall leftwall" id="wall3" {if $visualisation->wall3}style="background-image: url('{!$staticUri}/{!$visualisation->wall3->backgroundimage}')" data-product_id="{$visualisation->wall3->product['id']}" data-rotate="{$visualisation->wall3->rotate}"{/if}>
+                    <div class="frame"></div>
+                    {if $visualisation->wall3}
+                    <div class="tools">
+                        <a class="clean" n:href="clear!#choose 'wall'=>'wall3'">odebrat</a>
+                        <a class="rotate" href="#choose">otočit</a>
+                    </div>
+                    {/if}
+            </div>
+            <div class="wall leftwall" id="wall4" {if $visualisation->wall4}style="background-image: url('{!$staticUri}/{!$visualisation->wall4->backgroundimage}')" data-product_id="{$visualisation->wall4->product['id']}" data-rotate="{$visualisation->wall4->rotate}"{/if}>
+                    <div class="frame"></div>
+                    {if $visualisation->wall4}
+                    <div class="tools">
+                        <a class="clean" n:href="clear!#choose 'wall'=>'wall4'">odebrat</a>
+                        <a class="rotate" href="#choose">otočit</a>
+                    </div>
+                    {/if}
+            </div>
+            <div class="wall" id="wall5" {if $visualisation->wall5}style="background-image: url('{!$staticUri}/{!$visualisation->wall5->backgroundimage}')" data-product_id="{$visualisation->wall5->product['id']}" data-rotate="{$visualisation->wall5->rotate}"{/if}>
+                    <div class="frame"></div>
+                    {if $visualisation->wall5}
+                    <div class="tools">
+                        <a class="clean" n:href="clear!#choose 'wall'=>'wall5'">odebrat</a>
+                        <a class="rotate" href="#choose">otočit</a>
+                    </div>
+                    {/if}
+            </div>
+            <div class="wall" id="wall6" {if $visualisation->wall6}style="background-image: url('{!$staticUri}/{!$visualisation->wall6->backgroundimage}')" data-product_id="{$visualisation->wall6->product['id']}" data-rotate="{$visualisation->wall6->rotate}"{/if}>
+                    <div class="frame"></div>
+                    {if $visualisation->wall6}
+                    <div class="tools">
+                        <a class="clean" n:href="clear!#choose 'wall'=>'wall6'">odebrat</a>
+                        <a class="rotate" href="#choose">otočit</a>
+                    </div>
+                    {/if}
+            </div>
+            <div class="wall" id="wall7" {if $visualisation->wall7}style="background-image: url('{!$staticUri}/{!$visualisation->wall7->backgroundimage}')" data-product_id="{$visualisation->wall7->product['id']}" data-rotate="{$visualisation->wall7->rotate}"{/if}>
+                    <div class="frame"></div>
+                    {if $visualisation->wall7}
+                    <div class="tools">
+                        <a class="clean" n:href="clear!#choose 'wall'=>'wall7'">odebrat</a>
+                        <a class="rotate" href="#choose">otočit</a>
+                    </div>
+                    {/if}
+            </div>
+            <div class="wall" id="wall8" {if $visualisation->wall8}style="background-image: url('{!$staticUri}/{!$visualisation->wall8->backgroundimage}')" data-product_id="{$visualisation->wall8->product['id']}" data-rotate="{$visualisation->wall8->rotate}"{/if}>
+                    <div class="frame"></div>
+                    {if $visualisation->wall8}
+                    <div class="tools">
+                        <a class="clean" n:href="clear!#choose 'wall'=>'wall8'">odebrat</a>
+                        <a class="rotate" href="#choose">otočit</a>
+                    </div>
+                    {/if}
+            </div>
+            <div class="wall" id="wall9" {if $visualisation->wall9}style="background-image: url('{!$staticUri}/{!$visualisation->wall9->backgroundimage}')" data-product_id="{$visualisation->wall9->product['id']}" data-rotate="{$visualisation->wall9->rotate}"{/if}>
+                    <div class="frame"></div>
+                    {if $visualisation->wall9}
+                    <div class="tools">
+                        <a class="clean" n:href="clear!#choose 'wall'=>'wall9'">odebrat</a>
+                        <a class="rotate" href="#choose">otočit</a>
+                    </div>
+                    {/if}
+            </div>
+            <div class="wall" id="wall10" {if $visualisation->wall10}style="background-image: url('{!$staticUri}/{!$visualisation->wall10->backgroundimage}')" data-product_id="{$visualisation->wall10->product['id']}" data-rotate="{$visualisation->wall10->rotate}"{/if}>
+                    <div class="frame"></div>
+                    {if $visualisation->wall10}
+                    <div class="tools">
+                        <a class="clean" n:href="clear!#choose 'wall'=>'wall10'">odebrat</a>
+                        <a class="rotate" href="#choose">otočit</a>
+                    </div>
+                    {/if}
+            </div>
+            <div class="wall" id="wall11" {if $visualisation->wall11}style="background-image: url('{!$staticUri}/{!$visualisation->wall11->backgroundimage}')" data-product_id="{$visualisation->wall11->product['id']}" data-rotate="{$visualisation->wall11->rotate}"{/if}>
+                    <div class="frame"></div>
+                    {if $visualisation->wall11}
+                    <div class="tools">
+                        <a class="clean" n:href="clear!#choose 'wall'=>'wall11'">odebrat</a>
+                        <a class="rotate" href="#choose">otočit</a>
+                    </div>
+                    {/if}
+            </div>
+            <div class="wall" id="wall12" {if $visualisation->wall12}style="background-image: url('{!$staticUri}/{!$visualisation->wall12->backgroundimage}')" data-product_id="{$visualisation->wall12->product['id']}" data-rotate="{$visualisation->wall12->rotate}"{/if}>
+                    <div class="frame"></div>
+                    {if $visualisation->wall12}
+                    <div class="tools">
+                        <a class="clean" n:href="clear!#choose 'wall'=>'wall12'">odebrat</a>
+                        <a class="rotate" href="#choose">otočit</a>
+                    </div>
+                    {/if}
+            </div>
+            <div class="wall" id="wall13" {if $visualisation->wall13}style="background-image: url('{!$staticUri}/{!$visualisation->wall13->backgroundimage}')" data-product_id="{$visualisation->wall13->product['id']}" data-rotate="{$visualisation->wall13->rotate}"{/if}>
+                    <div class="frame"></div>
+                    {if $visualisation->wall13}
+                    <div class="tools">
+                        <a class="clean" n:href="clear!#choose 'wall'=>'wall13'">odebrat</a>
+                        <a class="rotate" href="#choose">otočit</a>
+                    </div>
+                    {/if}
+            </div>
+            <div class="wall" id="wall14" {if $visualisation->wall14}style="background-image: url('{!$staticUri}/{!$visualisation->wall14->backgroundimage}')" data-product_id="{$visualisation->wall14->product['id']}" data-rotate="{$visualisation->wall14->rotate}"{/if}>
+                    <div class="frame"></div>
+                    {if $visualisation->wall14}
+                    <div class="tools">
+                        <a class="clean" n:href="clear!#choose 'wall'=>'wall14'">odebrat</a>
+                        <a class="rotate" href="#choose">otočit</a>
+                    </div>
+                    {/if}
+            </div>
+            <div class="wall" id="wall15" {if $visualisation->wall15}style="background-image: url('{!$staticUri}/{!$visualisation->wall15->backgroundimage}')" data-product_id="{$visualisation->wall15->product['id']}" data-rotate="{$visualisation->wall15->rotate}"{/if}>
+                    <div class="frame"></div>
+                    {if $visualisation->wall15}
+                    <div class="tools">
+                        <a class="clean" n:href="clear!#choose 'wall'=>'wall15'">odebrat</a>
+                        <a class="rotate" href="#choose">otočit</a>
+                    </div>
+                    {/if}
+            </div>
+            <div class="wall" id="wall16" {if $visualisation->wall16}style="background-image: url('{!$staticUri}/{!$visualisation->wall16->backgroundimage}')" data-product_id="{$visualisation->wall16->product['id']}" data-rotate="{$visualisation->wall16->rotate}"{/if}>
+                    <div class="frame"></div>
+                    {if $visualisation->wall16}
+                    <div class="tools">
+                        <a class="clean" n:href="clear!#choose 'wall'=>'wall16'">odebrat</a>
+                        <a class="rotate" href="#choose">otočit</a>
+                    </div>
+                    {/if}
+            </div>
+            
+            <div class="floor" style="background-image: url('{$staticUri}/images/podlaha2.png');"></div>
+            <div class="shadows"></div>
+            <dii class="chair"></dii>
+        </div>
+    </div>
+    {/snippet}
+    <div class="toolsbar">
+        <a class="clean" n:href="cleanVisualisation!">vyčistit vizualizaci</a>
+    </div>
+    
+</div>
+{/block}
+{block #modalvisual}{/block}
+{block #scripts}
+    {include #parent}
+    <script type="text/javascript">
+    head.ready(function() {
+
+        $(function() {
+            // initialize scrollable
+
+        $("#products-scrollable").livequery( function() {
+            $(this).scrollable();
+            $(".visualable").draggable({ 
+                                helper: "clone",
+                                appendTo: 'body',
+                                containment: 'window',
+                                scroll: false
+            });
+        });
+        
+       /* $("#interier").livequery( function() {
+            $(".wall").draggable({ 
+                                helper: "clone",
+                                appendTo: 'body',
+                                containment: 'window',
+                                scroll: false
+            });
+        });*/
+        
+        $(function() {
+            // initialize scrollable
+            $(".tagGroup-scrollable").scrollable();
+        });
+
+        $(".wall").droppable({
+            hoverClass: 'cursor-paint-texture',
+            over: function(event, ui) {
+                $(this).children('div.frame').addClass( "highlight" );
+            },
+            out: function(event, ui) {
+                $(this).children('div.frame').removeClass( "highlight" );
+            },
+            drop: function(event, ui) {
+                var id = $(ui.draggable).attr("rel");
+                var wall = $(this);
+
+                wall.data('product_id',id);
+                wall.data('rotate',0);
+                
+                $.get({link wall!},{'productid': id, 'name': wall.attr("id")}, function(payload) {
+                    wall.children().removeClass( "highlight" );
+                    wall.css("background-image", "url({!$staticUri}/"+payload.backgroundimage+")" );
+                    wall.html('<div class="frame"></div><div class="tools"><a class="clean" href="'+payload.clearlink+'#choose">odebrat</a><a class="rotate" href="#">otočit</a></div>');
+                });
+            }
+        });
+        
+        $(".wall .rotate").livequery('click', function(e) {
+            e.preventDefault();
+            wall = $(this).closest('.wall');
+            if(wall.data('rotate') == 0) {
+                rotate = 90;
+            }
+            else {
+                rotate = 0;
+            }
+            $.get({link wall!},{'productid': wall.data('product_id'), 'name': wall.attr("id"), 'rotate' : rotate}, function(payload) {
+                    wall.css("background-image", "url({!$staticUri}/"+payload.backgroundimage+")" );
+                    wall.data('rotate',rotate);
+                });
+        });
+        
+        });
+    });
+    </script>
+{/block}

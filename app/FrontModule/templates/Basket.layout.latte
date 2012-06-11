@@ -1,0 +1,36 @@
+{extends '@layout.latte'}
+
+{block content}
+<div id="basketpage">
+    <div class="top">
+
+        <a n:href="Basket:default" n:class="step,step1,$presenter->linkCurrent ? current"><span></span>košík / objednávka</a>
+        <a n:href="Basket:address" n:class="step,step2,$presenter->linkCurrent ? current"><span></span>dodací údaje</a>
+        <a n:href="Basket:preview" n:class="step,step3,$presenter->linkCurrent ? current"><span></span>shrnutí objednávky</a>
+
+        <div class="clear"></div>
+
+        <div id="breadcrumbs" n:inner-block="breadcrumbs">
+            <a n:href=":Front:Homepage:" n:class="first">
+                <div class="left"></div>
+                <div class="center">interierdecor</div>
+                <div class="right"></div>
+            </a>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+
+    <div class="mainpanel">
+        {snippet flashes}
+        {block flashes}
+        <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+        {/block}
+        {/snippet}
+        {include #main}
+    </div>
+    
+</div>
+{/block}
+
+{block #modalvisual}{/block}

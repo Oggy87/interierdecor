@@ -21,6 +21,10 @@ class Admin_SignPresenter extends BasePresenter
 	/** @persistent */
         public $backlink = '';
 
+        public function renderIn() {
+            $this->template->form = $this['signInForm'];
+        }
+        
 	/**
 	 * Sign in form component factory.
 	 * @return AppForm
@@ -34,10 +38,10 @@ class Admin_SignPresenter extends BasePresenter
                         ->addCondition(AppForm::FILLED)
                             ->addRule(AppForm::EMAIL);
 
-		$form->addPassword('password', 'Password:')
+		$form->addPassword('password', 'Heslo:')
 			->addRule(AppForm::FILLED);
 
-		$form->addSubmit('send', 'Sign in');
+		$form->addSubmit('send', 'Přihlásit se');
 
 		$form->onSubmit[] = callback($this, 'signInFormSubmitted');
 		return $form;
@@ -47,12 +51,14 @@ class Admin_SignPresenter extends BasePresenter
 	{
 		try {
 			$values = $form->getValues();
+                        $this->getUser()->setNamespace('admin');
 			$this->getUser()->setExpiration('+ 14 days', FALSE);
-                        
+                        $this->getUser()->setAuthenticationHandler(new UserModel);
+
 			$this->getUser()->login($values['email'], $values['password']);
 			
                         $this->getApplication()->restoreRequest($this->backlink);
-                        $this->redirect('Homepage:');
+                        $this->redirect('Default:');
 
 		} catch (AuthenticationException $e) {
 			$form->addError($e->getMessage());

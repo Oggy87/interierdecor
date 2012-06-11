@@ -1,0 +1,182 @@
+{var $title = 'eshop'}
+
+{block content}
+<div id="customer">
+    <div class="top">
+        <h1>{='Detail objednávky'|ucfirst}</h1>
+
+        <div class="clear"></div>
+        
+        <div id="breadcrumbs" n:inner-block="breadcrumbs">
+            <a n:href=":Front:Homepage:" n:class="first">
+                <div class="left"></div>
+                <div class="center">interierdecor</div>
+                <div class="right"></div>
+            </a>
+            <a n:href=":Front:Customer:">
+                <div class="left"></div>
+                <div class="center">zákaznický účet</div>
+                <div class="right"></div>
+            </a>
+            <a n:href=":Front:Customer:sale 'id'=>$sale['id']" n:class="active">
+                <div class="left"></div>
+                <div class="center">objednávka č.i{$sale['id']}</div>
+                <div class="right"></div>
+            </a>
+        </div>
+        
+        <div class="clear"></div>
+        
+        <div class="menu">
+            <a n:href="default" n:class="$presenter->linkCurrent ? active">objednávky</a>
+            <a n:href="account" n:class="$presenter->linkCurrent ? active">moje údaje</a>
+            <a n:href="password" n:class="$presenter->linkCurrent ? active">změna hesla</a>
+        </div>
+    </div>
+    
+    <div class="mainpanel">
+        <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+        
+        <div class="fullbox sale">
+            <a class="back" n:href="default"> « zpět</a><h2>Objednávka č.{$sale['id']}</h2>
+            <div class="state">Stav: <span class="label">{$sale->state['name']}</span></div>
+            <div class="clear"></div>
+            <table class="full">
+                <tr>
+                    <th>Produkt:</th>
+                    <th>Cena za kus:</th>
+                    <th>Množství:</th>
+                    <th>Cena bez DPH:</th>
+                    <th>Cena s DPH:</th>
+                </tr>
+                <tr n:foreach="$sale->saleProduct() as $product">
+                    <td class="product">
+                        <a href="{plink Product: 'id' => $product['product_id']}">{$product["name"]}</a>
+                    </td>
+                    <td class="silver price oneunitprice">
+                        {$product["price"]|currency} bez DPH
+                    </td>
+                    <td class="strong">
+                        {$product['amount']} {$product['unit']} 
+                    </td>
+                    {var $price = $product["price"] * $product['amount']}
+                    <td class="silver price">
+                        {$price|currency} bez DPH
+                    </td>
+                    <td class="price">
+                        <span>{$product["total"]|currency}</span> s DPH
+                    </td>
+                </tr>
+                <tr class="summary">
+                    <td class="empty">&nbsp;</td>
+                    <td class="empty">&nbsp;</td>
+                    <td class="strong">celkem:</td>
+                    <td class="price">{$sale['total'] * 100/(100+($sale['dph']*100))|currency} bez DPH</td>
+                    <td class="price"><span>{$sale['total']|currency}</span> s DPH</td>
+                </tr>
+
+                <tr>
+                    <td>Způsob doručení: <strong>{$sale['shipping']}</strong></td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td class="price"><span>{$sale['shippingPrice']|currency}</span> s DPH</td>
+                </tr>
+                <tr>
+                    <td>Způsob platby: <strong>{$sale['paymethod']}</strong></td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td class="price"><span>{$sale['paymethodPrice']|currency}</span> s DPH</td>
+                </tr>
+                <tr class="summary">
+                    <td class="empty">&nbsp;</td>
+                    <td class="empty">&nbsp;</td>
+                    <td class="strong">celkem k úhradě:</td>
+                    <td>&nbsp;</td>
+                    <td class="price"><span>{$sale['total']|currency}</span> s DPH</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="box">
+            <h2>{='osobní údaje'|upper}</h2>
+            <table class="cont full">
+                <tr>
+                    <th>Email:</th>
+                    <td> {$sale['email']}</td>
+                </tr>
+                <tr>
+                    <th>Jméno a přijmení:</th>
+                    <td>{$sale['name']}</td>
+                </tr>
+                <tr>
+                    <th>Telefon:</th>
+                    <td>{$sale['phone']}</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="box last">
+            <h2 n:if="$sale['iscompany']">{='chci nakoupit na firmu'|upper}</h2>
+            <table class="cont full" n:if="$sale['iscompany']">
+                <tr>
+                    <th>Společnost:</th>
+                    <td>{$sale['company']}</td>
+                </tr>
+                <tr>
+                    <th>IČ:</th>
+                    <td>{$sale['ic']}</td>
+                </tr>
+                <tr n:if="$sale['dic']">
+                    <th>DIČ:</th>
+                    <td>{$sale['dic']}</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="clear"></div>
+        
+        <div class="box">
+            <h2>{if $sale['iscompany']}{='firemní'|upper}{/if} {='adresa'|upper} </h2>
+            <table  class="cont full">
+                <tr>
+                    <th>Město:</th>
+                    <td>{$sale['city']}</td>
+                </tr>
+                <tr>
+                    <th>Ulice:</th>
+                    <td>{$sale['street']}</td>
+                </tr>
+                <tr>
+                    <th>PSČ:</th>
+                    <td>{$sale['postcode']}</td>
+                </tr>
+            </table>
+        </div>
+          
+        <div class="box last">
+            <h2 n:if="$sale['shipaddress']">{='doručit jinam'|upper}</h2>
+            <table  class="cont full" n:if="$sale['shipaddress']">
+                <tr>
+                    <th>Město:</th>
+                    <td>{$sale['shipcity']}</td>
+                </tr>
+                <tr>
+                    <th>Ulice: </th>
+                    <td>{$sale['shipstreet']}</td>
+                </tr>
+                <tr>
+                    <th>PSČ:</th>
+                    <td>{$sale['shippostcode']}</td>
+                </tr>
+
+            </table>
+        </div>
+               
+    </div>
+</div>
+{/block}
+
+{block #modalvisual}{/block}
+

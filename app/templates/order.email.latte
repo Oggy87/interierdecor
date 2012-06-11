@@ -1,0 +1,142 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <p>Dobrý den,<br>
+           děkujeme za Váš nákup v eshopu tapety-podlahy.cz. Vaše objednávka je ihned předána k vyřízení a o jejím průběhu Vás budeme informovat emailem. 
+        </p>
+        <p>
+            Přehled vašich objednávek a jejich stav můžete sledovat ve vašem <a href="{plink //:Front:Customer:}">zákaznickém účtě.</a> 
+        </p>
+        <p n:ifset="$password">
+            Vaše přihlašovací údaje jsou:<br>
+            <strong>email:</strong> {$values['email']}
+            <strong>heslo:</strong> {$password}
+        </p>
+        
+        <h1>Objednávka č.i{$order['id']} ({$order['created']|date:'j.n.Y'})</h1>
+        <table class="full">
+            {var $productsprice = 0}
+        <tr n:foreach="$products as $product_id => $product">
+            <td class="product">
+                <a href="{plink //Product: 'id' => $product_id}">{$product["name"]}</a>
+            </td>
+            <td class="silver price oneunitprice">
+                {$product["price"]|currency} bez DPH
+            </td>
+            <td class="strong">
+                {$product['amount']} {$product['unit']} 
+            </td>
+            {var $price = $product["price"] * $product['amount']}
+            <td class="silver price">
+                {$price|currency} bez DPH
+            </td>
+            <td class="price">
+                <span>{$product["total"]|currency}</span> s DPH
+            </td>
+            {var $productsprice += $price}
+        </tr>
+        <tr class="summary">
+            <td class="empty">&nbsp;</td>
+            <td class="empty">&nbsp;</td>
+            <td class="strong">celkem:</td>
+            <td class="price">{$productsprice|currency} bez DPH</td>
+            <td class="price"><span>{$productsprice|dph:BasePresenter::DPH|currency}</span> s DPH</td>
+        </tr>
+            
+        <tr>
+            <td>Způsob doručení: <strong>{$values['shipping']}</strong></td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="price"><span>{$values['shippingPrice']|currency}</span> s DPH</td>
+        </tr>
+        <tr>
+            <td>Způsob platby: <strong>{$values['paymethod']}</strong></td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="price"><span>{$values['paymethodPrice']|currency}</span> s DPH</td>
+        </tr>
+        <tr class="summary">
+            <td class="empty">&nbsp;</td>
+            <td class="empty">&nbsp;</td>
+            <td class="strong">celkem k úhradě:</td>
+            <td>&nbsp;</td>
+            <td class="price"><span>{$values['total']|currency}</span> s DPH</td>
+        </tr>
+        </table>
+    </body>
+    
+    <div class="box">
+        <h2>{='osobní údaje'}</h2>
+        <div class="cont form">
+            <div class="row">
+                <span class="label">Email:</span> <span class="value"> {$values['email']}</span>
+            </div>
+            <div class="row">
+                <span class="label">Jméno a přijmení: </span> <span class="value">{$values['name']}</span>
+            </div>
+            <div class="row">
+                <span class="label">Telefon:</span> <span class="value"> {$values['phone']}</span>
+            </div>
+            
+            <span class="clear"></span>
+        </div>
+    </div>
+
+    <div class="box last" n:if="$values['iscompany']">
+        <div class="h">chci nakoupit na firmu</div>
+        <div class="cont form" id="iscompany">
+            <div class="row">
+                <span class="label">Společnost:</span> <span class="value"> {$values['company']}</span>
+            </div>
+            <div class="row">
+                <span class="label">IČ:</span> <span class="value"> {$values['ic']}</span>
+            </div>
+            <div class="row" n:if="$values['dic']">
+                <span class="label">DIČ: </span> <span class="value">{$values['dic']}</span>
+            </div>
+            
+            <span class="clear"></span>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+    
+    <div class="box">
+        <h2>{if $values['iscompany']}{='firemní'}{/if} {='adresa'} </h2>
+        <div class="cont form">
+            <div class="row">
+               <span class="label"> Město:</span> <span class="value"> {$values['city']}</span>
+            </div>
+            <div class="row">
+                <span class="label">Ulice: </span> <span class="value">{$values['street']}</span>
+            </div>
+            <div class="row">
+                <span class="label">PSČ: </span> <span class="value">{$values['postcode']}</span>
+            </div>
+            
+            <span class="clear"></span>
+        </div>
+    </div>
+
+    <div class="box last" n:if="$values['shipaddress']">
+        <div class="h">doručit jinam</div>
+        <div class="cont form" id="shipaddress">
+            <div class="row">
+                <span class="label">Město: </span> <span class="value">{$values['shipcity']}</span>
+            </div>
+            <div class="row">
+                <span class="label">Ulice: </span> <span class="value">{$values['shipstreet']}</span>
+            </div>
+            <div class="row">
+                <span class="label">PSČ:</span> <span class="value"> {$values['shippostcode']}</span>
+            </div>
+            
+            <span class="clear"></span>
+        </div>
+    </div>
+
+</html>

@@ -1,0 +1,84 @@
+{var $title = 'eshop'}
+
+{block content}
+<div id="search">
+    <div class="top">
+        <h1>{='Hledat v produktech'|ucfirst}</h1>
+
+        <div class="clear"></div>
+        
+        <div id="breadcrumbs" n:inner-block="breadcrumbs">
+            <a n:href=":Front:Homepage:" n:class="first">
+                <div class="left"></div>
+                <div class="center">interierdecor</div>
+                <div class="right"></div>
+            </a>
+            <a n:href=":Front:Search:" n:class="active">
+                <div class="left"></div>
+                <div class="center">hledat</div>
+                <div class="right"></div>
+            </a>
+        </div>
+        
+        <div class="clear"></div>
+    </div>
+    
+    <div class="mainpanel">
+        <div class="fullbox">
+            <div class="cont">
+                <div class="search">
+                {var searchform => $control['searchForm']}
+                {control $searchform begin}
+                    {$searchform['text']->control}{$searchform['search']->control}
+                {control $searchform end}
+                </div>
+                
+                <div class="products">
+                    {if count($products) > 0}
+                    <div n:foreach="$products as $product" class="product">
+                        <div class="image">
+                            <div class="label-recommended" n:if="$product['recommended']"></div>
+                            <div class="label-action" n:if="$product['newprice']"></div>
+                            <div class="label-new" n:if="$product['saved'] >= $onemonthago"></div>
+
+                            {if $product['productPhoto_id']}
+                                <a class="img" n:href="Product: 'id' => $product['id']">
+                                {$product->productPhoto['image_path']|image:100,100,$product['name'],FALSE,TRUE,FALSE,FALSE}
+                                </a>
+                            {/if}
+                        </div>
+                        <div class="text">
+                            <h2><a n:href="Product: 'id' => $product['id']">{$product['name']}</a></h2>
+                            <div class="url">{link //Product: 'id' => $product['id']}</div>
+                            <div class="description">{$product['description_html']|striptags|truncate:140,'...'}</div>
+                            <div class="category"><a n:href="Category: 'id'=>$product['category_id']">{$product->category['name']}</a></div>
+                        </div>
+
+                        <div class="price">
+                            <div>
+                            {if $product["newprice"]}
+                                <span>{$product['price']|dph:BasePresenter::DPH|currency}</span><strong>{$product['newprice']|dph:BasePresenter::DPH|currency}</strong> {*/ {$product->unit['name']}*}
+                            {else}
+                                <strong>{$product['price']|dph:BasePresenter::DPH|currency}</strong> / {$product->unit['name']}
+                            {/if}
+                            </div>
+                            <a class="addtobasket ajax" n:href="addToBasket! 'product_id' => $product['id']">přidat do košíku</a>
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>
+                    {else}
+                    <p>Na tento dotaz nebyl nalezen žádný produkt.</p>
+                    {/if}
+                </div>
+                {control stranka}
+            </div>
+        </div>  
+        
+        <div class="clear"></div>
+    </div>
+</div>
+{/block}
+
+{block #modalvisual}{/block}
+

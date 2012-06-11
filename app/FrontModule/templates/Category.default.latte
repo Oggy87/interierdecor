@@ -1,0 +1,223 @@
+{extends 'Category.layout.latte'}
+
+
+{block main}
+<div class="products">
+    {snippet orders}
+    <div class="order" n:if="$presenter->tags">
+        seřadit: 
+        <a n:href="this 'razeni' => 'od-nejlevnejsich'" n:class="$presenter->linkCurrent ? active">od nejlevnějších</a>
+        <a n:href="this 'razeni' => 'od-nejdrazsich'" n:class="$presenter->linkCurrent ? active">od nejdražších</a>
+        <a n:href="this 'razeni' => NULL" n:class="$presenter->linkCurrent ? active">abecedně</a>
+    </div>
+    {/snippet}
+    {snippet products}
+    
+    {if $presenter->tags}
+        {*cache [$presenter->id,$presenter->tags,$presenter->getComponent('stranka')->page,$presenter->razeni,$presenter->from,$presenter->to],tags => [products]*}
+        <div n:foreach="$products as $product" n:class="product,$iterator->getCounter() % 3 == 0 ? last">
+            {*cache $product['id'],tags => ["product/".$product['id']]*}
+            <div class="image">
+                <div class="label-recommended" n:if="$product['recommended']"></div>
+                <div class="label-action" n:if="$product['newprice']"></div>
+                <div class="label-new" n:if="$product['saved'] >= $onemonthago"></div>
+                {*<a class="addbasket ajax" n:href="addToBasket! 'product_id' => $product['id']"><span>přidat do košíku</span></a>*}
+                <a class="todetail" n:href="Product: 'id' => $product['id']">detail produktu</a>
+                {*<a n:if="$product['visualisation_path']" class="tovisualisation ajax" n:href="addToVisual! 'product_id' => $product['id']">vizualizovat</a>*}
+
+                {var $pr_tg = $product->product_tag()->where('tag.tagGroup_id',Front_BasePresenter::TAG_KOLEKCE_ID)->fetch()}
+                <a n:if="$product['visualisation_path']" class="tovisualisation" n:href="Visualisation:#choose  'id'=> $pr_tg['tag_id']">do vizualizace</a>
+                {if $product['productPhoto_id']}
+                    <a class="img" n:href="Product: 'id' => $product['id']">
+                    {$product->productPhoto['image_path']|image:195,140,$product['name'],FALSE,TRUE,FALSE,FALSE}
+                    </a>
+                {/if}
+                <div class="name"><a n:href="Product: 'id' => $product['id']">{$product['name']}</a></div>
+            </div>
+            <div class="price">
+                {if $product["newprice"]}
+                    <span>{$product['price']|dph:BasePresenter::DPH|currency}</span><strong>{$product['newprice']|dph:BasePresenter::DPH|currency}</strong> {*/ {$product->unit['name']}*}
+                {else}
+                    <strong>{$product['price']|dph:BasePresenter::DPH|currency}</strong> / {$product->unit['name']}
+                {/if}
+            </div>
+            <a class="addtobasket ajax" n:href="addToBasket! 'product_id' => $product['id']">přidat do košíku</a>
+            {*<a class="detail" n:href="Product: 'id' => $product['id']">detail produktu</a>*}
+            {*/cache*}
+        </div>
+
+        <div class="clear"></div>
+        {control stranka}
+        {*/cache*}
+    {else}
+        {foreach $category_hptagGroupes as $category_tagGroup}
+        {*cache $presenter->id,$category_tagGroup->tagGroup['id'],tags => [categories,tagGroups,tag]*}
+        <div class="fullbox">
+            <div class="h"><h2>{$category_tagGroup->tagGroup['name']|upper}</h2></div>
+            
+            <a class="prev browse left disabled"></a>
+
+            <div class="tagGroup-scrollable">
+                <div class="items">
+                {var $tagids = BaseModel::fetchAll('tag')->where("tagGroup_id",$category_tagGroup->tagGroup['id'])->select("id")}
+                {foreach BaseModel::fetchAll("product_tag")->where("tag_id",$tagids)->where("product.active",1)->order("tag.value")->group("tag_id") as $product_tag}
+
+                    {var $tag = $product_tag->tag}
+                    {var $modulus = $iterator->getCounter() % 4}
+                    
+                    {if $presenter->tags}
+                        {var $tagsurl = $presenter->tags.'+'.$tag['id']}
+                    {else}
+                        {var $tagsurl = $tag['id']}                        
+                    {/if}                    
+                    
+                    {if $iterator->isFirst()}<div class="group">{/if}
+                        <div n:class="tag,$iterator->getCounter() % 4 == 0 ? last">
+                            <div n:class="image,$iterator->getCounter() % 4 == 0 ? last">
+                                <a class="img" n:href="this 'tags' => $tagsurl">
+                                    {if $tag['picture_path']}
+                                        {$tag['picture_path']|image:150,109,$tag['value'],FALSE,FALSE,FALSE,FALSE,NULL,NULL,NULL,Image::PNG}  
+                                    {/if}
+                                </a>
+                                
+                                <div class="name"><a n:href="this 'tags' => $tagsurl">{$tag['value']}</a></div>
+                            </div>
+                        </div>
+                    {if $modulus == 0}
+                        {if $iterator->isLast()}</div>
+                        {else}</div><div class="group">
+                        {/if}
+                    {elseif $iterator->isLast()}
+                        </div>
+                    {/if}
+          {*      {/if}*}
+                {/foreach}
+                </div>
+            </div>
+            
+            <a class="next browse right disabled"></a>
+
+
+            <div class="clear"></div>
+        </div>
+        {*/cache*}
+        {/foreach}
+
+        {*cache [$presenter->id,$presenter->tags,$presenter->getComponent('stranka')->page,$presenter->razeni,$presenter->from,$presenter->to],tags => [products]*}
+        <div class="fullbox" n:if="count($recommended) > 0">
+            <div class="hd"><h2>{='doporučujeme'|upper}</h2> <a n:href="recommended" class="more"> » další doporučené produkty » </a></div>
+            
+            <div n:foreach="$recommended as $product" n:class="product,$iterator->getCounter() % 3 == 0 ? last">
+                <div class="image">
+                    <div class="label-recommended" n:if="$product['recommended']"></div>
+                    <div class="label-action" n:if="$product['newprice']"></div>
+                    <div class="label-new" n:if="$product['saved'] >= $onemonthago"></div>
+                    <a class="todetail" n:href="Product: 'id' => $product['id']">detail produktu</a>
+                    {var $pr_tg = $product->product_tag()->where('tag.tagGroup_id',Front_BasePresenter::TAG_KOLEKCE_ID)->fetch()}
+                    <a n:if="$product['visualisation_path']" class="tovisualisation" n:href="Visualisation:#choose  'id'=> $pr_tg['tag_id']">do vizualizace</a>
+                  {*  <a class="addbasket ajax" n:href="addToBasket! 'product_id' => $product['id']"><span>přidat do košíku</span></a>*}
+                    {if $product['productPhoto_id']}
+                        <a class="img" n:href="Product: 'id' => $product['id']">
+                        {$product->productPhoto['image_path']|image:195,140,$product['name'],FALSE,TRUE,FALSE,FALSE}
+                        </a>
+                    {/if}
+                    <div class="name"><a n:href="Product: 'id' => $product['id']">{$product['name']}</a></div>
+                </div>
+                <div class="price">
+                    {if $product["newprice"]}
+                        <span>{$product['price']|dph:BasePresenter::DPH|currency}</span><strong>{$product['newprice']|dph:BasePresenter::DPH|currency}</strong> {*/ {$product->unit['name']}*}
+                    {else}
+                        <strong>{$product['price']|dph:BasePresenter::DPH|currency}</strong> / {$product->unit['name']}
+                    {/if}
+                </div>
+                <a class="addtobasket ajax" n:href="addToBasket! 'product_id' => $product['id']">přidat do košíku</a>
+               {* <a class="detail" n:href="Product: 'id' => $product['id']">detail produktu</a>*}
+            </div>
+
+            <div class="clear"></div>
+        </div>
+        
+        <div class="fullbox" n:if="count($discount) > 0">
+            <div class="hd"><h2>{='Akční ceny'|upper}</h2><a n:href="actions" class="more"> » další produkty s akční cenou » </a></div>
+            
+            <div n:foreach="$discount as $product" n:class="product,$iterator->getCounter() % 3 == 0 ? last">
+                <div class="image">
+                    <div class="label-recommended" n:if="$product['recommended']"></div>
+                    <div class="label-action" n:if="$product['newprice']"></div>
+                    <div class="label-new" n:if="$product['saved'] >= $onemonthago"></div>
+                    <a class="todetail" n:href="Product: 'id' => $product['id']">detail produktu</a>
+                    {var $pr_tg = $product->product_tag()->where('tag.tagGroup_id',Front_BasePresenter::TAG_KOLEKCE_ID)->fetch()}
+                    <a n:if="$product['visualisation_path']" class="tovisualisation" n:href="Visualisation:#choose  'id'=> $pr_tg['tag_id']">do vizualizace</a>
+                    {*<a class="addbasket ajax" n:href="addToBasket! 'product_id' => $product['id']"><span>přidat do košíku</span></a>*}
+                    {if $product['productPhoto_id']}
+                        <a class="img" n:href="Product: 'id' => $product['id']">
+                        {$product->productPhoto['image_path']|image:195,140,$product['name'],FALSE,TRUE,FALSE,FALSE}
+                        </a>
+                    {/if}
+                    <div class="name"><a n:href="Product: 'id' => $product['id']">{$product['name']}</a></div>
+                </div>
+                <div class="price">
+                    {if $product["newprice"]}
+                        <span>{$product['price']|dph:BasePresenter::DPH|currency}</span><strong>{$product['newprice']|dph:BasePresenter::DPH|currency}</strong> {*/ {$product->unit['name']}*}
+                    {else}
+                        <strong>{$product['price']|dph:BasePresenter::DPH|currency}</strong> / {$product->unit['name']}
+                    {/if}
+                </div>
+                <a class="addtobasket ajax" n:href="addToBasket! 'product_id' => $product['id']">přidat do košíku</a>
+                {*<a class="detail" n:href="Product: 'id' => $product['id']">detail produktu</a>*}
+            </div>
+
+            <div class="clear"></div>
+        </div>
+        
+        <div class="fullbox" n:if="count($new) > 0">
+            <div class="hd"><h2>{='novinky'|upper}</h2><a n:href="new" class="more"> » další novinky » </a></div>
+            
+            <div n:foreach="$new as $product" n:class="product,$iterator->getCounter() % 3 == 0 ? last">
+                <div class="image">
+                    <div class="label-recommended" n:if="$product['recommended']"></div>
+                    <div class="label-action" n:if="$product['newprice']"></div>
+                    <div class="label-new" n:if="$product['saved'] >= $onemonthago"></div>
+                    <a class="todetail" n:href="Product: 'id' => $product['id']">detail produktu</a>
+                    {var $pr_tg = $product->product_tag()->where('tag.tagGroup_id',Front_BasePresenter::TAG_KOLEKCE_ID)->fetch()}
+                    <a n:if="$product['visualisation_path']" class="tovisualisation" n:href="Visualisation:#choose  'id'=> $pr_tg['tag_id']">do vizualizace</a>
+                   {* <a class="addbasket ajax" n:href="addToBasket! 'product_id' => $product['id']"><span>přidat do košíku</span></a>*}
+                    {if $product['productPhoto_id']}
+                        <a class="img" n:href="Product: 'id' => $product['id']">
+                        {$product->productPhoto['image_path']|image:195,140,$product['name'],FALSE,TRUE,FALSE,FALSE}
+                        </a>
+                    {/if}
+                    <div class="name"><a n:href="Product: 'id' => $product['id']">{$product['name']}</a></div>
+                </div>
+                <div class="price">
+                    {if $product["newprice"]}
+                    <span>{$product['price']|dph:BasePresenter::DPH|currency}</span><strong>{$product['newprice']|dph:BasePresenter::DPH|currency}</strong> {*/ {$product->unit['name']}*}
+                    {else}
+                    <strong>{$product['price']|dph:BasePresenter::DPH|currency}</strong> / {$product->unit['name']}
+                    {/if}
+                </div>
+                <a class="addtobasket ajax" n:href="addToBasket! 'product_id' => $product['id']">přidat do košíku</a>
+                {*<a class="detail" n:href="Product: 'id' => $product['id']">detail produktu</a>*}
+            </div>
+
+            <div class="clear"></div>
+        </div>
+        {*/cache*}
+    {/if}
+    {/snippet}
+</div>
+{/block}
+
+{block #scripts}
+    {include #parent}
+    <script type="text/javascript">
+    head.ready(function() {
+
+        $(function() {
+            // initialize scrollable
+            $(".tagGroup-scrollable").scrollable();
+        });
+
+    });
+    </script>
+{/block}

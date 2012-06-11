@@ -16,6 +16,8 @@
  */
 abstract class BasePresenter extends Presenter
 {
+    const DPH = 0.2;
+
     protected $translator;
 
     protected function startup() {
@@ -37,21 +39,34 @@ abstract class BasePresenter extends Presenter
 
     protected function beforeRender() {
         $this->template->staticUri = $this->template->baseUri . "/static";
-	TemplateHelpers::$dateFormat = $this->translator->translate('M j, Y');
+	TemplateHelpers::$dateFormat = $this->translator->translate('j.n.Y');
 	$this->template->setTranslator($this->translator);
+
+        $this->template->registerHelper('ucfirst','ucfirst');
+        $this->template->registerHelper('currencyKc', 'Helpers::currencyKc');
+        $this->template->registerHelper('currency', 'Helpers::currency');
+        $this->template->registerHelper('roundUp', 'Helpers::roundUp');
+        $this->template->registerHelper('dph', 'Helpers::dph');
+        $this->template->registerHelper('image', 'Helpers::image');
+        $this->template->registerHelper('imageDb', 'Helpers::imageDb');
+        
+        $texy = new Texy();
+
+        $this->template->registerHelper('texy', callback($texy, 'process'));
 
     }
 
     public function afterRender()
     {
-            if ($this->isAjax() && $this->hasFlashSession())
+            if ($this->isAjax() && $this->hasFlashSession()) {
                 $this->invalidateControl('flashes');
+            }
     }
 
     protected function fetchRow($table, $id) {
 		$return = BaseModel::fetchRow($table, $id);
 		if (!$return) {
-			throw new BadRequestException('Item not found.');
+			throw new BadRequestException($this->translator->translate('Item not found.'));
 		}
 		return $return;
     }
@@ -61,7 +76,7 @@ abstract class BasePresenter extends Presenter
             $css = new CssLoader;
 
             // cesta na disku ke zdroji
-            $css->sourcePath = WWW_DIR . "/static";
+            $css->sourcePath = WWW_DIR . "/static/css";
 
             // cesta na webu ke zdroji (kvůli absolutizaci cest v css souboru)
             $css->sourceUri = $this->template->staticUri;
@@ -82,7 +97,7 @@ abstract class BasePresenter extends Presenter
             $css = new CssLoader;
 
             // cesta na disku ke zdroji
-            $css->sourcePath = WWW_DIR . "/static";
+            $css->sourcePath = WWW_DIR . "/static/css";
 
             // cesta na webu ke zdroji (kvůli absolutizaci cest v css souboru)
             $css->sourceUri = $this->template->staticUri;

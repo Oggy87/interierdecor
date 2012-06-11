@@ -1,0 +1,175 @@
+{var $title = 'Kontakt'}
+
+
+
+<div id="contact" n:block="content">
+    <div class="top">
+        <h1>{='Kontakt'|ucfirst}</h1>
+
+        <div class="clear"></div>
+        
+        <div id="breadcrumbs" n:inner-block="breadcrumbs">
+            <a n:href=":Front:Homepage:" n:class="first">
+                <div class="left"></div>
+                <div class="center">interierdecor</div>
+                <div class="right"></div>
+            </a>
+            <a n:href=":Front:Contact" n:class="active">
+                <div class="left"></div>
+                <div class="center">kontakt</div>
+                <div class="right"></div>
+            </a>
+        </div>
+        
+        <div class="clear"></div>
+    </div>
+    
+    <div class="mainpanel">
+        <div class="fullbox">
+            <div class="cont top">
+                <span class="phone">+420 777 216 000</span>
+                <span class="email"><a href="mailto:info@tapety-podlahy.cz">info@tapety-podlahy.cz</a></span>
+                <div class="clear"></div>
+            </div>
+        </div>
+        
+        <div class="fullbox">
+            <h2>Adresa:</h2>
+            <div class="cont">
+                <div class="fleft box3">
+                    <address>
+                        <strong>ERM stav spol. s r.o.</strong>
+                        Malín 335<br>
+                        284 01 Kutná Hora<br>
+                        Česká republika
+                    </address>
+                </div>
+                <div class="fleft box3">
+                    <table class="numbers">
+                        <tr>
+                            <th>IČ:</th>
+                            <td>27657507</td>
+                        </tr>
+                        <tr>
+                            <th>DIČ:</th>
+                            <td>CZ27657507</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="fleft box3">
+                    <address>
+                        <strong>Prodejna:</strong>
+                        Masarykova 751<br>
+                        438 01 Žatec<br>
+                        Česká republika
+                    </address>
+                </div>
+                
+                <div class="clear"></div>
+            </div>
+        </div>
+        
+        <div class="fullbox">
+            <h2>Mapa:</h2>
+            <div class="cont">
+                <script type="text/javascript" src="http://api4.mapy.cz/loader.js"></script>
+                <script type="text/javascript">Loader.load();</script>
+                <div style="width:940px; margin-bottom: 5px;">
+                    <div id="mapa" style="width:940px; height:466px; margin-bottom: 5px;"></div>
+                    <p><label for="mapy-route-frm">Naplánovat cestu z: </label><input type="text" value="" id="mapy-route-frm"><input onclick="route()" type="button" value="Hledat"></p>
+                </div>
+                <script type="text/javascript">
+                    var center = SMap.Coords.fromWGS84(13.542793791732361,50.32513401855555);
+                    var mapa = new SMap(JAK.gel("mapa"), center,16);
+                    mapa.addDefaultLayer(1).enable();
+                    mapa.addDefaultControls();
+                    var node = JAK.mel("a",{ href:"http://www.mapy.cz/s/2NWU",target:'_blank'},{ fontSize:"13px",lineHeight:"100%",fontFamily:"Arial,Verdana,sans-serif",textAlign:"center",display:"block",width:"165px", height:"33px",overflow:"hidden",textDecoration:"none",background:"transparent url(http://api4.mapy.cz/img/web/button-zobrazit.png) no-repeat",position:"absolute",left:"4px",bottom:"26px" });
+                    node.innerHTML = '<span style="position:relative; top:10px;text-shadow:0px 1px 1px #fff;color:#000;display:inline-block;padding-left:18px;background:transparent url(http://api4.mapy.cz/img/web/ico-zobrazit.png) 0 0 no-repeat">Zobrazit na Mapy.cz<span>';
+                    JAK.gel("mapa").appendChild(node);
+                    var layer = new SMap.Layer.Marker();
+                    mapa.addLayer(layer);
+                    layer.enable();
+                    var markerCoord = SMap.Coords.fromWGS84(13.542793791732361,50.32513401855555);
+                    var marker = new SMap.Marker(markerCoord,"MyMarker",{ url:SMap.CONFIG.img + "/marker/drop-blue-asterisk.png"});
+                    layer.addMarker(marker);
+                    var overview = new SMap.Control.Overview();
+                    mapa.addControl(overview);
+                    function route() {
+                         var url = {
+                            t:"r",
+                            rc:"__13.542793791732361_50.32513401855555",
+                            rl:document.getElementById("mapy-route-frm").value + "_" + "Masarykova č.p. 751"
+                        };
+                        var arr = [];
+                        for (var p in url) { arr.push(p+"="+encodeURIComponent(url[p])); }
+                        window.location.href = "http://www.mapy.cz/#" + arr.join("&");
+                    };
+                </script>
+                <p>GPS: 50°19'30.482"N, 13°32'34.058"E</p>
+            </div>
+            
+        </div>
+        <div class="fullbox">
+            <h2>Kontaktní osoby:</h2>
+            <div class="cont">
+                <div class="fleft box3">
+                    <div class="person even">
+                        <h3>Martin Lipert</h3>
+                        <span>odpovědná osoba</span>
+
+                        <table class="contact">
+                            <tr>
+                                <th><img src="{$staticUri}/images/ico-email.png" alt="Email"></th>
+                                <td><a href="mailto:lipert@tapety-podlahy.cz">lipert@tapety-podlahy.cz</a></td>
+                            </tr>
+                            <tr>
+                                <th><img src="{$staticUri}/images/ico-mobile.png" alt="Mobil"></th>
+                                <td>+420 777 216 000</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="fleft box3">
+                    <div class="person even">
+                        <h3>Slavomír Švancar</h3>
+                        <span>výrobní ředitel</span>
+
+                        <table class="contact">
+                            <tr>
+                                <th><img src="{$staticUri}/images/ico-email.png" alt="Email"></th>
+                                <td><a href="mailto:svancar@tapety-podlahy.cz">svancar@tapety-podlahy.cz</a></td>
+                            </tr>
+                            <tr>
+                                <th><img src="{$staticUri}/images/ico-mobile.png" alt="Mobil"></th>
+                                <td>+420 602 602 616</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            
+                <div class="fleft box3">
+                    <div class="person even">
+                        <h3>Michal Branda</h3>
+                        <span>obchodní ředitel:</span>
+
+                        <table class="contact">
+                            <tr>
+                                <th><img src="{$staticUri}/images/ico-email.png" alt="Email"></th>
+                                <td><a href="mailto:branda@tapety-podlahy.cz">branda@tapety-podlahy.cz</a></td>
+                            </tr>
+                            <tr>
+                                <th><img src="{$staticUri}/images/ico-mobile.png" alt="Mobil"></th>
+                                <td>+420 602 602 617</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{block #modalvisual}{/block}

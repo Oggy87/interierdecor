@@ -3,20 +3,26 @@
 
 abstract class BaseModel {
 	static protected $notORM;
+        static private $pdo;
 	
 	static function initialize() {
 		$database = Environment::getConfig('database');
-		$pdo = new PDO("mysql:host=$database[server];dbname=$database[database]", $database['login'], $database['password'], array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		self::$pdo = new PDO("mysql:host=$database[server];dbname=$database[database]", $database['login'], $database['password'], array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+		self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		//$pdo->query("SET time_zone = " . $pdo->quote(ini_get("date.timezone")));
-		self::$notORM = new NotORM($pdo, null, new NotORM_Cache_File(TEMP_DIR . "/notorm.cache"));
+		self::$notORM = new NotORM(self::$pdo, null, new NotORM_Cache_File(TEMP_DIR . "/notorm.cache"));
 		self::$notORM->rowClass = 'NotORM_RowLang';
 		if (!Debug::$productionMode) {
 			$panel = new NotORMPanel;
 			self::$notORM->debug = array($panel, 'addQuery');
 			Debug::addPanel($panel);
 		}
+
 	}
+        
+        static function close() {
+            self::$pdo = NULL;
+        }
 	
 	static function fetchRow($table, $id) {
 		return self::$notORM->{$table}[$id];

@@ -15,8 +15,8 @@
  * @author     John Doe
  * @package    MyApplication
  */
-class Front_HomepagePresenter extends BasePresenter
+class Front_HomepagePresenter extends Front_BasePresenter
 {
-
+    
 
 }

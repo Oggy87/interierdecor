@@ -1,0 +1,63 @@
+{var $title = 'eshop'}
+
+{block content}
+<div id="customer">
+    <div class="top">
+        <h1>{='Zákaznický účet'|ucfirst}</h1>
+
+        <div class="clear"></div>
+        
+        <div id="breadcrumbs" n:inner-block="breadcrumbs">
+            <a n:href=":Front:Homepage:" n:class="first">
+                <div class="left"></div>
+                <div class="center">interierdecor</div>
+                <div class="right"></div>
+            </a>
+            <a n:href=":Front:Customer:signin" n:class="active">
+                <div class="left"></div>
+                <div class="center">zákaznický účet</div>
+                <div class="right"></div>
+            </a>
+        </div>
+        
+        <div class="clear"></div>
+        
+        <div class="menu">
+            <a n:href="default" n:class="$presenter->linkCurrent ? active">objednávky</a>
+            <a n:href="account" n:class="$presenter->linkCurrent ? active">moje údaje</a>
+            <a n:href="password" n:class="$presenter->linkCurrent ? active">změna hesla</a>
+        </div>
+    </div>
+    
+    <div class="mainpanel">
+        <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+        
+        <div class="fullbox">
+            <h2>Historie objednávek</h2>
+            <table class="cont full">
+                <tr>
+                    <th>č.obj:</th>
+                    <th>odeslána:</th>
+                    <th>doprava:</th>
+                    <th>platba:</th>
+                    <th>celkem:</th>
+                    <th>stav:</th>
+                    <th>&nbsp;</th>
+                </tr>
+                <tr n:foreach="$sales as $sale">
+                    <td>{$sale['id']}</td>
+                    <td> {$sale['created']|date:'j.n.Y H:i'}</td>
+                    <td> {$sale['shipping']}</td>
+                    <td> {$sale['paymethod']}</td>
+                    <td class="price"> {$sale['total']|currency}</td>
+                    <td> {$sale->state['name']}</td>
+                    <td><a n:href="sale 'id'=>$sale['id']">detail</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+{/block}
+
+{block #modalvisual}{/block}
+

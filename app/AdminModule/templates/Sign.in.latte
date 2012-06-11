@@ -1,7 +1,40 @@
+{var $title = 'Přihlášení do administrace'}
 {var $robots = noindex}
 
-{block #content}
+{block #topbar}{/block}
 
-<h1>Sign in</h1>
+{block #layout}
+<div class="container">
+    <div class="span10 middlebox signin">
+        <div class="head"><h1>Přihlásit se</h1></div>
 
-{control signInForm}
+        {control $form begin}
+
+        <!-- errors -->
+        <div n:if="$form->hasErrors()" n:block="#errors">
+            <div class="alert-message error" n:foreach="$form->errors as $error">{$error}</div>
+        </div>
+
+        <fieldset>
+            <div class="clearfix">
+                {$form['email']->label}
+                <div class="input">{$form['email']->control}</div>
+            </div>
+            <div class="clearfix">
+                {$form['password']->label}
+                <div class="input">{$form['password']->control}</div>
+            </div>
+           {* <div class="clearfix">
+                <div class="input checkbox">
+                    {$form['remember']->control}{$form['remember']->label}
+                </div>
+            </div>*}
+
+            <div class="submit">
+                {$form['send']->control->class('btn primary large')}
+            </div>
+
+        </fieldset>
+        {control $form end}
+    </div>
+</div>

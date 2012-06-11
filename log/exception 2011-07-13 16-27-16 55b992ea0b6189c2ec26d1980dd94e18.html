@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="robots" content="noindex,noarchive">
+	<meta name="generator" content="Nette Framework">
+
+	<title>BadRequestException</title><!-- Item not found. #404 -->
+
+	<style type="text/css" class="nette">body{margin:0 0 2em;padding:0}#netteBluescreen{font:9pt/1.5 Verdana,sans-serif;background:white;color:#333;position:absolute;left:0;top:0;width:100%;z-index:23178;text-align:left}#netteBluescreen *{font:inherit;color:inherit;background:transparent;border:none;margin:0;padding:0;text-align:inherit;text-indent:0}#netteBluescreen b{font-weight:bold}#netteBluescreen i{font-style:italic}#netteBluescreenIcon{position:absolute;right:.5em;top:.5em;z-index:23179;text-decoration:none;background:#CD1818;padding:3px}#netteBluescreenError{background:#CD1818;color:white;font:13pt/1.5 Verdana,sans-serif!important;display:block}#netteBluescreen h1{font-size:18pt;font-weight:normal;text-shadow:1px 1px 0 rgba(0,0,0,.4);margin:.7em 0}#netteBluescreen h2{font:14pt/1.5 sans-serif!important;color:#888;margin:.6em 0}#netteBluescreen a{text-decoration:none;color:#328ADC;padding:2px 4px;margin:-2px -4px}#netteBluescreen a abbr{font-family:sans-serif;color:#BBB}#netteBluescreen h3{font:bold 10pt/1.5 Verdana,sans-serif!important;margin:1em 0;padding:0}#netteBluescreen p,#netteBluescreen pre{margin:.8em 0}#netteBluescreen pre,#netteBluescreen code,#netteBluescreen table{font:9pt/1.5 Consolas,monospace!important}#netteBluescreen pre,#netteBluescreen table{background:#FDF5CE;padding:.4em .7em;border:1px dotted silver;overflow:auto}#netteBluescreen table pre{padding:0;margin:0;border:none}#netteBluescreen pre.nette-dump span{color:#C22}#netteBluescreen pre.nette-dump a{color:#333}#netteBluescreen div.panel{padding:1px 25px}#netteBluescreen div.inner{background:#F4F3F1;padding:.1em 1em 1em;border-radius:8px;-moz-border-radius:8px;-webkit-border-radius:8px}#netteBluescreen table{border-collapse:collapse;width:100%}#netteBluescreen .outer{overflow:auto}#netteBluescreen td,#netteBluescreen th{vertical-align:top;text-align:left;padding:2px 6px;border:1px solid #e6dfbf}#netteBluescreen th{width:10%;font-weight:bold}#netteBluescreen tr:nth-child(2n),#netteBluescreen tr:nth-child(2n) pre{background-color:#F7F0CB}#netteBluescreen ol{margin:1em 0;padding-left:2.5em}#netteBluescreen ul{font:7pt/1.5 Verdana,sans-serif!important;padding:2em 4em;margin:1em 0 0;color:#777;background:#F6F5F3 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFEAAAAjCAMAAADbuxbOAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADBQTFRF/fz24d7Y7Onj5uLd9vPu3drUzMvG09LN39zW8e7o2NbQ3NnT29jS0M7J1tXQAAAApvmsFgAAABB0Uk5T////////////////////AOAjXRkAAAKlSURBVHja7FbbsqQgDAwENEgc//9vN+SCWDtbtXPmZR/Wc6o02mlC58LA9ckFAOszvMV8xNgyUjyXhojfMVKvRL0ZHavxXYy5JrmchMdzou8YlTClxajtK8ZGGpWRoBr1+gFjKfHkJPbizabLgzE3pH7Iu4K980xgFvlrVzMZoVBWhtvouCDdcTDmTgMCJdVxJ9MKO6XxnliM7hxi5lbj2ZVM4l8DqYyKoNLYcfqBB1/LpHYxEcfVG6ZpMDgyFUVWY/Q1sSYPpIdSAKWqLWL0XqWiMWc4hpH0OQOMOAgdycY4N9Sb7wWANQs3rsDSdLAYiuxi5siVfOhBWIrtH0G3kNaF/8Q4kCPE1kMucG/ZMUBUCOgiKJkPuWWTLGVgLGpwns1DraUayCtoBqERyaYtVsm85NActRooezvSLO/sKZP/nq8n4+xcyjNsRu8zW6KWpdb7wjiQd4WrtFZYFiKHENSmWp6xshh96c2RQ+c7Lt+qbijyEjHWUJ/pZsy8MGIUuzNiPySK2Gqoh6ZTRF6ko6q3nVTkaA//itIrDpW6l3SLo8juOmqMXkYknu5FdQxWbhCfKHEGDhxxyTVaXJF3ZjSl3jMksjSOOKmne9pI+mcG5QvaUJhI9HpkmRo2NpCrDJvsktRhRE2MM6F2n7dt4OaMUq8bCctk0+PoMRzL+1l5PZ2eyM/Owr86gf8z/tOM53lom5+nVcFuB+eJVzlXwAYy9TZ9s537tfqcsJWbEU4nBngZo6FfO9T9CdhfBtmk2dLiAy8uS4zwOpMx2HqYbTC+amNeAYTpsP4SIgvWfUBWXxn3CMHW3ffd7k3+YIkx7w0t/CVGvcPejoeOlzOWzeGbawOHqXQGUTMZRcfj4XPCgW9y/fuvVn8zD9P1QHzv80uAAQA0i3Jer7Jr7gAAAABJRU5ErkJggg==') 99% 10px no-repeat;border-top:1px solid #DDD}#netteBluescreen .highlight{background:#CD1818;color:white;font-weight:bold;font-style:normal;display:block;padding:0 .4em;margin:0 -.4em}#netteBluescreen .line{color:#9F9C7F;font-weight:normal;font-style:normal}#netteBluescreen a[href^=editor\:]{color:inherit;border-bottom:1px dotted #328ADC}</style>
+</head>
+
+
+
+<body>
+<div id="netteBluescreen">
+	<a id="netteBluescreenIcon" href="#" rel="next"><abbr>&#x25bc;</abbr></a
+
+	><div>
+		<div id="netteBluescreenError" class="panel">
+			<h1>BadRequestException #404</h1>
+
+			<p>Item not found.</p>
+		</div>
+
+
+
+				
+			
+												<div class="panel">
+			<h2><a href="#" rel="netteBsPnl1">Source file <abbr>&#x25bc;</abbr></a></h2>
+
+			<div id="netteBsPnl1" class="inner">
+				<p><b>File:</b> <a href="editor://open/?file=%2Fvar%2Fwww%2Fwebtoad%2Finterierdecor%2Fapp%2Fpresenters%2FBasePresenter.php&amp;line=64">				/var/www/webtoad/interierdecor/app/presenters/BasePresenter.php</a> &nbsp; <b>Line:</b> 64</p>
+				<pre><code><span style="color: #06B"><span style="color: #D24; font-weight: bold"><span class='line'>57:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">invalidateControl</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'flashes'</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>58:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>59:</span>    &nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>60:</span>    
+<span class='line'>61:</span>    &nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;function&nbsp;</span><span style="color: #000">fetchRow</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$table</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">$id</span><span style="color: #D24; font-weight: bold">)&nbsp;{
+<span class='line'>62:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$return&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;</span><span style="color: #000">BaseModel</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">fetchRow</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$table</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">$id</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>63:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #000">$return</span><span style="color: #D24; font-weight: bold">)&nbsp;{
+<span class='highlight'>64:    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;BadRequestException($this-&gt;translator-&gt;translate('Item&nbsp;not&nbsp;found.'));
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"><span class='line'>65:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>66:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #000">$return</span><span style="color: #D24; font-weight: bold">;
+<span class='line'>67:</span>    &nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>68:</span>    
+<span class='line'>69:</span>    &nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;function&nbsp;</span><span style="color: #000">createComponentCss</span><span style="color: #D24; font-weight: bold">()
+<span class='line'>70:</span>    &nbsp;&nbsp;&nbsp;&nbsp;{
+<span class='line'>71:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$css&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;new&nbsp;</span><span style="color: #000">CssLoader</span><span style="color: #D24; font-weight: bold">;
+</span></span></code></pre>
+			</div></div>
+			
+
+
+									<div class="panel">
+				<h2><a href="#" rel="netteBsPnl2">Call stack <abbr>&#x25bc;</abbr></a></h2>
+
+				<div id="netteBsPnl2" class="inner">
+				<ol>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fvar%2Fwww%2Fwebtoad%2Finterierdecor%2Fapp%2FFrontModule%2Fpresenters%2FBasePresenter.php&amp;line=58" title="/var/www/webtoad/interierdecor/app/FrontModule/presenters/BasePresenter.php">
+						presenters/<b>BasePresenter.php</b></a> (58)					
+					<a href="#" rel="netteBsSrc1-0">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+					BasePresenter->					fetchRow
+					(<a href="#" rel="netteBsArgs1-0">arguments <abbr>&#x25ba;</abbr></a>)
+					</p>
+
+											<div class="nette-collapsed outer" id="netteBsArgs1-0">
+						<table>
+						<tr><th>$table</th><td><pre class="nette-dump">"product" (7)
+</pre></td></tr>
+<tr><th>$id</th><td><pre class="nette-dump">0
+</pre></td></tr>
+						</table>
+						</div>
+					
+
+											<pre class="nette-collapsed" id="netteBsSrc1-0"><code><span style="color: #06B"><span style="color: #D24; font-weight: bold"><span class='line'>51:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">template</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">basket&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;</span><span style="color: #000">BasketModel</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">fetchBasket</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$user</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getId</span><span style="color: #D24; font-weight: bold">());
+<span class='line'>52:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>53:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;{
+<span class='line'>54:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">template</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">basket&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;</span><span style="color: #000">Environment</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">getSession</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'basket'</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>55:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">template</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">basketsum&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;</span><span style="color: #000">0</span><span style="color: #D24; font-weight: bold">;
+<span class='line'>56:</span>    
+<span class='line'>57:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach(</span><span style="color: #000">Environment</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">getSession</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'basket'</span><span style="color: #D24; font-weight: bold">)&nbsp;as&nbsp;</span><span style="color: #000">$product_id&nbsp;</span><span style="color: #D24; font-weight: bold">=&gt;&nbsp;</span><span style="color: #000">$amount</span><span style="color: #D24; font-weight: bold">)&nbsp;{
+<span class='highlight'>58:    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$product&nbsp;=&nbsp;$this-&gt;fetchRow('product',&nbsp;$product_id);
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"><span class='line'>59:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">template</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">basketsum&nbsp;</span><span style="color: #D24; font-weight: bold">+=&nbsp;</span><span style="color: #000">$amount&nbsp;</span><span style="color: #D24; font-weight: bold">*&nbsp;</span><span style="color: #000">$product</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #080">'price'</span><span style="color: #D24; font-weight: bold">];
+<span class='line'>60:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>61:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>62:</span>    &nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>63:</span>    
+<span class='line'>64:</span>    &nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #000">handleAddToBasket</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$product_id</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #000">$amount&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;</span><span style="color: #000">1</span><span style="color: #D24; font-weight: bold">)&nbsp;{
+<span class='line'>65:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$user&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;</span><span style="color: #000">Environment</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">getUser</span><span style="color: #D24; font-weight: bold">();
+</span></span></code></pre>
+					
+					</li>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fvar%2Fwww%2Fwebtoad%2Finterierdecor%2Fapp%2FFrontModule%2Fpresenters%2FProductPresenter.php&amp;line=47" title="/var/www/webtoad/interierdecor/app/FrontModule/presenters/ProductPresenter.php">
+						presenters/<b>ProductPresenter.php</b></a> (47)					
+					<a href="#" rel="netteBsSrc1-1">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+					Front_BasePresenter->					beforeRender
+					()
+					</p>
+
+					
+
+											<pre class="nette-collapsed" id="netteBsSrc1-1"><code><span style="color: #06B"><span style="color: #D24; font-weight: bold"><span class='line'>40:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>41:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;catch&nbsp;(</span><span style="color: #000">BadRequestException&nbsp;$exc</span><span style="color: #D24; font-weight: bold">)&nbsp;{
+<span class='line'>42:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #000">InvalidArgumentException</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">"Produkt&nbsp;neexistuje."</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>43:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>44:</span>    &nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>45:</span>    
+<span class='line'>46:</span>    &nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;&nbsp;</span><span style="color: #000">beforeRender</span><span style="color: #D24; font-weight: bold">()&nbsp;{
+<span class='highlight'>47:    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parent::beforeRender();
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"><span class='line'>48:</span>    
+<span class='line'>49:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">template</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">product&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">product</span><span style="color: #D24; font-weight: bold">;
+<span class='line'>50:</span>    
+<span class='line'>51:</span>    &nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>52:</span>    
+<span class='line'>53:</span>    &nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #000">renderDefault</span><span style="color: #D24; font-weight: bold">()&nbsp;{
+<span class='line'>54:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">template</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">category_tagGroupes&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;</span><span style="color: #000">BaseModel</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">fetchAll</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">"category_tagGroup"</span><span style="color: #D24; font-weight: bold">)-&gt;</span><span style="color: #000">where</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">"category_id"</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">product</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #080">'category_id'</span><span style="color: #D24; font-weight: bold">])-&gt;</span><span style="color: #000">order</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">"sort"</span><span style="color: #D24; font-weight: bold">);
+</span></span></code></pre>
+					
+					</li>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fvar%2Fwww%2Fwebtoad%2Finterierdecor%2Flibs%2FNette%2FNette%2Floader.php&amp;line=720" title="/var/www/webtoad/interierdecor/libs/Nette/Nette/loader.php">
+						Nette/<b>loader.php</b></a> (720)					
+					<a href="#" rel="netteBsSrc1-2">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+					Front_ProductPresenter->					beforeRender
+					()
+					</p>
+
+					
+
+											<pre class="nette-collapsed" id="netteBsSrc1-2"><code><span style="color: #06B"><span style="color: #D24; font-weight: bold"><span class='line'>713:</span>    </span><span style="color: #000">getRequest</span><span style="color: #D24; font-weight: bold">(){return</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">request</span><span style="color: #D24; font-weight: bold">;}final
+<span class='line'>714:</span>    function
+<span class='line'>715:</span>    </span><span style="color: #000">getPresenter</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$need</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">TRUE</span><span style="color: #D24; font-weight: bold">){return</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">;}final
+<span class='line'>716:</span>    function
+<span class='line'>717:</span>    </span><span style="color: #000">getUniqueId</span><span style="color: #D24; font-weight: bold">(){return</span><span style="color: #080">''</span><span style="color: #D24; font-weight: bold">;}function
+<span class='line'>718:</span>    </span><span style="color: #000">run</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">PresenterRequest$request</span><span style="color: #D24; font-weight: bold">){try{</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">request</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">payload</span><span style="color: #D24; font-weight: bold">=(object)</span><span style="color: #000">NULL</span><span style="color: #D24; font-weight: bold">;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">setParent</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getParent</span><span style="color: #D24; font-weight: bold">(),</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getPresenterName</span><span style="color: #D24; font-weight: bold">());</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">initGlobalParams</span><span style="color: #D24; font-weight: bold">();</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">startup</span><span style="color: #D24; font-weight: bold">();if(!</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">startupCheck</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$class</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">reflection</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getMethod</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'startup'</span><span style="color: #D24; font-weight: bold">)-&gt;</span><span style="color: #000">getDeclaringClass</span><span style="color: #D24; font-weight: bold">()-&gt;</span><span style="color: #000">getName</span><span style="color: #D24; font-weight: bold">();throw
+<span class='line'>719:</span>    new
+<span class='highlight'>720:    InvalidStateException("Method&nbsp;$class::startup()&nbsp;or&nbsp;its&nbsp;descendant&nbsp;doesn't&nbsp;call&nbsp;parent::startup().");}$this-&gt;tryCall($this-&gt;formatActionMethod($this-&gt;getAction()),$this-&gt;params);if($this-&gt;autoCanonicalize){$this-&gt;canonicalize();}if($this-&gt;getHttpRequest()-&gt;isMethod('head')){$this-&gt;terminate();}$this-&gt;processSignal();$this-&gt;beforeRender();$this-&gt;tryCall($this-&gt;formatRenderMethod($this-&gt;getView()),$this-&gt;params);$this-&gt;afterRender();$this-&gt;saveGlobalState();if($this-&gt;isAjax()){$this-&gt;payload-&gt;state=$this-&gt;getGlobalState();}$this-&gt;sendTemplate();}catch(AbortException$e){}{if($this-&gt;isAjax())try{$hasPayload=(array)$this-&gt;payload;unset($hasPayload['state']);if($this-&gt;response
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #000"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"><span class='line'>721:</span>    </span><span style="color: #D24; font-weight: bold">instanceof
+<span class='line'>722:</span>    </span><span style="color: #000">RenderResponse</span><span style="color: #D24; font-weight: bold">&amp;&amp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">isControlInvalid</span><span style="color: #D24; font-weight: bold">()){</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">response</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">send</span><span style="color: #D24; font-weight: bold">();</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">sendPayload</span><span style="color: #D24; font-weight: bold">();}elseif(!</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">response</span><span style="color: #D24; font-weight: bold">&amp;&amp;</span><span style="color: #000">$hasPayload</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">sendPayload</span><span style="color: #D24; font-weight: bold">();}}catch(</span><span style="color: #000">AbortException$e</span><span style="color: #D24; font-weight: bold">){}if(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">hasFlashSession</span><span style="color: #D24; font-weight: bold">()){</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getFlashSession</span><span style="color: #D24; font-weight: bold">()-&gt;</span><span style="color: #000">setExpiration</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">response
+<span class='line'>723:</span>    </span><span style="color: #D24; font-weight: bold">instanceof
+<span class='line'>724:</span>    </span><span style="color: #000">RedirectingResponse</span><span style="color: #D24; font-weight: bold">?</span><span style="color: #080">'+&nbsp;30&nbsp;seconds'</span><span style="color: #D24; font-weight: bold">:</span><span style="color: #080">'+&nbsp;3&nbsp;seconds'</span><span style="color: #D24; font-weight: bold">);}</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">onShutdown</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">response</span><span style="color: #D24; font-weight: bold">);</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">shutdown</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">response</span><span style="color: #D24; font-weight: bold">);return</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">response</span><span style="color: #D24; font-weight: bold">;}}protected
+<span class='line'>725:</span>    function
+<span class='line'>726:</span>    </span><span style="color: #000">startup</span><span style="color: #D24; font-weight: bold">(){</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">startupCheck</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">TRUE</span><span style="color: #D24; font-weight: bold">;}protected
+<span class='line'>727:</span>    function
+</span></span></code></pre>
+					
+					</li>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fvar%2Fwww%2Fwebtoad%2Finterierdecor%2Flibs%2FNette%2FNette%2Floader.php&amp;line=554" title="/var/www/webtoad/interierdecor/libs/Nette/Nette/loader.php">
+						Nette/<b>loader.php</b></a> (554)					
+					<a href="#" rel="netteBsSrc1-3">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+					Presenter->					run
+					(<a href="#" rel="netteBsArgs1-3">arguments <abbr>&#x25ba;</abbr></a>)
+					</p>
+
+											<div class="nette-collapsed outer" id="netteBsArgs1-3">
+						<table>
+						<tr><th>$request</th><td><pre class="nette-dump"><a href='#' rel='next'><span>PresenterRequest</span>(7) <abbr>&#x25ba;</abbr> </a><code class="nette-collapsed">{
+   "method" <span>private</span> => "POST" (4)
+   <a href='#' rel='next'>"flags" <span>private</span> => <span>array</span>(1) <abbr>&#x25bc;</abbr> </a><code>{
+      "secured" => FALSE
+   }</code>
+   "name" <span>private</span> => "Front:Product" (13)
+   <a href='#' rel='next'>"params" <span>private</span> => <span>array</span>(3) <abbr>&#x25bc;</abbr> </a><code>{
+      "id" => "22" (2)
+      "action" => "default" (7)
+      "do" => "addBasketForm-submit" (20)
+   <a href='#' rel='next'>}</code>
+   "post" <span>private</span> => <span>array</span>(3) <abbr>&#x25bc;</abbr> </a><code>{
+      "add" => "přidat do košíku" (19)
+      "amount" => "5"
+      "product_id" => ""
+   }</code>
+   "files" <span>private</span> => <span>array</span>(0) 
+   "frozen" <span>private</span> => TRUE
+}</code>
+</pre></td></tr>
+						</table>
+						</div>
+					
+
+											<pre class="nette-collapsed" id="netteBsSrc1-3"><code><span style="color: #06B"><span style="color: #000"><span class='line'>547:</span>    </span><span style="color: #D24; font-weight: bold">instanceof
+<span class='line'>548:</span>    </span><span style="color: #000">PresenterRequest</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">NULL</span><span style="color: #D24; font-weight: bold">;throw
+<span class='line'>549:</span>    new
+<span class='line'>550:</span>    </span><span style="color: #000">BadRequestException</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'No&nbsp;route&nbsp;for&nbsp;HTTP&nbsp;request.'</span><span style="color: #D24; font-weight: bold">);}if(</span><span style="color: #000">strcasecmp</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getPresenterName</span><span style="color: #D24; font-weight: bold">(),</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">errorPresenter</span><span style="color: #D24; font-weight: bold">)===</span><span style="color: #000">0</span><span style="color: #D24; font-weight: bold">){throw
+<span class='line'>551:</span>    new
+<span class='line'>552:</span>    </span><span style="color: #000">BadRequestException</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'Invalid&nbsp;request.&nbsp;Presenter&nbsp;is&nbsp;not&nbsp;achievable.'</span><span style="color: #D24; font-weight: bold">);}}</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">requests</span><span style="color: #D24; font-weight: bold">[]=</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">onRequest</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">);</span><span style="color: #000">$presenter</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getPresenterName</span><span style="color: #D24; font-weight: bold">();try{</span><span style="color: #000">$class</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getPresenterLoader</span><span style="color: #D24; font-weight: bold">()-&gt;</span><span style="color: #000">getPresenterClass</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$presenter</span><span style="color: #D24; font-weight: bold">);</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">setPresenterName</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$presenter</span><span style="color: #D24; font-weight: bold">);}catch(</span><span style="color: #000">InvalidPresenterException$e</span><span style="color: #D24; font-weight: bold">){throw
+<span class='line'>553:</span>    new
+<span class='highlight'>554:    BadRequestException($e-&gt;getMessage(),404,$e);}$request-&gt;freeze();$this-&gt;presenter=new$class;$response=$this-&gt;presenter-&gt;run($request);$this-&gt;onResponse($this,$response);if($response
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"><span class='line'>555:</span>    </span><span style="color: #D24; font-weight: bold">instanceof
+<span class='line'>556:</span>    </span><span style="color: #000">ForwardingResponse</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">$response</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getRequest</span><span style="color: #D24; font-weight: bold">();continue;}elseif(</span><span style="color: #000">$response
+<span class='line'>557:</span>    </span><span style="color: #D24; font-weight: bold">instanceof
+<span class='line'>558:</span>    </span><span style="color: #000">IPresenterResponse</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$response</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">send</span><span style="color: #D24; font-weight: bold">();}break;}catch(</span><span style="color: #000">Exception$e</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">onError</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #000">$e</span><span style="color: #D24; font-weight: bold">);if(!</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">catchExceptions</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">onShutdown</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #000">$e</span><span style="color: #D24; font-weight: bold">);throw</span><span style="color: #000">$e</span><span style="color: #D24; font-weight: bold">;}if(</span><span style="color: #000">$repeatedError</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$e</span><span style="color: #D24; font-weight: bold">=new
+<span class='line'>559:</span>    </span><span style="color: #000">ApplicationException</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'An&nbsp;error&nbsp;occured&nbsp;while&nbsp;executing&nbsp;error-presenter'</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #000">0</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #000">$e</span><span style="color: #D24; font-weight: bold">);}if(!</span><span style="color: #000">$httpResponse</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">isSent</span><span style="color: #D24; font-weight: bold">()){</span><span style="color: #000">$httpResponse</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">setCode</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$e
+<span class='line'>560:</span>    </span><span style="color: #D24; font-weight: bold">instanceof
+<span class='line'>561:</span>    </span><span style="color: #000">BadRequestException</span><span style="color: #D24; font-weight: bold">?</span><span style="color: #000">$e</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getCode</span><span style="color: #D24; font-weight: bold">():</span><span style="color: #000">500</span><span style="color: #D24; font-weight: bold">);}if(!</span><span style="color: #000">$repeatedError</span><span style="color: #D24; font-weight: bold">&amp;&amp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">errorPresenter</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$repeatedError</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">TRUE</span><span style="color: #D24; font-weight: bold">;if(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">presenter</span><span style="color: #D24; font-weight: bold">){try{</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">presenter</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">forward</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">":</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">errorPresenter</span><span style="color: #080">:"</span><span style="color: #D24; font-weight: bold">,array(</span><span style="color: #080">'exception'</span><span style="color: #D24; font-weight: bold">=&gt;</span><span style="color: #000">$e</span><span style="color: #D24; font-weight: bold">));}catch(</span><span style="color: #000">AbortException$foo</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">presenter</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getLastCreatedRequest</span><span style="color: #D24; font-weight: bold">();}}else{</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">=new
+</span></span></code></pre>
+					
+					</li>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fvar%2Fwww%2Fwebtoad%2Finterierdecor%2Fapp%2Fbootstrap.php&amp;line=56" title="/var/www/webtoad/interierdecor/app/bootstrap.php">
+						app/<b>bootstrap.php</b></a> (56)					
+					<a href="#" rel="netteBsSrc1-4">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+					Application->					run
+					()
+					</p>
+
+					
+
+											<pre class="nette-collapsed" id="netteBsSrc1-4"><code><span style="color: #06B"><span style="color: #999; font-style: italic"><span class='line'>49:</span>    //&nbsp;Step&nbsp;4:&nbsp;Setup&nbsp;application&nbsp;router
+<span class='line'>50:</span>    </span><span style="color: #000">AppRouter</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">initialize</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$application</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>51:</span>    
+<span class='line'>52:</span>    </span><span style="color: #000">define</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">"LANG"</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #080">"cs"</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>53:</span>    
+<span class='line'>54:</span>    
+<span class='line'>55:</span>    </span><span style="color: #999; font-style: italic">//&nbsp;Step&nbsp;5:&nbsp;Run&nbsp;the&nbsp;application!
+<span class='highlight'>56:    $application-&gt;run();
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"><span class='line'>57:</span>    </span>
+</span></code></pre>
+					
+					</li>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fvar%2Fwww%2Fwebtoad%2Finterierdecor%2Findex.php&amp;line=19" title="/var/www/webtoad/interierdecor/index.php">
+						interierdecor/<b>index.php</b></a> (19)					
+					<a href="#" rel="netteBsSrc1-5">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+										require
+					(<a href="#" rel="netteBsArgs1-5">arguments <abbr>&#x25ba;</abbr></a>)
+					</p>
+
+											<div class="nette-collapsed outer" id="netteBsArgs1-5">
+						<table>
+						<tr><th>#0</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor/app/bootstrap.php" (48)
+</pre></td></tr>
+						</table>
+						</div>
+					
+
+											<pre class="nette-collapsed" id="netteBsSrc1-5"><code><span style="color: #06B"><span style="color: #D24; font-weight: bold"><span class='line'>12:</span>    </span><span style="color: #999; font-style: italic">//&nbsp;absolute&nbsp;filesystem&nbsp;path&nbsp;to&nbsp;the&nbsp;libraries
+<span class='line'>13:</span>    </span><span style="color: #000">define</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'LIBS_DIR'</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">WWW_DIR&nbsp;</span><span style="color: #D24; font-weight: bold">.&nbsp;</span><span style="color: #080">'/libs'</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>14:</span>    
+<span class='line'>15:</span>    </span><span style="color: #999; font-style: italic">//&nbsp;absolute&nbsp;filesystem&nbsp;path&nbsp;to&nbsp;the&nbsp;temporary&nbsp;files
+<span class='line'>16:</span>    </span><span style="color: #000">define</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'TEMP_DIR'</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">WWW_DIR&nbsp;</span><span style="color: #D24; font-weight: bold">.&nbsp;</span><span style="color: #080">'/temp'</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>17:</span>    
+<span class='line'>18:</span>    </span><span style="color: #999; font-style: italic">//&nbsp;load&nbsp;bootstrap&nbsp;file
+<span class='highlight'>19:    require&nbsp;APP_DIR&nbsp;.&nbsp;'/bootstrap.php';
+</span></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"><span class='line'>20:</span>    </span>
+</span></code></pre>
+					
+					</li>
+									</ol>
+			</div></div>
+			
+
+
+			
+
+
+			
+				
+
+
+				<div class="panel">
+		<h2><a href="#" rel="netteBsPnl3">Nette Application <abbr>&#x25ba;</abbr></a></h2>
+
+		<div id="netteBsPnl3" class="nette-collapsed inner">
+			<h3>Requests</h3>
+			<pre class="nette-dump"><a href='#' rel='next'><span>array</span>(1) <abbr>&#x25bc;</abbr> </a><code>[
+   <a href='#' rel='next'>0 => <span>PresenterRequest</span>(7) <abbr>&#x25ba;</abbr> </a><code class="nette-collapsed">{
+      "method" <span>private</span> => "POST" (4)
+      <a href='#' rel='next'>"flags" <span>private</span> => <span>array</span>(1) <abbr>&#x25bc;</abbr> </a><code>{
+         "secured" => FALSE
+      }</code>
+      "name" <span>private</span> => "Front:Product" (13)
+      <a href='#' rel='next'>"params" <span>private</span> => <span>array</span>(3) <abbr>&#x25bc;</abbr> </a><code>{
+         "id" => "22" (2)
+         "action" => "default" (7)
+         "do" => "addBasketForm-submit" (20)
+      <a href='#' rel='next'>}</code>
+      "post" <span>private</span> => <span>array</span>(3) <abbr>&#x25bc;</abbr> </a><code>{
+         "add" => "přidat do košíku" (19)
+         "amount" => "5"
+         "product_id" => ""
+      }</code>
+      "files" <span>private</span> => <span>array</span>(0) 
+      "frozen" <span>private</span> => TRUE
+   }</code>
+]</code>
+</pre>
+			<h3>Presenter</h3>
+			<pre class="nette-dump"><a href='#' rel='next'><span>Front_ProductPresenter</span>(29) <abbr>&#x25ba;</abbr> </a><code class="nette-collapsed">{
+   "id" => "22" (2)
+   <a href='#' rel='next'>"product" <span>private</span> => <span>NotORM_RowLang</span>(15) <abbr>&#x25ba;</abbr> </a><code class="nette-collapsed">{
+      "modified" <span>private</span> => <span>array</span>(0) 
+      <a href='#' rel='next'>"row" <span>protected</span> => <span>array</span>(4) <abbr>&#x25bc;</abbr> </a><code>{
+         "id" => "22" (2)
+         "productPhoto_id" => "20" (2)
+         "url_slug" => "amelie-580214" (13)
+         "price" => "365.00" (6)
+      <a href='#' rel='next'>}</code>
+      "result" <span>protected</span> => <span>NotORM_Result</span>(32) <abbr>&#x25ba;</abbr> </a><code class="nette-collapsed">{
+         "single" <span>protected</span> => TRUE
+         "select" <span>protected</span> => <span>array</span>(0) 
+         "conditions" <span>protected</span> => <span>array</span>(1) [ ... ]
+         "where" <span>protected</span> => <span>array</span>(1) [ ... ]
+         "parameters" <span>protected</span> => <span>array</span>(0) 
+         "order" <span>protected</span> => <span>array</span>(0) 
+         "limit" <span>protected</span> => NULL
+         "offset" <span>protected</span> => NULL
+         "group" <span>protected</span> => ""
+         "having" <span>protected</span> => ""
+         "union" <span>protected</span> => <span>array</span>(0) 
+         "unionOrder" <span>protected</span> => <span>array</span>(0) 
+         "unionLimit" <span>protected</span> => NULL
+         "unionOffset" <span>protected</span> => NULL
+         "data" <span>protected</span> => <span>array</span>(1) { ... }
+         "referencing" <span>protected</span> => <span>array</span>(0) 
+         "aggregation" <span>protected</span> => <span>array</span>(0) 
+         "accessed" <span>protected</span> => <span>array</span>(4) { ... }
+         "access" <span>protected</span> => <span>array</span>(4) { ... }
+         "keys" <span>protected</span> => <span>array</span>(0) 
+         "connection" <span>protected</span> => NULL
+         "driver" <span>protected</span> => NULL
+         "structure" <span>protected</span> => NULL
+         "cache" <span>protected</span> => NULL
+         "notORM" <span>protected</span> => <span>NotORM</span>(12) { ... }
+         "table" <span>protected</span> => "product" (7)
+         "primary" <span>protected</span> => "id" (2)
+         "rows" <span>protected</span> => <span>array</span>(1) { ... }
+         "referenced" <span>protected</span> => <span>array</span>(0) 
+         "debug" <span>protected</span> => FALSE
+         "freeze" <span>protected</span> => FALSE
+         "rowClass" <span>protected</span> => "NotORM_Row" (10)
+      }</code>
+      "connection" <span>protected</span> => NULL
+      "driver" <span>protected</span> => NULL
+      "structure" <span>protected</span> => NULL
+      "cache" <span>protected</span> => NULL
+      "notORM" <span>protected</span> => NULL
+      "table" <span>protected</span> => NULL
+      "primary" <span>protected</span> => NULL
+      "rows" <span>protected</span> => NULL
+      "referenced" <span>protected</span> => <span>array</span>(0) 
+      "debug" <span>protected</span> => FALSE
+      "freeze" <span>protected</span> => FALSE
+      "rowClass" <span>protected</span> => "NotORM_Row" (10)
+   }</code>
+   "translator" <span>protected</span> => <span>Translator</span>(0) 
+   <a href='#' rel='next'>"onShutdown" => NULL
+   "request" <span>private</span> => <span>PresenterRequest</span>(7) <abbr>&#x25ba;</abbr> </a><code class="nette-collapsed">{
+      "method" <span>private</span> => "POST" (4)
+      <a href='#' rel='next'>"flags" <span>private</span> => <span>array</span>(1) <abbr>&#x25bc;</abbr> </a><code>{
+         "secured" => FALSE
+      }</code>
+      "name" <span>private</span> => "Front:Product" (13)
+      <a href='#' rel='next'>"params" <span>private</span> => <span>array</span>(3) <abbr>&#x25bc;</abbr> </a><code>{
+         "id" => "22" (2)
+         "action" => "default" (7)
+         "do" => "addBasketForm-submit" (20)
+      <a href='#' rel='next'>}</code>
+      "post" <span>private</span> => <span>array</span>(3) <abbr>&#x25bc;</abbr> </a><code>{
+         "add" => "přidat do košíku" (19)
+         "amount" => "5"
+         "product_id" => ""
+      }</code>
+      "files" <span>private</span> => <span>array</span>(0) 
+      "frozen" <span>private</span> => TRUE
+   }</code>
+   "response" <span>private</span> => NULL
+   "autoCanonicalize" => TRUE
+   "absoluteUrls" => FALSE
+   "globalParams" <span>private</span> => <span>array</span>(0) 
+   "globalState" <span>private</span> => NULL
+   "globalStateSinces" <span>private</span> => NULL
+   "action" <span>private</span> => "default" (7)
+   "view" <span>private</span> => "default" (7)
+   "layout" <span>private</span> => NULL
+   "payload" <span>private</span> => <span>stdClass</span>(0) 
+   "signalReceiver" <span>private</span> => "addBasketForm" (13)
+   "signal" <span>private</span> => NULL
+   "ajaxMode" <span>private</span> => TRUE
+   "startupCheck" <span>private</span> => TRUE
+   <a href='#' rel='next'>"lastCreatedRequest" <span>private</span> => NULL
+   "lastCreatedRequestFlag" <span>private</span> => NULL
+   "template" <span>private</span> => <span>FileTemplate</span>(8) <abbr>&#x25ba;</abbr> </a><code class="nette-collapsed">{
+      <a href='#' rel='next'>"cacheStorage" <span>private</span> => NULL
+      "file" <span>private</span> => NULL
+      "warnOnUndefined" => TRUE
+      "onPrepareFilters" => <span>array</span>(1) <abbr>&#x25bc;</abbr> </a><code>[
+         0 => <span>Callback</span>(1) { ... }
+      <a href='#' rel='next'>]</code>
+      "params" <span>private</span> => <span>array</span>(9) <abbr>&#x25ba;</abbr> </a><code class="nette-collapsed">{
+         "control" => <span>Front_ProductPresenter</span>(29) { *RECURSION* }
+         "presenter" => <span>Front_ProductPresenter</span>(29) { *RECURSION* }
+         "user" => <span>User</span>(8) { ... }
+         "baseUri" => "http://localhost/webtoad/interierdecor" (38)
+         "basePath" => "/webtoad/interierdecor" (22)
+         "flashes" => <span>array</span>(0) 
+         "staticUri" => "http://localhost/webtoad/interierdecor/static" (45)
+         "basket" => <span>SessionNamespace</span>(3) { ... }
+         "basketsum" => 8395.0
+      }</code>
+      "filters" <span>private</span> => <span>array</span>(0) 
+      <a href='#' rel='next'>"helpers" <span>private</span> => <span>array</span>(16) <abbr>&#x25ba;</abbr> </a><code class="nette-collapsed">{
+         "escape" => <span>Callback</span>(1) { ... }
+         "escapeurl" => <span>Callback</span>(1) { ... }
+         "striptags" => <span>Callback</span>(1) { ... }
+         "nl2br" => <span>Callback</span>(1) { ... }
+         "substr" => <span>Callback</span>(1) { ... }
+         "repeat" => <span>Callback</span>(1) { ... }
+         "replacere" => <span>Callback</span>(1) { ... }
+         "implode" => <span>Callback</span>(1) { ... }
+         "number" => <span>Callback</span>(1) { ... }
+         "translate" => <span>Callback</span>(1) { ... }
+         "ucfirst" => <span>Callback</span>(1) { ... }
+         "currencykc" => <span>Callback</span>(1) { ... }
+         "currency" => <span>Callback</span>(1) { ... }
+         "dph" => <span>Callback</span>(1) { ... }
+         "image" => <span>Callback</span>(1) { ... }
+         "imagedb" => <span>Callback</span>(1) { ... }
+      <a href='#' rel='next'>}</code>
+      "helperLoaders" <span>private</span> => <span>array</span>(1) <abbr>&#x25bc;</abbr> </a><code>[
+         0 => <span>Callback</span>(1) { ... }
+      <a href='#' rel='next'>]</code>
+   }</code>
+   "invalidSnippets" <span>private</span> => <span>array</span>(1) <abbr>&#x25bc;</abbr> </a><code>{
+      <a href='#' rel='next'>"basket" => TRUE
+   }</code>
+   "params" <span>protected</span> => <span>array</span>(6) <abbr>&#x25bc;</abbr> </a><code>{
+      "add" => "přidat do košíku" (19)
+      "amount" => "5"
+      "product_id" => ""
+      "id" => "22" (2)
+      "action" => "default" (7)
+      "do" => "addBasketForm-submit" (20)
+   <a href='#' rel='next'>}</code>
+   "components" <span>private</span> => <span>array</span>(1) <abbr>&#x25bc;</abbr> </a><code>{
+      <a href='#' rel='next'>"addBasketForm" => <span>AppForm</span>(17) <abbr>&#x25ba;</abbr> </a><code class="nette-collapsed">{
+         "onSubmit" => <span>array</span>(1) [ ... ]
+         "onInvalidSubmit" => NULL
+         "submittedBy" <span>private</span> => <span>SubmitButton</span>(17) { ... }
+         "httpData" <span>private</span> => <span>array</span>(3) { ... }
+         "element" <span>private</span> => <span>Html</span>(4) { ... }
+         "renderer" <span>private</span> => NULL
+         "translator" <span>private</span> => NULL
+         "groups" <span>private</span> => <span>array</span>(0) 
+         "errors" <span>private</span> => <span>array</span>(0) 
+         "onValidate" => NULL
+         "currentGroup" <span>protected</span> => NULL
+         "valid" <span>protected</span> => TRUE
+         "components" <span>private</span> => <span>array</span>(3) { ... }
+         "cloning" <span>private</span> => NULL
+         "parent" <span>private</span> => <span>Front_ProductPresenter</span>(29) { *RECURSION* }
+         "name" <span>private</span> => "addBasketForm" (13)
+         "monitors" <span>private</span> => <span>array</span>(2) { ... }
+      }</code>
+   }</code>
+   "cloning" <span>private</span> => NULL
+   "parent" <span>private</span> => NULL
+   "name" <span>private</span> => "Front:Product" (13)
+   <a href='#' rel='next'>"monitors" <span>private</span> => <span>array</span>(1) <abbr>&#x25bc;</abbr> </a><code>{
+      <a href='#' rel='next'>"Presenter" => <span>array</span>(4) <abbr>&#x25bc;</abbr> </a><code>[
+         0 => NULL
+         1 => NULL
+         2 => NULL
+         3 => TRUE
+      ]</code>
+   }</code>
+}</code>
+</pre>		</div></div>
+		
+
+
+		<div class="panel">
+		<h2><a href="#" rel="netteBsPnl4">Environment <abbr>&#x25ba;</abbr></a></h2>
+
+		<div id="netteBsPnl4" class="nette-collapsed inner">
+						<h3><a href="#" rel="netteBsPnl-env-const">Constants <abbr>&#x25bc;</abbr></a></h3>
+			<div class="outer">
+			<table id="netteBsPnl-env-const">
+			<tr><th>SITE</th><td><pre class="nette-dump">""
+</pre></td></tr>
+<tr><th>WWW_DIR</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor" (30)
+</pre></td></tr>
+<tr><th>APP_DIR</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor/app" (34)
+</pre></td></tr>
+<tr><th>LIBS_DIR</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor/libs" (35)
+</pre></td></tr>
+<tr><th>TEMP_DIR</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor/temp" (35)
+</pre></td></tr>
+<tr><th>NETTE</th><td><pre class="nette-dump">TRUE
+</pre></td></tr>
+<tr><th>NETTE_DIR</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor/libs/Nette/Nette" (47)
+</pre></td></tr>
+<tr><th>NETTE_VERSION_ID</th><td><pre class="nette-dump">20000
+</pre></td></tr>
+<tr><th>NETTE_PACKAGE</th><td><pre class="nette-dump">"PHP 5.2" (7)
+</pre></td></tr>
+<tr><th>LANG</th><td><pre class="nette-dump">"cs" (2)
+</pre></td></tr>
+			</table>
+			</div>
+			
+
+			<h3><a href="#" rel="netteBsPnl-env-files">Included files <abbr>&#x25ba;</abbr></a> (21)</h3>
+			<div class="outer">
+			<table id="netteBsPnl-env-files" class="nette-collapsed">
+			<tr><td>/var/www/webtoad/interierdecor/index.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/app/bootstrap.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/Nette/Nette/loader.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/app/models/BaseModel.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/NotORM/NotORM.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/NotORM/NotORM/Structure.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/NotORM/NotORM/Cache.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/NotORM/NotORM/Literal.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/NotORM/NotORM/Result.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/NotORM/NotORM/MultiResult.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/NotORM/NotORM/Row.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/NotORMPanel.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/app/AppRouter.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/app/models/TagModel.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/app/models/CategoryModel.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/app/models/ProductModel.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/NotORM_RowLang.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/app/FrontModule/presenters/ProductPresenter.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/app/FrontModule/presenters/BasePresenter.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/app/presenters/BasePresenter.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/app/models/Translator.php</td></tr>
+			</table>
+			</div>
+
+
+			<h3>$_SERVER</h3>
+						<div class="outer">
+			<table>
+			<tr><th>REDIRECT_STATUS</th><td><pre class="nette-dump">"200" (3)
+</pre></td></tr>
+<tr><th>HTTP_HOST</th><td><pre class="nette-dump">"localhost" (9)
+</pre></td></tr>
+<tr><th>HTTP_USER_AGENT</th><td><pre class="nette-dump">"Mozilla/5.0 (X11; Linux x86_64; rv:5.0) Gecko/20100101 Firefox/5.0 FirePHP/0.5" (78)
+</pre></td></tr>
+<tr><th>HTTP_ACCEPT</th><td><pre class="nette-dump">"application/json, text/javascript, */*; q=0.01" (46)
+</pre></td></tr>
+<tr><th>HTTP_ACCEPT_LANGUAGE</th><td><pre class="nette-dump">"cs,en-us;q=0.7,en;q=0.3" (23)
+</pre></td></tr>
+<tr><th>HTTP_ACCEPT_ENCODING</th><td><pre class="nette-dump">"gzip, deflate" (13)
+</pre></td></tr>
+<tr><th>HTTP_ACCEPT_CHARSET</th><td><pre class="nette-dump">"ISO-8859-2,utf-8;q=0.7,*;q=0.7" (30)
+</pre></td></tr>
+<tr><th>HTTP_CONNECTION</th><td><pre class="nette-dump">"keep-alive" (10)
+</pre></td></tr>
+<tr><th>CONTENT_TYPE</th><td><pre class="nette-dump">"application/x-www-form-urlencoded; charset=UTF-8" (48)
+</pre></td></tr>
+<tr><th>HTTP_X_REQUESTED_WITH</th><td><pre class="nette-dump">"XMLHttpRequest" (14)
+</pre></td></tr>
+<tr><th>HTTP_REFERER</th><td><pre class="nette-dump">"http://localhost/webtoad/interierdecor/produkt/amelie-580214" (60)
+</pre></td></tr>
+<tr><th>CONTENT_LENGTH</th><td><pre class="nette-dump">"56" (2)
+</pre></td></tr>
+<tr><th>HTTP_COOKIE</th><td><pre class="nette-dump">"__utma=1.819494922.1308229880.1310538073.1310540988.33; __utmz=1.1308229880.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmc=1; nette-debug-p ... " (226)
+</pre></td></tr>
+<tr><th>HTTP_X_INSIGHT</th><td><pre class="nette-dump">"activate" (8)
+</pre></td></tr>
+<tr><th>HTTP_PRAGMA</th><td><pre class="nette-dump">"no-cache" (8)
+</pre></td></tr>
+<tr><th>HTTP_CACHE_CONTROL</th><td><pre class="nette-dump">"no-cache" (8)
+</pre></td></tr>
+<tr><th>PATH</th><td><pre class="nette-dump">"/usr/local/bin:/usr/bin:/bin" (28)
+</pre></td></tr>
+<tr><th>SERVER_SIGNATURE</th><td><pre class="nette-dump">"&lt;address&gt;Apache/2.2.17 (Ubuntu) Server at localhost Port 80&lt;/address&gt;
+" (70)
+</pre></td></tr>
+<tr><th>SERVER_SOFTWARE</th><td><pre class="nette-dump">"Apache/2.2.17 (Ubuntu)" (22)
+</pre></td></tr>
+<tr><th>SERVER_NAME</th><td><pre class="nette-dump">"localhost" (9)
+</pre></td></tr>
+<tr><th>SERVER_ADDR</th><td><pre class="nette-dump">"::1" (3)
+</pre></td></tr>
+<tr><th>SERVER_PORT</th><td><pre class="nette-dump">"80" (2)
+</pre></td></tr>
+<tr><th>REMOTE_ADDR</th><td><pre class="nette-dump">"::1" (3)
+</pre></td></tr>
+<tr><th>DOCUMENT_ROOT</th><td><pre class="nette-dump">"/var/www" (8)
+</pre></td></tr>
+<tr><th>SERVER_ADMIN</th><td><pre class="nette-dump">"webmaster@localhost" (19)
+</pre></td></tr>
+<tr><th>SCRIPT_FILENAME</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor/index.php" (40)
+</pre></td></tr>
+<tr><th>REMOTE_PORT</th><td><pre class="nette-dump">"40356" (5)
+</pre></td></tr>
+<tr><th>REDIRECT_QUERY_STRING</th><td><pre class="nette-dump">"do=addBasketForm-submit" (23)
+</pre></td></tr>
+<tr><th>REDIRECT_URL</th><td><pre class="nette-dump">"/webtoad/interierdecor/produkt/amelie-580214" (44)
+</pre></td></tr>
+<tr><th>GATEWAY_INTERFACE</th><td><pre class="nette-dump">"CGI/1.1" (7)
+</pre></td></tr>
+<tr><th>SERVER_PROTOCOL</th><td><pre class="nette-dump">"HTTP/1.1" (8)
+</pre></td></tr>
+<tr><th>REQUEST_METHOD</th><td><pre class="nette-dump">"POST" (4)
+</pre></td></tr>
+<tr><th>QUERY_STRING</th><td><pre class="nette-dump">"do=addBasketForm-submit" (23)
+</pre></td></tr>
+<tr><th>REQUEST_URI</th><td><pre class="nette-dump">"/webtoad/interierdecor/produkt/amelie-580214?do=addBasketForm-submit" (68)
+</pre></td></tr>
+<tr><th>SCRIPT_NAME</th><td><pre class="nette-dump">"/webtoad/interierdecor/index.php" (32)
+</pre></td></tr>
+<tr><th>PHP_SELF</th><td><pre class="nette-dump">"/webtoad/interierdecor/index.php" (32)
+</pre></td></tr>
+<tr><th>REQUEST_TIME</th><td><pre class="nette-dump">1310567236
+</pre></td></tr>
+			</table>
+			</div>
+					</div></div>
+
+
+
+		<div class="panel">
+		<h2><a href="#" rel="netteBsPnl5">HTTP request <abbr>&#x25ba;</abbr></a></h2>
+
+		<div id="netteBsPnl5" class="nette-collapsed inner">
+						<h3>Headers</h3>
+			<div class="outer">
+			<table>
+			<tr><th>Host</th><td>localhost</td></tr>
+<tr><th>User-Agent</th><td>Mozilla/5.0 (X11; Linux x86_64; rv:5.0) Gecko/20100101 Firefox/5.0 FirePHP/0.5</td></tr>
+<tr><th>Accept</th><td>application/json, text/javascript, */*; q=0.01</td></tr>
+<tr><th>Accept-Language</th><td>cs,en-us;q=0.7,en;q=0.3</td></tr>
+<tr><th>Accept-Encoding</th><td>gzip, deflate</td></tr>
+<tr><th>Accept-Charset</th><td>ISO-8859-2,utf-8;q=0.7,*;q=0.7</td></tr>
+<tr><th>Connection</th><td>keep-alive</td></tr>
+<tr><th>Content-Type</th><td>application/x-www-form-urlencoded; charset=UTF-8</td></tr>
+<tr><th>X-Requested-With</th><td>XMLHttpRequest</td></tr>
+<tr><th>Referer</th><td>http://localhost/webtoad/interierdecor/produkt/amelie-580214</td></tr>
+<tr><th>Content-Length</th><td>56</td></tr>
+<tr><th>Cookie</th><td>__utma=1.819494922.1308229880.1310538073.1310540988.33; __utmz=1.1308229880.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmc=1; nette-debug-panel-NotORM=; PHPSESSID=moamhe497kmbifsfg0o12c2hg4; nette-browser=6apvtjvl9a</td></tr>
+<tr><th>x-insight</th><td>activate</td></tr>
+<tr><th>Pragma</th><td>no-cache</td></tr>
+<tr><th>Cache-Control</th><td>no-cache</td></tr>
+			</table>
+			</div>
+			
+
+						<h3>$_GET</h3>
+						<div class="outer">
+			<table>
+			<tr><th>do</th><td><pre class="nette-dump">"addBasketForm-submit" (20)
+</pre></td></tr>
+			</table>
+			</div>
+									<h3>$_POST</h3>
+						<div class="outer">
+			<table>
+			<tr><th>add</th><td><pre class="nette-dump">"přidat do košíku" (19)
+</pre></td></tr>
+<tr><th>amount</th><td><pre class="nette-dump">"5"
+</pre></td></tr>
+<tr><th>product_id</th><td><pre class="nette-dump">""
+</pre></td></tr>
+			</table>
+			</div>
+									<h3>$_COOKIE</h3>
+						<div class="outer">
+			<table>
+			<tr><th>__utma</th><td><pre class="nette-dump">"1.819494922.1308229880.1310538073.1310540988.33" (47)
+</pre></td></tr>
+<tr><th>__utmz</th><td><pre class="nette-dump">"1.1308229880.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)" (62)
+</pre></td></tr>
+<tr><th>__utmc</th><td><pre class="nette-dump">"1"
+</pre></td></tr>
+<tr><th>nette-debug-panel-NotORM</th><td><pre class="nette-dump">""
+</pre></td></tr>
+<tr><th>PHPSESSID</th><td><pre class="nette-dump">"moamhe497kmbifsfg0o12c2hg4" (26)
+</pre></td></tr>
+<tr><th>nette-browser</th><td><pre class="nette-dump">"6apvtjvl9a" (10)
+</pre></td></tr>
+			</table>
+			</div>
+								</div></div>
+
+
+
+		<div class="panel">
+		<h2><a href="#" rel="netteBsPnl6">HTTP response <abbr>&#x25ba;</abbr></a></h2>
+
+		<div id="netteBsPnl6" class="nette-collapsed inner">
+			<h3>Headers</h3>
+						<pre>X-Powered-By: Nette Framework<br>Expires: Thu, 19 Nov 1981 08:52:00 GMT<br>Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0<br>Pragma: no-cache<br>Set-Cookie: PHPSESSID=moamhe497kmbifsfg0o12c2hg4; path=/; httponly<br>Set-Cookie: nette-browser=6apvtjvl9a; path=/; httponly<br></pre>
+					</div></div>
+
+
+		<ul>
+			<li>Report generated at 2011/07/13 16:27:16</li>
+							<li><a href="http://localhost/webtoad/interierdecor/produkt/amelie-580214?do=addBasketForm-submit">http://localhost/webtoad/interierdecor/produkt/amelie-580214?do=addBasketForm-submit</a></li>
+						<li>PHP 5.3.5-1ubuntu7.2</li>
+			<li>Apache/2.2.17 (Ubuntu)</li>			<li>Nette Framework 2.0-dev <i>(revision 9f535f9 released on 2011-01-10)</i></li>		</ul>
+	</div>
+</div>
+
+<script type="text/javascript">/*<![CDATA[*/var bs=document.getElementById("netteBluescreen");document.body.appendChild(bs);document.onkeyup=function(b){b=b||window.event;b.keyCode==27&&bs.onclick({target:document.getElementById("netteBluescreenIcon")})};
+for(var i=0,styles=document.styleSheets;i<styles.length;i++)if((styles[i].owningElement||styles[i].ownerNode).className!=="nette"){styles[i].oldDisabled=styles[i].disabled;styles[i].disabled=true}else styles[i].addRule?styles[i].addRule(".nette-collapsed","display: none"):styles[i].insertRule(".nette-collapsed { display: none }",0);
+bs.onclick=function(b){b=b||window.event;for(var a=b.target||b.srcElement;a&&a.tagName&&a.tagName.toLowerCase()!=="a";)a=a.parentNode;if(!a||!a.rel)return true;for(var d=a.getElementsByTagName("abbr")[0],c=a.rel==="next"?a.nextSibling:document.getElementById(a.rel);c.nodeType!==1;)c=c.nextSibling;b=c.currentStyle?c.currentStyle.display=="none":getComputedStyle(c,null).display=="none";try{d.innerHTML=String.fromCharCode(b?9660:9658)}catch(e){}c.style.display=b?c.tagName.toLowerCase()==="code"?"inline":
+"block":"none";if(a.id==="netteBluescreenIcon"){a=0;for(d=document.styleSheets;a<d.length;a++)if((d[a].owningElement||d[a].ownerNode).className!=="nette")d[a].disabled=b?true:d[a].oldDisabled}return false};/*]]>*/</script>
+</body>
+</html>

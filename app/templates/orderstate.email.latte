@@ -1,0 +1,19 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <p>Dobrý den,<br>
+           Stav Vaší objednávky číslo i{$sale['id']} v eshopu tapety-podlahy.cz byl změněn.
+        </p>
+        <p>
+            Nový stav je: 
+        </p>
+        <p>
+            <strong>{$sale->state['name']}</strong>
+        </p>
+        <p>
+            Pro zobrazení <a href="{plink //:Front:Customer:sale ,'id'=>$sale['id']}">detailů o objednávce</a>  se podívejte do svého zákazníckého účtu nebo zkopírujte odkaz do vašeho prohlížeče: {plink //:Front:Customer:sale ,'id'=>$sale['id']}    
+        </p>
+
+</html>

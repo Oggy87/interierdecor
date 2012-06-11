@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="robots" content="noindex,noarchive">
+	<meta name="generator" content="Nette Framework">
+
+	<title>PDOException</title><!-- SQLSTATE[42S22]: Column not found: 1054 Unknown column 'company' in 'field list' #42S22 -->
+
+	<style type="text/css" class="nette">body{margin:0 0 2em;padding:0}#netteBluescreen{font:9pt/1.5 Verdana,sans-serif;background:white;color:#333;position:absolute;left:0;top:0;width:100%;z-index:23178;text-align:left}#netteBluescreen *{font:inherit;color:inherit;background:transparent;border:none;margin:0;padding:0;text-align:inherit;text-indent:0}#netteBluescreen b{font-weight:bold}#netteBluescreen i{font-style:italic}#netteBluescreenIcon{position:absolute;right:.5em;top:.5em;z-index:23179;text-decoration:none;background:#CD1818;padding:3px}#netteBluescreenError{background:#CD1818;color:white;font:13pt/1.5 Verdana,sans-serif!important;display:block}#netteBluescreen h1{font-size:18pt;font-weight:normal;text-shadow:1px 1px 0 rgba(0,0,0,.4);margin:.7em 0}#netteBluescreen h2{font:14pt/1.5 sans-serif!important;color:#888;margin:.6em 0}#netteBluescreen a{text-decoration:none;color:#328ADC;padding:2px 4px;margin:-2px -4px}#netteBluescreen a abbr{font-family:sans-serif;color:#BBB}#netteBluescreen h3{font:bold 10pt/1.5 Verdana,sans-serif!important;margin:1em 0;padding:0}#netteBluescreen p,#netteBluescreen pre{margin:.8em 0}#netteBluescreen pre,#netteBluescreen code,#netteBluescreen table{font:9pt/1.5 Consolas,monospace!important}#netteBluescreen pre,#netteBluescreen table{background:#FDF5CE;padding:.4em .7em;border:1px dotted silver;overflow:auto}#netteBluescreen table pre{padding:0;margin:0;border:none}#netteBluescreen pre.nette-dump span{color:#C22}#netteBluescreen pre.nette-dump a{color:#333}#netteBluescreen div.panel{padding:1px 25px}#netteBluescreen div.inner{background:#F4F3F1;padding:.1em 1em 1em;border-radius:8px;-moz-border-radius:8px;-webkit-border-radius:8px}#netteBluescreen table{border-collapse:collapse;width:100%}#netteBluescreen .outer{overflow:auto}#netteBluescreen td,#netteBluescreen th{vertical-align:top;text-align:left;padding:2px 6px;border:1px solid #e6dfbf}#netteBluescreen th{width:10%;font-weight:bold}#netteBluescreen tr:nth-child(2n),#netteBluescreen tr:nth-child(2n) pre{background-color:#F7F0CB}#netteBluescreen ol{margin:1em 0;padding-left:2.5em}#netteBluescreen ul{font:7pt/1.5 Verdana,sans-serif!important;padding:2em 4em;margin:1em 0 0;color:#777;background:#F6F5F3 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFEAAAAjCAMAAADbuxbOAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADBQTFRF/fz24d7Y7Onj5uLd9vPu3drUzMvG09LN39zW8e7o2NbQ3NnT29jS0M7J1tXQAAAApvmsFgAAABB0Uk5T////////////////////AOAjXRkAAAKlSURBVHja7FbbsqQgDAwENEgc//9vN+SCWDtbtXPmZR/Wc6o02mlC58LA9ckFAOszvMV8xNgyUjyXhojfMVKvRL0ZHavxXYy5JrmchMdzou8YlTClxajtK8ZGGpWRoBr1+gFjKfHkJPbizabLgzE3pH7Iu4K980xgFvlrVzMZoVBWhtvouCDdcTDmTgMCJdVxJ9MKO6XxnliM7hxi5lbj2ZVM4l8DqYyKoNLYcfqBB1/LpHYxEcfVG6ZpMDgyFUVWY/Q1sSYPpIdSAKWqLWL0XqWiMWc4hpH0OQOMOAgdycY4N9Sb7wWANQs3rsDSdLAYiuxi5siVfOhBWIrtH0G3kNaF/8Q4kCPE1kMucG/ZMUBUCOgiKJkPuWWTLGVgLGpwns1DraUayCtoBqERyaYtVsm85NActRooezvSLO/sKZP/nq8n4+xcyjNsRu8zW6KWpdb7wjiQd4WrtFZYFiKHENSmWp6xshh96c2RQ+c7Lt+qbijyEjHWUJ/pZsy8MGIUuzNiPySK2Gqoh6ZTRF6ko6q3nVTkaA//itIrDpW6l3SLo8juOmqMXkYknu5FdQxWbhCfKHEGDhxxyTVaXJF3ZjSl3jMksjSOOKmne9pI+mcG5QvaUJhI9HpkmRo2NpCrDJvsktRhRE2MM6F2n7dt4OaMUq8bCctk0+PoMRzL+1l5PZ2eyM/Owr86gf8z/tOM53lom5+nVcFuB+eJVzlXwAYy9TZ9s537tfqcsJWbEU4nBngZo6FfO9T9CdhfBtmk2dLiAy8uS4zwOpMx2HqYbTC+amNeAYTpsP4SIgvWfUBWXxn3CMHW3ffd7k3+YIkx7w0t/CVGvcPejoeOlzOWzeGbawOHqXQGUTMZRcfj4XPCgW9y/fuvVn8zD9P1QHzv80uAAQA0i3Jer7Jr7gAAAABJRU5ErkJggg==') 99% 10px no-repeat;border-top:1px solid #DDD}#netteBluescreen .highlight{background:#CD1818;color:white;font-weight:bold;font-style:normal;display:block;padding:0 .4em;margin:0 -.4em}#netteBluescreen .line{color:#9F9C7F;font-weight:normal;font-style:normal}#netteBluescreen a[href^=editor\:]{color:inherit;border-bottom:1px dotted #328ADC}</style>
+</head>
+
+
+
+<body>
+<div id="netteBluescreen">
+	<a id="netteBluescreenIcon" href="#" rel="next"><abbr>&#x25bc;</abbr></a
+
+	><div>
+		<div id="netteBluescreenError" class="panel">
+			<h1>PDOException #42S22</h1>
+
+			<p>SQLSTATE[42S22]: Column not found: 1054 Unknown column 'company' in 'field list'</p>
+		</div>
+
+
+
+				
+			
+												<div class="panel">
+			<h2><a href="#" rel="netteBsPnl1">Source file <abbr>&#x25bc;</abbr></a></h2>
+
+			<div id="netteBsPnl1" class="inner">
+				<p><b>File:</b> <a href="editor://open/?file=%2Fvar%2Fwww%2Fwebtoad%2Finterierdecor%2Flibs%2FNotORM%2FNotORM%2FResult.php&amp;line=140">				/var/www/webtoad/interierdecor/libs/NotORM/NotORM/Result.php</a> &nbsp; <b>Line:</b> 140</p>
+				<pre><code><span style="color: #06B"><span style="color: #D24; font-weight: bold"><span class='line'>133:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #000">is_callable</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">notORM</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">debug</span><span style="color: #D24; font-weight: bold">))&nbsp;{
+<span class='line'>134:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">fwrite</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">STDERR</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #080">"--&nbsp;</span><span style="color: #000">$query</span><span style="color: #080">;\n"</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>135:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;elseif&nbsp;(</span><span style="color: #000">call_user_func</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">notORM</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">debug</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">$query</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">parameters</span><span style="color: #D24; font-weight: bold">)&nbsp;===&nbsp;</span><span style="color: #000">false</span><span style="color: #D24; font-weight: bold">)&nbsp;{
+<span class='line'>136:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #000">false</span><span style="color: #D24; font-weight: bold">;
+<span class='line'>137:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>138:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>139:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$return&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">notORM</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">connection</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">prepare</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$query</span><span style="color: #D24; font-weight: bold">);
+<span class='highlight'>140:    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!$return&nbsp;||&nbsp;!$return-&gt;execute($this-&gt;parameters))&nbsp;{
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"><span class='line'>141:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #000">false</span><span style="color: #D24; font-weight: bold">;
+<span class='line'>142:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>143:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #000">$return</span><span style="color: #D24; font-weight: bold">;
+<span class='line'>144:</span>    &nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>145:</span>    &nbsp;&nbsp;&nbsp;&nbsp;
+<span class='line'>146:</span>    &nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;function&nbsp;</span><span style="color: #000">quote</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$val</span><span style="color: #D24; font-weight: bold">)&nbsp;{
+<span class='line'>147:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!isset(</span><span style="color: #000">$val</span><span style="color: #D24; font-weight: bold">))&nbsp;{
+</span></span></code></pre>
+			</div></div>
+			
+
+
+									<div class="panel">
+				<h2><a href="#" rel="netteBsPnl2">Call stack <abbr>&#x25bc;</abbr></a></h2>
+
+				<div id="netteBsPnl2" class="inner">
+				<ol>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fvar%2Fwww%2Fwebtoad%2Finterierdecor%2Flibs%2FNotORM%2FNotORM%2FResult.php&amp;line=140" title="/var/www/webtoad/interierdecor/libs/NotORM/NotORM/Result.php">
+						NotORM/<b>Result.php</b></a> (140)					
+					<a href="#" rel="netteBsSrc1-0">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+					PDOStatement->					execute
+					(<a href="#" rel="netteBsArgs1-0">arguments <abbr>&#x25ba;</abbr></a>)
+					</p>
+
+											<div class="nette-collapsed outer" id="netteBsArgs1-0">
+						<table>
+						<tr><th>$bound_input_params</th><td><pre class="nette-dump"><span>array</span>(0) 
+</pre></td></tr>
+						</table>
+						</div>
+					
+
+											<pre class="nette-collapsed" id="netteBsSrc1-0"><code><span style="color: #06B"><span style="color: #D24; font-weight: bold"><span class='line'>133:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #000">is_callable</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">notORM</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">debug</span><span style="color: #D24; font-weight: bold">))&nbsp;{
+<span class='line'>134:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">fwrite</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">STDERR</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #080">"--&nbsp;</span><span style="color: #000">$query</span><span style="color: #080">;\n"</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>135:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;elseif&nbsp;(</span><span style="color: #000">call_user_func</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">notORM</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">debug</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">$query</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">parameters</span><span style="color: #D24; font-weight: bold">)&nbsp;===&nbsp;</span><span style="color: #000">false</span><span style="color: #D24; font-weight: bold">)&nbsp;{
+<span class='line'>136:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #000">false</span><span style="color: #D24; font-weight: bold">;
+<span class='line'>137:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>138:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>139:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$return&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">notORM</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">connection</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">prepare</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$query</span><span style="color: #D24; font-weight: bold">);
+<span class='highlight'>140:    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!$return&nbsp;||&nbsp;!$return-&gt;execute($this-&gt;parameters))&nbsp;{
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"><span class='line'>141:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #000">false</span><span style="color: #D24; font-weight: bold">;
+<span class='line'>142:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>143:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #000">$return</span><span style="color: #D24; font-weight: bold">;
+<span class='line'>144:</span>    &nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>145:</span>    &nbsp;&nbsp;&nbsp;&nbsp;
+<span class='line'>146:</span>    &nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;function&nbsp;</span><span style="color: #000">quote</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$val</span><span style="color: #D24; font-weight: bold">)&nbsp;{
+<span class='line'>147:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!isset(</span><span style="color: #000">$val</span><span style="color: #D24; font-weight: bold">))&nbsp;{
+</span></span></code></pre>
+					
+					</li>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fvar%2Fwww%2Fwebtoad%2Finterierdecor%2Flibs%2FNotORM%2FNotORM%2FResult.php&amp;line=186" title="/var/www/webtoad/interierdecor/libs/NotORM/NotORM/Result.php">
+						NotORM/<b>Result.php</b></a> (186)					
+					<a href="#" rel="netteBsSrc1-1">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+					NotORM_Result->					query
+					(<a href="#" rel="netteBsArgs1-1">arguments <abbr>&#x25ba;</abbr></a>)
+					</p>
+
+											<div class="nette-collapsed outer" id="netteBsArgs1-1">
+						<table>
+						<tr><th>$query</th><td><pre class="nette-dump">"INSERT INTO sale (email, name, phone, iscompany, company, ic, dic, city, street, postcode, shipadrress, shipcity, shipstreet, shippostcode, shipping_i ... " (536)
+</pre></td></tr>
+						</table>
+						</div>
+					
+
+											<pre class="nette-collapsed" id="netteBsSrc1-1"><code><span style="color: #06B"><span style="color: #D24; font-weight: bold"><span class='line'>179:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>180:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$values</span><span style="color: #D24; font-weight: bold">[]&nbsp;=&nbsp;</span><span style="color: #080">"("&nbsp;</span><span style="color: #D24; font-weight: bold">.&nbsp;</span><span style="color: #000">implode</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">",&nbsp;"</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">array_map</span><span style="color: #D24; font-weight: bold">(array(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #080">'quote'</span><span style="color: #D24; font-weight: bold">),&nbsp;</span><span style="color: #000">$val</span><span style="color: #D24; font-weight: bold">))&nbsp;.&nbsp;</span><span style="color: #080">")"</span><span style="color: #D24; font-weight: bold">;
+<span class='line'>181:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>182:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #999; font-style: italic">//!&nbsp;driver&nbsp;specific&nbsp;empty&nbsp;$data&nbsp;and&nbsp;extended&nbsp;insert
+<span class='line'>183:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$insert&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;</span><span style="color: #080">"("&nbsp;</span><span style="color: #D24; font-weight: bold">.&nbsp;</span><span style="color: #000">implode</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">",&nbsp;"</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">array_keys</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$data</span><span style="color: #D24; font-weight: bold">))&nbsp;.&nbsp;</span><span style="color: #080">")&nbsp;VALUES&nbsp;"&nbsp;</span><span style="color: #D24; font-weight: bold">.&nbsp;</span><span style="color: #000">implode</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">",&nbsp;"</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">$values</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>184:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>185:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #999; font-style: italic">//&nbsp;requires&nbsp;empty&nbsp;$this-&gt;parameters
+<span class='highlight'>186:    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$return&nbsp;=&nbsp;$this-&gt;query("INSERT&nbsp;INTO&nbsp;$this-&gt;table&nbsp;$insert");
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #080"></span><span style="color: #000"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"><span class='line'>187:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #000">$return</span><span style="color: #D24; font-weight: bold">)&nbsp;{
+<span class='line'>188:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #000">false</span><span style="color: #D24; font-weight: bold">;
+<span class='line'>189:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>190:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">rows&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;</span><span style="color: #000">null</span><span style="color: #D24; font-weight: bold">;
+<span class='line'>191:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #000">is_array</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$data</span><span style="color: #D24; font-weight: bold">))&nbsp;{
+<span class='line'>192:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #000">$return</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">rowCount</span><span style="color: #D24; font-weight: bold">();
+<span class='line'>193:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</span></span></code></pre>
+					
+					</li>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fvar%2Fwww%2Fwebtoad%2Finterierdecor%2Fapp%2Fmodels%2FOrderModel.php&amp;line=17" title="/var/www/webtoad/interierdecor/app/models/OrderModel.php">
+						models/<b>OrderModel.php</b></a> (17)					
+					<a href="#" rel="netteBsSrc1-2">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+					NotORM_Result->					insert
+					(<a href="#" rel="netteBsArgs1-2">arguments <abbr>&#x25ba;</abbr></a>)
+					</p>
+
+											<div class="nette-collapsed outer" id="netteBsArgs1-2">
+						<table>
+						<tr><th>$data</th><td><pre class="nette-dump"><a href='#' rel='next'><span>array</span>(25) <abbr>&#x25ba;</abbr> </a><code class="nette-collapsed">{
+   "email" => "petr@ogurcak.cz" (15)
+   "name" => "Petr Ogurčák" (14)
+   "phone" => "602205681" (9)
+   "iscompany" => TRUE
+   "company" => "87 Group" (8)
+   "ic" => "87179920" (8)
+   "dic" => "CZ87179920" (10)
+   "city" => "Kladno" (6)
+   "street" => "Na Vyhaslém 3265" (17)
+   "postcode" => "27201" (5)
+   "shipadrress" => FALSE
+   "shipcity" => ""
+   "shipstreet" => ""
+   "shippostcode" => "0"
+   "shipping_id" => "2"
+   "paymethod_id" => "2"
+   "shipping" => "PPL" (3)
+   "shippingPrice" => "90" (2)
+   "paymethod" => "Převodem" (9)
+   "paymethodPrice" => "0"
+   "total" => "3440.4" (6)
+   "token" => "55a5f347d7c3d65454136cb6edddefa4" (32)
+   <a href='#' rel='next'>"dph" => 0.2
+   "datetime" => <span>DateTime53</span>(3) <abbr>&#x25bc;</abbr> </a><code>{
+      "date" => "2011-08-05 14:09:29" (19)
+      "timezone_type" => 3
+      "timezone" => "Europe/Prague" (13)
+   }</code>
+   "customer_id" => 5
+}</code>
+</pre></td></tr>
+						</table>
+						</div>
+					
+
+											<pre class="nette-collapsed" id="netteBsSrc1-2"><code><span style="color: #06B"><span style="color: #D24; font-weight: bold"><span class='line'>10:</span>    &nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;function&nbsp;</span><span style="color: #000">fetchByToken</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$token</span><span style="color: #D24; font-weight: bold">)&nbsp;{
+<span class='line'>11:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #000">self</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">$notORM</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">sale</span><span style="color: #D24; font-weight: bold">()-&gt;</span><span style="color: #000">where</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">"token"</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #000">$token</span><span style="color: #D24; font-weight: bold">)-&gt;</span><span style="color: #000">fetch</span><span style="color: #D24; font-weight: bold">();
+<span class='line'>12:</span>    &nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>13:</span>    &nbsp;&nbsp;&nbsp;&nbsp;
+<span class='line'>14:</span>    &nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;function&nbsp;</span><span style="color: #000">newOrder</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$values</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #000">$products</span><span style="color: #D24; font-weight: bold">)&nbsp;{
+<span class='line'>15:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">self</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">$notORM</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">begin</span><span style="color: #D24; font-weight: bold">;
+<span class='line'>16:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class='highlight'>17:    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$order&nbsp;=&nbsp;self::$notORM-&gt;sale()-&gt;insert($values);
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"><span class='line'>18:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class='line'>19:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #000">$products&nbsp;</span><span style="color: #D24; font-weight: bold">as&nbsp;</span><span style="color: #000">$id&nbsp;</span><span style="color: #D24; font-weight: bold">=&gt;&nbsp;</span><span style="color: #000">$product</span><span style="color: #D24; font-weight: bold">)&nbsp;{
+<span class='line'>20:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$product</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #080">'product_id'</span><span style="color: #D24; font-weight: bold">]&nbsp;=&nbsp;</span><span style="color: #000">$id</span><span style="color: #D24; font-weight: bold">;&nbsp;
+<span class='line'>21:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$product</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #080">'sale_id'</span><span style="color: #D24; font-weight: bold">]&nbsp;=&nbsp;</span><span style="color: #000">$order</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #080">'id'</span><span style="color: #D24; font-weight: bold">];
+<span class='line'>22:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">self</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">$notORM</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">saleProduct</span><span style="color: #D24; font-weight: bold">()-&gt;</span><span style="color: #000">insert</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$product</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>23:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>24:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">self</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">$notORM</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">commit</span><span style="color: #D24; font-weight: bold">;
+</span></span></code></pre>
+					
+					</li>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fvar%2Fwww%2Fwebtoad%2Finterierdecor%2Fapp%2FFrontModule%2Fpresenters%2FBasketPresenter.php&amp;line=60" title="/var/www/webtoad/interierdecor/app/FrontModule/presenters/BasketPresenter.php">
+						presenters/<b>BasketPresenter.php</b></a> (60)					
+					<a href="#" rel="netteBsSrc1-3">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+					OrderModel::					newOrder
+					(<a href="#" rel="netteBsArgs1-3">arguments <abbr>&#x25ba;</abbr></a>)
+					</p>
+
+											<div class="nette-collapsed outer" id="netteBsArgs1-3">
+						<table>
+						<tr><th>$values</th><td><pre class="nette-dump"><a href='#' rel='next'><span>array</span>(25) <abbr>&#x25ba;</abbr> </a><code class="nette-collapsed">{
+   "email" => "petr@ogurcak.cz" (15)
+   "name" => "Petr Ogurčák" (14)
+   "phone" => "602205681" (9)
+   "iscompany" => TRUE
+   "company" => "87 Group" (8)
+   "ic" => "87179920" (8)
+   "dic" => "CZ87179920" (10)
+   "city" => "Kladno" (6)
+   "street" => "Na Vyhaslém 3265" (17)
+   "postcode" => "27201" (5)
+   "shipadrress" => FALSE
+   "shipcity" => ""
+   "shipstreet" => ""
+   "shippostcode" => "0"
+   "shipping_id" => "2"
+   "paymethod_id" => "2"
+   "shipping" => "PPL" (3)
+   "shippingPrice" => "90" (2)
+   "paymethod" => "Převodem" (9)
+   "paymethodPrice" => "0"
+   "total" => "3440.4" (6)
+   "token" => "55a5f347d7c3d65454136cb6edddefa4" (32)
+   <a href='#' rel='next'>"dph" => 0.2
+   "datetime" => <span>DateTime53</span>(3) <abbr>&#x25bc;</abbr> </a><code>{
+      "date" => "2011-08-05 14:09:29" (19)
+      "timezone_type" => 3
+      "timezone" => "Europe/Prague" (13)
+   }</code>
+   "customer_id" => 5
+}</code>
+</pre></td></tr>
+<tr><th>$products</th><td><pre class="nette-dump"><a href='#' rel='next'><span>array</span>(4) <abbr>&#x25bc;</abbr> </a><code>{
+   <a href='#' rel='next'>22 => <span>array</span>(6) <abbr>&#x25bc;</abbr> </a><code>{
+      "name" => "Amelie 580214" (13)
+      "amount" => "1"
+      "price" => "365.00" (6)
+      "unit_id" => "1"
+      "unit" => "role" (4)
+      "total" => "438" (3)
+   <a href='#' rel='next'>}</code>
+   27 => <span>array</span>(6) <abbr>&#x25bc;</abbr> </a><code>{
+      "name" => "Amelie 580221" (13)
+      "amount" => "3"
+      "price" => "365.00" (6)
+      "unit_id" => "1"
+      "unit" => "role" (4)
+      "total" => "1314" (4)
+   <a href='#' rel='next'>}</code>
+   29 => <span>array</span>(6) <abbr>&#x25bc;</abbr> </a><code>{
+      "name" => "Amelie 580757" (13)
+      "amount" => "2"
+      "price" => "444.00" (6)
+      "unit_id" => "1"
+      "unit" => "role" (4)
+      "total" => "1065.6" (6)
+   <a href='#' rel='next'>}</code>
+   32 => <span>array</span>(6) <abbr>&#x25bc;</abbr> </a><code>{
+      "name" => "Amelie 580771" (13)
+      "amount" => "1"
+      "price" => "444.00" (6)
+      "unit_id" => "1"
+      "unit" => "role" (4)
+      "total" => "532.8" (5)
+   }</code>
+}</code>
+</pre></td></tr>
+						</table>
+						</div>
+					
+
+											<pre class="nette-collapsed" id="netteBsSrc1-3"><code><span style="color: #06B"><span style="color: #D24; font-weight: bold"><span class='line'>53:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$values</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #080">'datetime'</span><span style="color: #D24; font-weight: bold">]&nbsp;=&nbsp;new&nbsp;</span><span style="color: #000">DateTime53</span><span style="color: #D24; font-weight: bold">;
+<span class='line'>54:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$user&nbsp;</span><span style="color: #D24; font-weight: bold">=&nbsp;</span><span style="color: #000">Environment</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">getUser</span><span style="color: #D24; font-weight: bold">();
+<span class='line'>55:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$user</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">setNamespace</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'front'</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>56:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #000">$user</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">isLoggedIn</span><span style="color: #D24; font-weight: bold">())&nbsp;{
+<span class='line'>57:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$values</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #080">'customer_id'</span><span style="color: #D24; font-weight: bold">]&nbsp;=&nbsp;</span><span style="color: #000">$user</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">id</span><span style="color: #D24; font-weight: bold">;
+<span class='line'>58:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<span class='line'>59:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{
+<span class='highlight'>60:    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OrderModel::newOrder($values,&nbsp;$namespace-&gt;values['products']);
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"><span class='line'>61:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$namespace</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">remove</span><span style="color: #D24; font-weight: bold">();
+<span class='line'>62:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">flashMessage</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'Objednávka&nbsp;byla&nbsp;úspěšně&nbsp;odeslána&nbsp;k&nbsp;vyřízení.'</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #080">'success'</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>63:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #999; font-style: italic">//TODO&nbsp;emaily
+<span class='line'>64:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class='line'>65:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class='line'>66:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #D24; font-weight: bold">}&nbsp;catch&nbsp;(</span><span style="color: #000">PDOException&nbsp;$exc</span><span style="color: #D24; font-weight: bold">)&nbsp;{
+<span class='line'>67:</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #000">Debug</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">log</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$exc</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">Debug</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">ERROR</span><span style="color: #D24; font-weight: bold">);
+</span></span></code></pre>
+					
+					</li>
+										<li><p>
+
+											<i>inner-code</i>					
+					
+					Front_BasketPresenter->					actionOrder
+					()
+					</p>
+
+					
+
+					
+					</li>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fvar%2Fwww%2Fwebtoad%2Finterierdecor%2Flibs%2FNette%2FNette%2Floader.php&amp;line=3589" title="/var/www/webtoad/interierdecor/libs/Nette/Nette/loader.php">
+						Nette/<b>loader.php</b></a> (3589)					
+					<a href="#" rel="netteBsSrc1-5">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+					ReflectionMethod->					invokeArgs
+					(<a href="#" rel="netteBsArgs1-5">arguments <abbr>&#x25ba;</abbr></a>)
+					</p>
+
+											<div class="nette-collapsed outer" id="netteBsArgs1-5">
+						<table>
+						<tr><th>$object</th><td><pre class="nette-dump"><a href='#' rel='next'><span>Front_BasketPresenter</span>(27) <abbr>&#x25ba;</abbr> </a><code class="nette-collapsed">{
+   "translator" <span>protected</span> => <span>Translator</span>(0) 
+   <a href='#' rel='next'>"onShutdown" => NULL
+   "request" <span>private</span> => <span>PresenterRequest</span>(7) <abbr>&#x25ba;</abbr> </a><code class="nette-collapsed">{
+      "method" <span>private</span> => "GET" (3)
+      <a href='#' rel='next'>"flags" <span>private</span> => <span>array</span>(1) <abbr>&#x25bc;</abbr> </a><code>{
+         "secured" => FALSE
+      }</code>
+      "name" <span>private</span> => "Front:Basket" (12)
+      <a href='#' rel='next'>"params" <span>private</span> => <span>array</span>(2) <abbr>&#x25bc;</abbr> </a><code>{
+         "action" => "order" (5)
+         "id" => NULL
+      }</code>
+      "post" <span>private</span> => <span>array</span>(0) 
+      "files" <span>private</span> => <span>array</span>(0) 
+      "frozen" <span>private</span> => TRUE
+   }</code>
+   "response" <span>private</span> => NULL
+   "autoCanonicalize" => TRUE
+   "absoluteUrls" => FALSE
+   "globalParams" <span>private</span> => <span>array</span>(0) 
+   "globalState" <span>private</span> => NULL
+   "globalStateSinces" <span>private</span> => NULL
+   "action" <span>private</span> => "order" (5)
+   "view" <span>private</span> => "order" (5)
+   "layout" <span>private</span> => NULL
+   "payload" <span>private</span> => <span>stdClass</span>(0) 
+   "signalReceiver" <span>private</span> => ""
+   "signal" <span>private</span> => NULL
+   "ajaxMode" <span>private</span> => FALSE
+   "startupCheck" <span>private</span> => TRUE
+   "lastCreatedRequest" <span>private</span> => NULL
+   "lastCreatedRequestFlag" <span>private</span> => NULL
+   "template" <span>private</span> => NULL
+   "invalidSnippets" <span>private</span> => <span>array</span>(0) 
+   <a href='#' rel='next'>"params" <span>protected</span> => <span>array</span>(2) <abbr>&#x25bc;</abbr> </a><code>{
+      "action" => "order" (5)
+      "id" => NULL
+   }</code>
+   "components" <span>private</span> => <span>array</span>(0) 
+   "cloning" <span>private</span> => NULL
+   "parent" <span>private</span> => NULL
+   "name" <span>private</span> => "Front:Basket" (12)
+   <a href='#' rel='next'>"monitors" <span>private</span> => <span>array</span>(1) <abbr>&#x25bc;</abbr> </a><code>{
+      <a href='#' rel='next'>"Presenter" => <span>array</span>(4) <abbr>&#x25bc;</abbr> </a><code>[
+         0 => NULL
+         1 => NULL
+         2 => NULL
+         3 => TRUE
+      ]</code>
+   }</code>
+}</code>
+</pre></td></tr>
+<tr><th>$args</th><td><pre class="nette-dump"><span>array</span>(0) 
+</pre></td></tr>
+						</table>
+						</div>
+					
+
+											<pre class="nette-collapsed" id="netteBsSrc1-5"><code><span style="color: #06B"><span style="color: #000"><span class='line'>3582:</span>    </span><span style="color: #D24; font-weight: bold">extends
+<span class='line'>3583:</span>    </span><span style="color: #000">ReflectionMethod</span><span style="color: #D24; font-weight: bold">{static
+<span class='line'>3584:</span>    function
+<span class='line'>3585:</span>    </span><span style="color: #000">from</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$class</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #000">$method</span><span style="color: #D24; font-weight: bold">){return
+<span class='line'>3586:</span>    new
+<span class='line'>3587:</span>    </span><span style="color: #000">self</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">is_object</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$class</span><span style="color: #D24; font-weight: bold">)?</span><span style="color: #000">get_class</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$class</span><span style="color: #D24; font-weight: bold">):</span><span style="color: #000">$class</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #000">$method</span><span style="color: #D24; font-weight: bold">);}function
+<span class='line'>3588:</span>    </span><span style="color: #000">getDefaultParameters</span><span style="color: #D24; font-weight: bold">(){</span><span style="color: #000">$res</span><span style="color: #D24; font-weight: bold">=array();foreach(</span><span style="color: #000">parent</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">getParameters</span><span style="color: #D24; font-weight: bold">()as</span><span style="color: #000">$param</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$res</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #000">$param</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getName</span><span style="color: #D24; font-weight: bold">()]=</span><span style="color: #000">$param</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">isDefaultValueAvailable</span><span style="color: #D24; font-weight: bold">()?</span><span style="color: #000">$param</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getDefaultValue</span><span style="color: #D24; font-weight: bold">():</span><span style="color: #000">NULL</span><span style="color: #D24; font-weight: bold">;if(</span><span style="color: #000">$param</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">isArray</span><span style="color: #D24; font-weight: bold">()){</span><span style="color: #000">settype</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$res</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #000">$param</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getName</span><span style="color: #D24; font-weight: bold">()],</span><span style="color: #080">'array'</span><span style="color: #D24; font-weight: bold">);}}return</span><span style="color: #000">$res</span><span style="color: #D24; font-weight: bold">;}function
+<span class='highlight'>3589:    invokeNamedArgs($object,$args){$res=array();$i=0;foreach($this-&gt;getDefaultParameters()as$name=&gt;$def){if(isset($args[$name])){$val=$args[$name];if($def!==NULL){settype($val,gettype($def));}$res[$i++]=$val;}else{$res[$i++]=$def;}}return$this-&gt;invokeArgs($object,$res);}function
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"><span class='line'>3590:</span>    </span><span style="color: #000">getCallback</span><span style="color: #D24; font-weight: bold">(){return
+<span class='line'>3591:</span>    new
+<span class='line'>3592:</span>    </span><span style="color: #000">Callback</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">parent</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">getDeclaringClass</span><span style="color: #D24; font-weight: bold">()-&gt;</span><span style="color: #000">getName</span><span style="color: #D24; font-weight: bold">(),</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getName</span><span style="color: #D24; font-weight: bold">());}function
+<span class='line'>3593:</span>    </span><span style="color: #000">__toString</span><span style="color: #D24; font-weight: bold">(){return</span><span style="color: #080">'Method&nbsp;'</span><span style="color: #D24; font-weight: bold">.</span><span style="color: #000">parent</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">getDeclaringClass</span><span style="color: #D24; font-weight: bold">()-&gt;</span><span style="color: #000">getName</span><span style="color: #D24; font-weight: bold">().</span><span style="color: #080">'::'</span><span style="color: #D24; font-weight: bold">.</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getName</span><span style="color: #D24; font-weight: bold">().</span><span style="color: #080">'()'</span><span style="color: #D24; font-weight: bold">;}function
+<span class='line'>3594:</span>    </span><span style="color: #000">getDeclaringClass</span><span style="color: #D24; font-weight: bold">(){return
+<span class='line'>3595:</span>    new
+<span class='line'>3596:</span>    </span><span style="color: #000">ClassReflection</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">parent</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">getDeclaringClass</span><span style="color: #D24; font-weight: bold">()-&gt;</span><span style="color: #000">getName</span><span style="color: #D24; font-weight: bold">());}function
+</span></span></code></pre>
+					
+					</li>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fvar%2Fwww%2Fwebtoad%2Finterierdecor%2Flibs%2FNette%2FNette%2Floader.php&amp;line=600" title="/var/www/webtoad/interierdecor/libs/Nette/Nette/loader.php">
+						Nette/<b>loader.php</b></a> (600)					
+					<a href="#" rel="netteBsSrc1-6">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+					MethodReflection->					invokeNamedArgs
+					(<a href="#" rel="netteBsArgs1-6">arguments <abbr>&#x25ba;</abbr></a>)
+					</p>
+
+											<div class="nette-collapsed outer" id="netteBsArgs1-6">
+						<table>
+						<tr><th>$object</th><td><pre class="nette-dump"><a href='#' rel='next'><span>Front_BasketPresenter</span>(27) <abbr>&#x25ba;</abbr> </a><code class="nette-collapsed">{
+   "translator" <span>protected</span> => <span>Translator</span>(0) 
+   <a href='#' rel='next'>"onShutdown" => NULL
+   "request" <span>private</span> => <span>PresenterRequest</span>(7) <abbr>&#x25ba;</abbr> </a><code class="nette-collapsed">{
+      "method" <span>private</span> => "GET" (3)
+      <a href='#' rel='next'>"flags" <span>private</span> => <span>array</span>(1) <abbr>&#x25bc;</abbr> </a><code>{
+         "secured" => FALSE
+      }</code>
+      "name" <span>private</span> => "Front:Basket" (12)
+      <a href='#' rel='next'>"params" <span>private</span> => <span>array</span>(2) <abbr>&#x25bc;</abbr> </a><code>{
+         "action" => "order" (5)
+         "id" => NULL
+      }</code>
+      "post" <span>private</span> => <span>array</span>(0) 
+      "files" <span>private</span> => <span>array</span>(0) 
+      "frozen" <span>private</span> => TRUE
+   }</code>
+   "response" <span>private</span> => NULL
+   "autoCanonicalize" => TRUE
+   "absoluteUrls" => FALSE
+   "globalParams" <span>private</span> => <span>array</span>(0) 
+   "globalState" <span>private</span> => NULL
+   "globalStateSinces" <span>private</span> => NULL
+   "action" <span>private</span> => "order" (5)
+   "view" <span>private</span> => "order" (5)
+   "layout" <span>private</span> => NULL
+   "payload" <span>private</span> => <span>stdClass</span>(0) 
+   "signalReceiver" <span>private</span> => ""
+   "signal" <span>private</span> => NULL
+   "ajaxMode" <span>private</span> => FALSE
+   "startupCheck" <span>private</span> => TRUE
+   "lastCreatedRequest" <span>private</span> => NULL
+   "lastCreatedRequestFlag" <span>private</span> => NULL
+   "template" <span>private</span> => NULL
+   "invalidSnippets" <span>private</span> => <span>array</span>(0) 
+   <a href='#' rel='next'>"params" <span>protected</span> => <span>array</span>(2) <abbr>&#x25bc;</abbr> </a><code>{
+      "action" => "order" (5)
+      "id" => NULL
+   }</code>
+   "components" <span>private</span> => <span>array</span>(0) 
+   "cloning" <span>private</span> => NULL
+   "parent" <span>private</span> => NULL
+   "name" <span>private</span> => "Front:Basket" (12)
+   <a href='#' rel='next'>"monitors" <span>private</span> => <span>array</span>(1) <abbr>&#x25bc;</abbr> </a><code>{
+      <a href='#' rel='next'>"Presenter" => <span>array</span>(4) <abbr>&#x25bc;</abbr> </a><code>[
+         0 => NULL
+         1 => NULL
+         2 => NULL
+         3 => TRUE
+      ]</code>
+   }</code>
+}</code>
+</pre></td></tr>
+<tr><th>$args</th><td><pre class="nette-dump"><a href='#' rel='next'><span>array</span>(2) <abbr>&#x25bc;</abbr> </a><code>{
+   "action" => "order" (5)
+   "id" => NULL
+}</code>
+</pre></td></tr>
+						</table>
+						</div>
+					
+
+											<pre class="nette-collapsed" id="netteBsSrc1-6"><code><span style="color: #06B"><span style="color: #D24; font-weight: bold"><span class='line'>593:</span>    </span><span style="color: #000">getPresenter</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$need</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">TRUE</span><span style="color: #D24; font-weight: bold">){return</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">lookup</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'Presenter'</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #000">$need</span><span style="color: #D24; font-weight: bold">);}function
+<span class='line'>594:</span>    </span><span style="color: #000">getUniqueId</span><span style="color: #D24; font-weight: bold">(){return</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">lookupPath</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'Presenter'</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #000">TRUE</span><span style="color: #D24; font-weight: bold">);}protected
+<span class='line'>595:</span>    function
+<span class='line'>596:</span>    </span><span style="color: #000">attached</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$presenter</span><span style="color: #D24; font-weight: bold">){if(</span><span style="color: #000">$presenter
+<span class='line'>597:</span>    </span><span style="color: #D24; font-weight: bold">instanceof
+<span class='line'>598:</span>    </span><span style="color: #000">Presenter</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">loadState</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$presenter</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">popGlobalParams</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getUniqueId</span><span style="color: #D24; font-weight: bold">()));}}protected
+<span class='line'>599:</span>    function
+<span class='highlight'>600:    tryCall($method,array$params){$rc=$this-&gt;getReflection();if($rc-&gt;hasMethod($method)){$rm=$rc-&gt;getMethod($method);if($rm-&gt;isPublic()&amp;&amp;!$rm-&gt;isAbstract()&amp;&amp;!$rm-&gt;isStatic()){$rm-&gt;invokeNamedArgs($this,$params);return
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"><span class='line'>601:</span>    </span><span style="color: #000">TRUE</span><span style="color: #D24; font-weight: bold">;}}return
+<span class='line'>602:</span>    </span><span style="color: #000">FALSE</span><span style="color: #D24; font-weight: bold">;}function
+<span class='line'>603:</span>    </span><span style="color: #000">getReflection</span><span style="color: #D24; font-weight: bold">(){return
+<span class='line'>604:</span>    new
+<span class='line'>605:</span>    </span><span style="color: #000">PresenterComponentReflection</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">);}function
+<span class='line'>606:</span>    </span><span style="color: #000">loadState</span><span style="color: #D24; font-weight: bold">(array</span><span style="color: #000">$params</span><span style="color: #D24; font-weight: bold">){foreach(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getReflection</span><span style="color: #D24; font-weight: bold">()-&gt;</span><span style="color: #000">getPersistentParams</span><span style="color: #D24; font-weight: bold">()as</span><span style="color: #000">$nm</span><span style="color: #D24; font-weight: bold">=&gt;</span><span style="color: #000">$meta</span><span style="color: #D24; font-weight: bold">){if(isset(</span><span style="color: #000">$params</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #000">$nm</span><span style="color: #D24; font-weight: bold">])){if(isset(</span><span style="color: #000">$meta</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #080">'def'</span><span style="color: #D24; font-weight: bold">])){if(</span><span style="color: #000">is_array</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$params</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #000">$nm</span><span style="color: #D24; font-weight: bold">])&amp;&amp;!</span><span style="color: #000">is_array</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$meta</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #080">'def'</span><span style="color: #D24; font-weight: bold">])){</span><span style="color: #000">$params</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #000">$nm</span><span style="color: #D24; font-weight: bold">]=</span><span style="color: #000">$meta</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #080">'def'</span><span style="color: #D24; font-weight: bold">];}else{</span><span style="color: #000">settype</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$params</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #000">$nm</span><span style="color: #D24; font-weight: bold">],</span><span style="color: #000">gettype</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$meta</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #080">'def'</span><span style="color: #D24; font-weight: bold">]));}}</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">$nm</span><span style="color: #D24; font-weight: bold">=&amp;</span><span style="color: #000">$params</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #000">$nm</span><span style="color: #D24; font-weight: bold">];}}</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">params</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">$params</span><span style="color: #D24; font-weight: bold">;}function
+<span class='line'>607:</span>    </span><span style="color: #000">saveState</span><span style="color: #D24; font-weight: bold">(array&amp;</span><span style="color: #000">$params</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #000">$reflection</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">NULL</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$reflection</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">$reflection</span><span style="color: #D24; font-weight: bold">===</span><span style="color: #000">NULL</span><span style="color: #D24; font-weight: bold">?</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getReflection</span><span style="color: #D24; font-weight: bold">():</span><span style="color: #000">$reflection</span><span style="color: #D24; font-weight: bold">;foreach(</span><span style="color: #000">$reflection</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getPersistentParams</span><span style="color: #D24; font-weight: bold">()as</span><span style="color: #000">$nm</span><span style="color: #D24; font-weight: bold">=&gt;</span><span style="color: #000">$meta</span><span style="color: #D24; font-weight: bold">){if(isset(</span><span style="color: #000">$params</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #000">$nm</span><span style="color: #D24; font-weight: bold">])){</span><span style="color: #000">$val</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">$params</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #000">$nm</span><span style="color: #D24; font-weight: bold">];}elseif(</span><span style="color: #000">array_key_exists</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$nm</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #000">$params</span><span style="color: #D24; font-weight: bold">)){continue;}elseif(!isset(</span><span style="color: #000">$meta</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #080">'since'</span><span style="color: #D24; font-weight: bold">])||</span><span style="color: #000">$this
+</span></span></code></pre>
+					
+					</li>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fvar%2Fwww%2Fwebtoad%2Finterierdecor%2Flibs%2FNette%2FNette%2Floader.php&amp;line=720" title="/var/www/webtoad/interierdecor/libs/Nette/Nette/loader.php">
+						Nette/<b>loader.php</b></a> (720)					
+					<a href="#" rel="netteBsSrc1-7">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+					PresenterComponent->					tryCall
+					(<a href="#" rel="netteBsArgs1-7">arguments <abbr>&#x25ba;</abbr></a>)
+					</p>
+
+											<div class="nette-collapsed outer" id="netteBsArgs1-7">
+						<table>
+						<tr><th>$method</th><td><pre class="nette-dump">"actionorder" (11)
+</pre></td></tr>
+<tr><th>$params</th><td><pre class="nette-dump"><a href='#' rel='next'><span>array</span>(2) <abbr>&#x25bc;</abbr> </a><code>{
+   "action" => "order" (5)
+   "id" => NULL
+}</code>
+</pre></td></tr>
+						</table>
+						</div>
+					
+
+											<pre class="nette-collapsed" id="netteBsSrc1-7"><code><span style="color: #06B"><span style="color: #D24; font-weight: bold"><span class='line'>713:</span>    </span><span style="color: #000">getRequest</span><span style="color: #D24; font-weight: bold">(){return</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">request</span><span style="color: #D24; font-weight: bold">;}final
+<span class='line'>714:</span>    function
+<span class='line'>715:</span>    </span><span style="color: #000">getPresenter</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$need</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">TRUE</span><span style="color: #D24; font-weight: bold">){return</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">;}final
+<span class='line'>716:</span>    function
+<span class='line'>717:</span>    </span><span style="color: #000">getUniqueId</span><span style="color: #D24; font-weight: bold">(){return</span><span style="color: #080">''</span><span style="color: #D24; font-weight: bold">;}function
+<span class='line'>718:</span>    </span><span style="color: #000">run</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">PresenterRequest$request</span><span style="color: #D24; font-weight: bold">){try{</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">request</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">payload</span><span style="color: #D24; font-weight: bold">=(object)</span><span style="color: #000">NULL</span><span style="color: #D24; font-weight: bold">;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">setParent</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getParent</span><span style="color: #D24; font-weight: bold">(),</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getPresenterName</span><span style="color: #D24; font-weight: bold">());</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">initGlobalParams</span><span style="color: #D24; font-weight: bold">();</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">startup</span><span style="color: #D24; font-weight: bold">();if(!</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">startupCheck</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$class</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">reflection</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getMethod</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'startup'</span><span style="color: #D24; font-weight: bold">)-&gt;</span><span style="color: #000">getDeclaringClass</span><span style="color: #D24; font-weight: bold">()-&gt;</span><span style="color: #000">getName</span><span style="color: #D24; font-weight: bold">();throw
+<span class='line'>719:</span>    new
+<span class='highlight'>720:    InvalidStateException("Method&nbsp;$class::startup()&nbsp;or&nbsp;its&nbsp;descendant&nbsp;doesn't&nbsp;call&nbsp;parent::startup().");}$this-&gt;tryCall($this-&gt;formatActionMethod($this-&gt;getAction()),$this-&gt;params);if($this-&gt;autoCanonicalize){$this-&gt;canonicalize();}if($this-&gt;getHttpRequest()-&gt;isMethod('head')){$this-&gt;terminate();}$this-&gt;processSignal();$this-&gt;beforeRender();$this-&gt;tryCall($this-&gt;formatRenderMethod($this-&gt;getView()),$this-&gt;params);$this-&gt;afterRender();$this-&gt;saveGlobalState();if($this-&gt;isAjax()){$this-&gt;payload-&gt;state=$this-&gt;getGlobalState();}$this-&gt;sendTemplate();}catch(AbortException$e){}{if($this-&gt;isAjax())try{$hasPayload=(array)$this-&gt;payload;unset($hasPayload['state']);if($this-&gt;response
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #000"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"><span class='line'>721:</span>    </span><span style="color: #D24; font-weight: bold">instanceof
+<span class='line'>722:</span>    </span><span style="color: #000">RenderResponse</span><span style="color: #D24; font-weight: bold">&amp;&amp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">isControlInvalid</span><span style="color: #D24; font-weight: bold">()){</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">response</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">send</span><span style="color: #D24; font-weight: bold">();</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">sendPayload</span><span style="color: #D24; font-weight: bold">();}elseif(!</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">response</span><span style="color: #D24; font-weight: bold">&amp;&amp;</span><span style="color: #000">$hasPayload</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">sendPayload</span><span style="color: #D24; font-weight: bold">();}}catch(</span><span style="color: #000">AbortException$e</span><span style="color: #D24; font-weight: bold">){}if(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">hasFlashSession</span><span style="color: #D24; font-weight: bold">()){</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getFlashSession</span><span style="color: #D24; font-weight: bold">()-&gt;</span><span style="color: #000">setExpiration</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">response
+<span class='line'>723:</span>    </span><span style="color: #D24; font-weight: bold">instanceof
+<span class='line'>724:</span>    </span><span style="color: #000">RedirectingResponse</span><span style="color: #D24; font-weight: bold">?</span><span style="color: #080">'+&nbsp;30&nbsp;seconds'</span><span style="color: #D24; font-weight: bold">:</span><span style="color: #080">'+&nbsp;3&nbsp;seconds'</span><span style="color: #D24; font-weight: bold">);}</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">onShutdown</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">response</span><span style="color: #D24; font-weight: bold">);</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">shutdown</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">response</span><span style="color: #D24; font-weight: bold">);return</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">response</span><span style="color: #D24; font-weight: bold">;}}protected
+<span class='line'>725:</span>    function
+<span class='line'>726:</span>    </span><span style="color: #000">startup</span><span style="color: #D24; font-weight: bold">(){</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">startupCheck</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">TRUE</span><span style="color: #D24; font-weight: bold">;}protected
+<span class='line'>727:</span>    function
+</span></span></code></pre>
+					
+					</li>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fvar%2Fwww%2Fwebtoad%2Finterierdecor%2Flibs%2FNette%2FNette%2Floader.php&amp;line=554" title="/var/www/webtoad/interierdecor/libs/Nette/Nette/loader.php">
+						Nette/<b>loader.php</b></a> (554)					
+					<a href="#" rel="netteBsSrc1-8">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+					Presenter->					run
+					(<a href="#" rel="netteBsArgs1-8">arguments <abbr>&#x25ba;</abbr></a>)
+					</p>
+
+											<div class="nette-collapsed outer" id="netteBsArgs1-8">
+						<table>
+						<tr><th>$request</th><td><pre class="nette-dump"><a href='#' rel='next'><span>PresenterRequest</span>(7) <abbr>&#x25ba;</abbr> </a><code class="nette-collapsed">{
+   "method" <span>private</span> => "GET" (3)
+   <a href='#' rel='next'>"flags" <span>private</span> => <span>array</span>(1) <abbr>&#x25bc;</abbr> </a><code>{
+      "secured" => FALSE
+   }</code>
+   "name" <span>private</span> => "Front:Basket" (12)
+   <a href='#' rel='next'>"params" <span>private</span> => <span>array</span>(2) <abbr>&#x25bc;</abbr> </a><code>{
+      "action" => "order" (5)
+      "id" => NULL
+   }</code>
+   "post" <span>private</span> => <span>array</span>(0) 
+   "files" <span>private</span> => <span>array</span>(0) 
+   "frozen" <span>private</span> => TRUE
+}</code>
+</pre></td></tr>
+						</table>
+						</div>
+					
+
+											<pre class="nette-collapsed" id="netteBsSrc1-8"><code><span style="color: #06B"><span style="color: #000"><span class='line'>547:</span>    </span><span style="color: #D24; font-weight: bold">instanceof
+<span class='line'>548:</span>    </span><span style="color: #000">PresenterRequest</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">NULL</span><span style="color: #D24; font-weight: bold">;throw
+<span class='line'>549:</span>    new
+<span class='line'>550:</span>    </span><span style="color: #000">BadRequestException</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'No&nbsp;route&nbsp;for&nbsp;HTTP&nbsp;request.'</span><span style="color: #D24; font-weight: bold">);}if(</span><span style="color: #000">strcasecmp</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getPresenterName</span><span style="color: #D24; font-weight: bold">(),</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">errorPresenter</span><span style="color: #D24; font-weight: bold">)===</span><span style="color: #000">0</span><span style="color: #D24; font-weight: bold">){throw
+<span class='line'>551:</span>    new
+<span class='line'>552:</span>    </span><span style="color: #000">BadRequestException</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'Invalid&nbsp;request.&nbsp;Presenter&nbsp;is&nbsp;not&nbsp;achievable.'</span><span style="color: #D24; font-weight: bold">);}}</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">requests</span><span style="color: #D24; font-weight: bold">[]=</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">onRequest</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">);</span><span style="color: #000">$presenter</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getPresenterName</span><span style="color: #D24; font-weight: bold">();try{</span><span style="color: #000">$class</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getPresenterLoader</span><span style="color: #D24; font-weight: bold">()-&gt;</span><span style="color: #000">getPresenterClass</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$presenter</span><span style="color: #D24; font-weight: bold">);</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">setPresenterName</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$presenter</span><span style="color: #D24; font-weight: bold">);}catch(</span><span style="color: #000">InvalidPresenterException$e</span><span style="color: #D24; font-weight: bold">){throw
+<span class='line'>553:</span>    new
+<span class='highlight'>554:    BadRequestException($e-&gt;getMessage(),404,$e);}$request-&gt;freeze();$this-&gt;presenter=new$class;$response=$this-&gt;presenter-&gt;run($request);$this-&gt;onResponse($this,$response);if($response
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"><span class='line'>555:</span>    </span><span style="color: #D24; font-weight: bold">instanceof
+<span class='line'>556:</span>    </span><span style="color: #000">ForwardingResponse</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">$response</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getRequest</span><span style="color: #D24; font-weight: bold">();continue;}elseif(</span><span style="color: #000">$response
+<span class='line'>557:</span>    </span><span style="color: #D24; font-weight: bold">instanceof
+<span class='line'>558:</span>    </span><span style="color: #000">IPresenterResponse</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$response</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">send</span><span style="color: #D24; font-weight: bold">();}break;}catch(</span><span style="color: #000">Exception$e</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">onError</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #000">$e</span><span style="color: #D24; font-weight: bold">);if(!</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">catchExceptions</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">onShutdown</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #000">$e</span><span style="color: #D24; font-weight: bold">);throw</span><span style="color: #000">$e</span><span style="color: #D24; font-weight: bold">;}if(</span><span style="color: #000">$repeatedError</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$e</span><span style="color: #D24; font-weight: bold">=new
+<span class='line'>559:</span>    </span><span style="color: #000">ApplicationException</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'An&nbsp;error&nbsp;occured&nbsp;while&nbsp;executing&nbsp;error-presenter'</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #000">0</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #000">$e</span><span style="color: #D24; font-weight: bold">);}if(!</span><span style="color: #000">$httpResponse</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">isSent</span><span style="color: #D24; font-weight: bold">()){</span><span style="color: #000">$httpResponse</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">setCode</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$e
+<span class='line'>560:</span>    </span><span style="color: #D24; font-weight: bold">instanceof
+<span class='line'>561:</span>    </span><span style="color: #000">BadRequestException</span><span style="color: #D24; font-weight: bold">?</span><span style="color: #000">$e</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getCode</span><span style="color: #D24; font-weight: bold">():</span><span style="color: #000">500</span><span style="color: #D24; font-weight: bold">);}if(!</span><span style="color: #000">$repeatedError</span><span style="color: #D24; font-weight: bold">&amp;&amp;</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">errorPresenter</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$repeatedError</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">TRUE</span><span style="color: #D24; font-weight: bold">;if(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">presenter</span><span style="color: #D24; font-weight: bold">){try{</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">presenter</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">forward</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">":</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">errorPresenter</span><span style="color: #080">:"</span><span style="color: #D24; font-weight: bold">,array(</span><span style="color: #080">'exception'</span><span style="color: #D24; font-weight: bold">=&gt;</span><span style="color: #000">$e</span><span style="color: #D24; font-weight: bold">));}catch(</span><span style="color: #000">AbortException$foo</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">presenter</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getLastCreatedRequest</span><span style="color: #D24; font-weight: bold">();}}else{</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">=new
+</span></span></code></pre>
+					
+					</li>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fvar%2Fwww%2Fwebtoad%2Finterierdecor%2Fapp%2Fbootstrap.php&amp;line=56" title="/var/www/webtoad/interierdecor/app/bootstrap.php">
+						app/<b>bootstrap.php</b></a> (56)					
+					<a href="#" rel="netteBsSrc1-9">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+					Application->					run
+					()
+					</p>
+
+					
+
+											<pre class="nette-collapsed" id="netteBsSrc1-9"><code><span style="color: #06B"><span style="color: #999; font-style: italic"><span class='line'>49:</span>    //&nbsp;Step&nbsp;4:&nbsp;Setup&nbsp;application&nbsp;router
+<span class='line'>50:</span>    </span><span style="color: #000">AppRouter</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">initialize</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$application</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>51:</span>    
+<span class='line'>52:</span>    </span><span style="color: #000">define</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">"LANG"</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #080">"cs"</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>53:</span>    
+<span class='line'>54:</span>    
+<span class='line'>55:</span>    </span><span style="color: #999; font-style: italic">//&nbsp;Step&nbsp;5:&nbsp;Run&nbsp;the&nbsp;application!
+<span class='highlight'>56:    $application-&gt;run();
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"><span class='line'>57:</span>    </span>
+</span></code></pre>
+					
+					</li>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fvar%2Fwww%2Fwebtoad%2Finterierdecor%2Findex.php&amp;line=19" title="/var/www/webtoad/interierdecor/index.php">
+						interierdecor/<b>index.php</b></a> (19)					
+					<a href="#" rel="netteBsSrc1-10">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+										require
+					(<a href="#" rel="netteBsArgs1-10">arguments <abbr>&#x25ba;</abbr></a>)
+					</p>
+
+											<div class="nette-collapsed outer" id="netteBsArgs1-10">
+						<table>
+						<tr><th>#0</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor/app/bootstrap.php" (48)
+</pre></td></tr>
+						</table>
+						</div>
+					
+
+											<pre class="nette-collapsed" id="netteBsSrc1-10"><code><span style="color: #06B"><span style="color: #D24; font-weight: bold"><span class='line'>12:</span>    </span><span style="color: #999; font-style: italic">//&nbsp;absolute&nbsp;filesystem&nbsp;path&nbsp;to&nbsp;the&nbsp;libraries
+<span class='line'>13:</span>    </span><span style="color: #000">define</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'LIBS_DIR'</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">WWW_DIR&nbsp;</span><span style="color: #D24; font-weight: bold">.&nbsp;</span><span style="color: #080">'/libs'</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>14:</span>    
+<span class='line'>15:</span>    </span><span style="color: #999; font-style: italic">//&nbsp;absolute&nbsp;filesystem&nbsp;path&nbsp;to&nbsp;the&nbsp;temporary&nbsp;files
+<span class='line'>16:</span>    </span><span style="color: #000">define</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'TEMP_DIR'</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">WWW_DIR&nbsp;</span><span style="color: #D24; font-weight: bold">.&nbsp;</span><span style="color: #080">'/temp'</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>17:</span>    
+<span class='line'>18:</span>    </span><span style="color: #999; font-style: italic">//&nbsp;load&nbsp;bootstrap&nbsp;file
+<span class='highlight'>19:    require&nbsp;APP_DIR&nbsp;.&nbsp;'/bootstrap.php';
+</span></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"><span class='line'>20:</span>    </span>
+</span></code></pre>
+					
+					</li>
+									</ol>
+			</div></div>
+			
+
+
+			
+
+
+			
+				
+
+
+				<div class="panel">
+		<h2><a href="#" rel="netteBsPnl3">Nette Application <abbr>&#x25ba;</abbr></a></h2>
+
+		<div id="netteBsPnl3" class="nette-collapsed inner">
+			<h3>Requests</h3>
+			<pre class="nette-dump"><a href='#' rel='next'><span>array</span>(1) <abbr>&#x25bc;</abbr> </a><code>[
+   <a href='#' rel='next'>0 => <span>PresenterRequest</span>(7) <abbr>&#x25ba;</abbr> </a><code class="nette-collapsed">{
+      "method" <span>private</span> => "GET" (3)
+      <a href='#' rel='next'>"flags" <span>private</span> => <span>array</span>(1) <abbr>&#x25bc;</abbr> </a><code>{
+         "secured" => FALSE
+      }</code>
+      "name" <span>private</span> => "Front:Basket" (12)
+      <a href='#' rel='next'>"params" <span>private</span> => <span>array</span>(2) <abbr>&#x25bc;</abbr> </a><code>{
+         "action" => "order" (5)
+         "id" => NULL
+      }</code>
+      "post" <span>private</span> => <span>array</span>(0) 
+      "files" <span>private</span> => <span>array</span>(0) 
+      "frozen" <span>private</span> => TRUE
+   }</code>
+]</code>
+</pre>
+			<h3>Presenter</h3>
+			<pre class="nette-dump"><a href='#' rel='next'><span>Front_BasketPresenter</span>(27) <abbr>&#x25ba;</abbr> </a><code class="nette-collapsed">{
+   "translator" <span>protected</span> => <span>Translator</span>(0) 
+   <a href='#' rel='next'>"onShutdown" => NULL
+   "request" <span>private</span> => <span>PresenterRequest</span>(7) <abbr>&#x25ba;</abbr> </a><code class="nette-collapsed">{
+      "method" <span>private</span> => "GET" (3)
+      <a href='#' rel='next'>"flags" <span>private</span> => <span>array</span>(1) <abbr>&#x25bc;</abbr> </a><code>{
+         "secured" => FALSE
+      }</code>
+      "name" <span>private</span> => "Front:Basket" (12)
+      <a href='#' rel='next'>"params" <span>private</span> => <span>array</span>(2) <abbr>&#x25bc;</abbr> </a><code>{
+         "action" => "order" (5)
+         "id" => NULL
+      }</code>
+      "post" <span>private</span> => <span>array</span>(0) 
+      "files" <span>private</span> => <span>array</span>(0) 
+      "frozen" <span>private</span> => TRUE
+   }</code>
+   "response" <span>private</span> => NULL
+   "autoCanonicalize" => TRUE
+   "absoluteUrls" => FALSE
+   "globalParams" <span>private</span> => <span>array</span>(0) 
+   "globalState" <span>private</span> => NULL
+   "globalStateSinces" <span>private</span> => NULL
+   "action" <span>private</span> => "order" (5)
+   "view" <span>private</span> => "order" (5)
+   "layout" <span>private</span> => NULL
+   "payload" <span>private</span> => <span>stdClass</span>(0) 
+   "signalReceiver" <span>private</span> => ""
+   "signal" <span>private</span> => NULL
+   "ajaxMode" <span>private</span> => FALSE
+   "startupCheck" <span>private</span> => TRUE
+   "lastCreatedRequest" <span>private</span> => NULL
+   "lastCreatedRequestFlag" <span>private</span> => NULL
+   "template" <span>private</span> => NULL
+   "invalidSnippets" <span>private</span> => <span>array</span>(0) 
+   <a href='#' rel='next'>"params" <span>protected</span> => <span>array</span>(2) <abbr>&#x25bc;</abbr> </a><code>{
+      "action" => "order" (5)
+      "id" => NULL
+   }</code>
+   "components" <span>private</span> => <span>array</span>(0) 
+   "cloning" <span>private</span> => NULL
+   "parent" <span>private</span> => NULL
+   "name" <span>private</span> => "Front:Basket" (12)
+   <a href='#' rel='next'>"monitors" <span>private</span> => <span>array</span>(1) <abbr>&#x25bc;</abbr> </a><code>{
+      <a href='#' rel='next'>"Presenter" => <span>array</span>(4) <abbr>&#x25bc;</abbr> </a><code>[
+         0 => NULL
+         1 => NULL
+         2 => NULL
+         3 => TRUE
+      ]</code>
+   }</code>
+}</code>
+</pre>		</div></div>
+		
+
+
+		<div class="panel">
+		<h2><a href="#" rel="netteBsPnl4">Environment <abbr>&#x25ba;</abbr></a></h2>
+
+		<div id="netteBsPnl4" class="nette-collapsed inner">
+						<h3><a href="#" rel="netteBsPnl-env-const">Constants <abbr>&#x25bc;</abbr></a></h3>
+			<div class="outer">
+			<table id="netteBsPnl-env-const">
+			<tr><th>SITE</th><td><pre class="nette-dump">""
+</pre></td></tr>
+<tr><th>WWW_DIR</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor" (30)
+</pre></td></tr>
+<tr><th>APP_DIR</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor/app" (34)
+</pre></td></tr>
+<tr><th>LIBS_DIR</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor/libs" (35)
+</pre></td></tr>
+<tr><th>TEMP_DIR</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor/temp" (35)
+</pre></td></tr>
+<tr><th>NETTE</th><td><pre class="nette-dump">TRUE
+</pre></td></tr>
+<tr><th>NETTE_DIR</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor/libs/Nette/Nette" (47)
+</pre></td></tr>
+<tr><th>NETTE_VERSION_ID</th><td><pre class="nette-dump">20000
+</pre></td></tr>
+<tr><th>NETTE_PACKAGE</th><td><pre class="nette-dump">"PHP 5.2" (7)
+</pre></td></tr>
+<tr><th>LANG</th><td><pre class="nette-dump">"cs" (2)
+</pre></td></tr>
+			</table>
+			</div>
+			
+
+			<h3><a href="#" rel="netteBsPnl-env-files">Included files <abbr>&#x25ba;</abbr></a> (20)</h3>
+			<div class="outer">
+			<table id="netteBsPnl-env-files" class="nette-collapsed">
+			<tr><td>/var/www/webtoad/interierdecor/index.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/app/bootstrap.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/Nette/Nette/loader.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/app/models/BaseModel.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/NotORM/NotORM.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/NotORM/NotORM/Structure.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/NotORM/NotORM/Cache.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/NotORM/NotORM/Literal.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/NotORM/NotORM/Result.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/NotORM/NotORM/MultiResult.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/NotORM/NotORM/Row.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/NotORMPanel.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/app/AppRouter.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/app/models/TagModel.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/app/models/CategoryModel.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/app/FrontModule/presenters/BasketPresenter.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/app/FrontModule/presenters/BasePresenter.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/app/presenters/BasePresenter.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/app/models/Translator.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/app/models/OrderModel.php</td></tr>
+			</table>
+			</div>
+
+
+			<h3>$_SERVER</h3>
+						<div class="outer">
+			<table>
+			<tr><th>REDIRECT_STATUS</th><td><pre class="nette-dump">"200" (3)
+</pre></td></tr>
+<tr><th>HTTP_HOST</th><td><pre class="nette-dump">"localhost" (9)
+</pre></td></tr>
+<tr><th>HTTP_USER_AGENT</th><td><pre class="nette-dump">"Mozilla/5.0 (X11; Linux x86_64; rv:5.0) Gecko/20100101 Firefox/5.0" (66)
+</pre></td></tr>
+<tr><th>HTTP_ACCEPT</th><td><pre class="nette-dump">"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" (63)
+</pre></td></tr>
+<tr><th>HTTP_ACCEPT_LANGUAGE</th><td><pre class="nette-dump">"cs,en-us;q=0.7,en;q=0.3" (23)
+</pre></td></tr>
+<tr><th>HTTP_ACCEPT_ENCODING</th><td><pre class="nette-dump">"gzip, deflate" (13)
+</pre></td></tr>
+<tr><th>HTTP_ACCEPT_CHARSET</th><td><pre class="nette-dump">"ISO-8859-2,utf-8;q=0.7,*;q=0.7" (30)
+</pre></td></tr>
+<tr><th>HTTP_CONNECTION</th><td><pre class="nette-dump">"keep-alive" (10)
+</pre></td></tr>
+<tr><th>HTTP_REFERER</th><td><pre class="nette-dump">"http://localhost/webtoad/interierdecor/basket/preview" (53)
+</pre></td></tr>
+<tr><th>HTTP_COOKIE</th><td><pre class="nette-dump">"__utma=111872281.1001123030.1312528308.1312528308.1312528308.1; __utmz=111872281.1312528308.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); nette-d ... " (431)
+</pre></td></tr>
+<tr><th>HTTP_CACHE_CONTROL</th><td><pre class="nette-dump">"max-age=0" (9)
+</pre></td></tr>
+<tr><th>PATH</th><td><pre class="nette-dump">"/usr/local/bin:/usr/bin:/bin" (28)
+</pre></td></tr>
+<tr><th>SERVER_SIGNATURE</th><td><pre class="nette-dump">"&lt;address&gt;Apache/2.2.17 (Ubuntu) Server at localhost Port 80&lt;/address&gt;
+" (70)
+</pre></td></tr>
+<tr><th>SERVER_SOFTWARE</th><td><pre class="nette-dump">"Apache/2.2.17 (Ubuntu)" (22)
+</pre></td></tr>
+<tr><th>SERVER_NAME</th><td><pre class="nette-dump">"localhost" (9)
+</pre></td></tr>
+<tr><th>SERVER_ADDR</th><td><pre class="nette-dump">"::1" (3)
+</pre></td></tr>
+<tr><th>SERVER_PORT</th><td><pre class="nette-dump">"80" (2)
+</pre></td></tr>
+<tr><th>REMOTE_ADDR</th><td><pre class="nette-dump">"::1" (3)
+</pre></td></tr>
+<tr><th>DOCUMENT_ROOT</th><td><pre class="nette-dump">"/var/www" (8)
+</pre></td></tr>
+<tr><th>SERVER_ADMIN</th><td><pre class="nette-dump">"webmaster@localhost" (19)
+</pre></td></tr>
+<tr><th>SCRIPT_FILENAME</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor/index.php" (40)
+</pre></td></tr>
+<tr><th>REMOTE_PORT</th><td><pre class="nette-dump">"54877" (5)
+</pre></td></tr>
+<tr><th>REDIRECT_URL</th><td><pre class="nette-dump">"/webtoad/interierdecor/basket/order" (35)
+</pre></td></tr>
+<tr><th>GATEWAY_INTERFACE</th><td><pre class="nette-dump">"CGI/1.1" (7)
+</pre></td></tr>
+<tr><th>SERVER_PROTOCOL</th><td><pre class="nette-dump">"HTTP/1.1" (8)
+</pre></td></tr>
+<tr><th>REQUEST_METHOD</th><td><pre class="nette-dump">"GET" (3)
+</pre></td></tr>
+<tr><th>QUERY_STRING</th><td><pre class="nette-dump">""
+</pre></td></tr>
+<tr><th>REQUEST_URI</th><td><pre class="nette-dump">"/webtoad/interierdecor/basket/order" (35)
+</pre></td></tr>
+<tr><th>SCRIPT_NAME</th><td><pre class="nette-dump">"/webtoad/interierdecor/index.php" (32)
+</pre></td></tr>
+<tr><th>PHP_SELF</th><td><pre class="nette-dump">"/webtoad/interierdecor/index.php" (32)
+</pre></td></tr>
+<tr><th>REQUEST_TIME</th><td><pre class="nette-dump">1312546169
+</pre></td></tr>
+			</table>
+			</div>
+					</div></div>
+
+
+
+		<div class="panel">
+		<h2><a href="#" rel="netteBsPnl5">HTTP request <abbr>&#x25ba;</abbr></a></h2>
+
+		<div id="netteBsPnl5" class="nette-collapsed inner">
+						<h3>Headers</h3>
+			<div class="outer">
+			<table>
+			<tr><th>Host</th><td>localhost</td></tr>
+<tr><th>User-Agent</th><td>Mozilla/5.0 (X11; Linux x86_64; rv:5.0) Gecko/20100101 Firefox/5.0</td></tr>
+<tr><th>Accept</th><td>text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</td></tr>
+<tr><th>Accept-Language</th><td>cs,en-us;q=0.7,en;q=0.3</td></tr>
+<tr><th>Accept-Encoding</th><td>gzip, deflate</td></tr>
+<tr><th>Accept-Charset</th><td>ISO-8859-2,utf-8;q=0.7,*;q=0.7</td></tr>
+<tr><th>Connection</th><td>keep-alive</td></tr>
+<tr><th>Referer</th><td>http://localhost/webtoad/interierdecor/basket/preview</td></tr>
+<tr><th>Cookie</th><td>__utma=111872281.1001123030.1312528308.1312528308.1312528308.1; __utmz=111872281.1312528308.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); nette-debug-panel-RoutingDebugger=; nette-debug-panel-dumps=; nette-debug-panel-Nette-Diagnostics-DefaultBarPanel-4=; nette-debug-panel-Nette-Database-Diagnostics-ConnectionPanel=; PHPSESSID=79djrl3r08u1dgunknruv524p0; nette-browser=53wmitrr6c; __utmc=111872281; nette-debug-panel-NotORM=</td></tr>
+<tr><th>Cache-Control</th><td>max-age=0</td></tr>
+			</table>
+			</div>
+			
+
+						<h3>$_GET</h3>
+						<p><i>empty</i></p>
+									<h3>$_POST</h3>
+						<p><i>empty</i></p>
+									<h3>$_COOKIE</h3>
+						<div class="outer">
+			<table>
+			<tr><th>__utma</th><td><pre class="nette-dump">"111872281.1001123030.1312528308.1312528308.1312528308.1" (55)
+</pre></td></tr>
+<tr><th>__utmz</th><td><pre class="nette-dump">"111872281.1312528308.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)" (70)
+</pre></td></tr>
+<tr><th>nette-debug-panel-RoutingDebugger</th><td><pre class="nette-dump">""
+</pre></td></tr>
+<tr><th>nette-debug-panel-dumps</th><td><pre class="nette-dump">""
+</pre></td></tr>
+<tr><th>nette-debug-panel-Nette-Diagnostics-DefaultBarPanel-4</th><td><pre class="nette-dump">""
+</pre></td></tr>
+<tr><th>nette-debug-panel-Nette-Database-Diagnostics-ConnectionPanel</th><td><pre class="nette-dump">""
+</pre></td></tr>
+<tr><th>PHPSESSID</th><td><pre class="nette-dump">"79djrl3r08u1dgunknruv524p0" (26)
+</pre></td></tr>
+<tr><th>nette-browser</th><td><pre class="nette-dump">"53wmitrr6c" (10)
+</pre></td></tr>
+<tr><th>__utmc</th><td><pre class="nette-dump">"111872281" (9)
+</pre></td></tr>
+<tr><th>nette-debug-panel-NotORM</th><td><pre class="nette-dump">""
+</pre></td></tr>
+			</table>
+			</div>
+								</div></div>
+
+
+
+		<div class="panel">
+		<h2><a href="#" rel="netteBsPnl6">HTTP response <abbr>&#x25ba;</abbr></a></h2>
+
+		<div id="netteBsPnl6" class="nette-collapsed inner">
+			<h3>Headers</h3>
+						<pre>X-Powered-By: Nette Framework<br>Expires: Thu, 19 Nov 1981 08:52:00 GMT<br>Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0<br>Pragma: no-cache<br>Set-Cookie: PHPSESSID=79djrl3r08u1dgunknruv524p0; path=/; httponly<br>Set-Cookie: nette-browser=53wmitrr6c; path=/; httponly<br></pre>
+					</div></div>
+
+
+		<ul>
+			<li>Report generated at 2011/08/05 14:09:29</li>
+							<li><a href="http://localhost/webtoad/interierdecor/basket/order">http://localhost/webtoad/interierdecor/basket/order</a></li>
+						<li>PHP 5.3.5-1ubuntu7.2</li>
+			<li>Apache/2.2.17 (Ubuntu)</li>			<li>Nette Framework 2.0-dev <i>(revision 9f535f9 released on 2011-01-10)</i></li>		</ul>
+	</div>
+</div>
+
+<script type="text/javascript">/*<![CDATA[*/var bs=document.getElementById("netteBluescreen");document.body.appendChild(bs);document.onkeyup=function(b){b=b||window.event;b.keyCode==27&&bs.onclick({target:document.getElementById("netteBluescreenIcon")})};
+for(var i=0,styles=document.styleSheets;i<styles.length;i++)if((styles[i].owningElement||styles[i].ownerNode).className!=="nette"){styles[i].oldDisabled=styles[i].disabled;styles[i].disabled=true}else styles[i].addRule?styles[i].addRule(".nette-collapsed","display: none"):styles[i].insertRule(".nette-collapsed { display: none }",0);
+bs.onclick=function(b){b=b||window.event;for(var a=b.target||b.srcElement;a&&a.tagName&&a.tagName.toLowerCase()!=="a";)a=a.parentNode;if(!a||!a.rel)return true;for(var d=a.getElementsByTagName("abbr")[0],c=a.rel==="next"?a.nextSibling:document.getElementById(a.rel);c.nodeType!==1;)c=c.nextSibling;b=c.currentStyle?c.currentStyle.display=="none":getComputedStyle(c,null).display=="none";try{d.innerHTML=String.fromCharCode(b?9660:9658)}catch(e){}c.style.display=b?c.tagName.toLowerCase()==="code"?"inline":
+"block":"none";if(a.id==="netteBluescreenIcon"){a=0;for(d=document.styleSheets;a<d.length;a++)if((d[a].owningElement||d[a].ownerNode).className!=="nette")d[a].disabled=b?true:d[a].oldDisabled}return false};/*]]>*/</script>
+</body>
+</html>

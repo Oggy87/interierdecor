@@ -1,0 +1,90 @@
+{var $title = 'Produkty'}
+
+{block #js}
+    {include #parent}
+    <script type="text/javascript">
+        head.js("{!$staticUri}/js/datagrid.js");
+        
+    head.ready(function() {
+    $(document).ready(function(){
+
+        $('a[title=smazat]').livequery( function() {
+            $(this).click(function() {
+                $('#snippet-confirmForm-').dialog('open');
+            });
+        });
+
+        $("#snippet-confirmForm-").dialog("destroy");
+
+        $("#snippet-confirmForm-").dialog({
+                            autoOpen: false,
+                            modal: true,
+                            title: 'Potvrzení akce',
+                            width:590,
+                            buttons: {
+
+                            }
+        });
+
+        $("#frmform-no").livequery('click', function(event) {
+            event.preventDefault();
+            $("#snippet-confirmForm-").dialog('close')
+        });
+
+    });
+    });
+    </script>
+{/block}
+
+{block layout}
+<div class="container-fluid">
+    <div class="sidebar">
+        
+        <div class="well">
+            <a n:href="new" class="btn large primary">nový produkt</a>
+        </div>
+        
+        
+      {*  <div class="well">
+            
+            <h5>produkty v kategorii:</h5>
+            <ul>
+                <li n:foreach="CategoryModel::fetch() as $category"><a n:href="Category: 'id' => $category['id'], 'tags' => NULL" n:class="$presenter->linkCurrent ? active">{$category['name']|lower}</a></li>
+          </ul>
+        </div>*}
+    </div>
+    <div class="content">
+        <div class="page-header">
+            <h1>Přehled všech produktů</h1>
+        </div>
+        
+        {snippet flashes}
+            <div n:foreach="$flashes as $flash" class="flash alert-message {$flash->type}">
+                <a class="close" href="#">×</a>
+                {$flash->message}
+            </div>
+        {/snippet}
+            
+        {snippet grid}{control productGrid}{/snippet}
+
+        {control confirmForm}
+    </div>
+</div>
+{*        
+<div id="product">
+    <h1>Produkty</h1>
+
+    <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+
+    <a n:href="new">nový produkt</a>
+
+    {snippet articlesGrid}
+        {control articlesGrid}
+    {/snippet}
+
+    {control confirmForm}
+
+</div>
+{/block}
+*}
+

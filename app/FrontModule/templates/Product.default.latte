@@ -1,0 +1,381 @@
+{var $title = $product['name']}
+
+{block #content}
+<div id="product">
+    <div class="top">
+        <h1>{$title|ucfirst}</h1>
+
+        <div class="clear"></div>
+        
+        <div id="breadcrumbs">
+            <a n:href=":Front:Homepage:" n:class="first">
+                <div class="left"></div>
+                <div class="center">interierdecor</div>
+                <div class="right"></div>
+            </a>
+            <a n:href=":Front:Category: 'id' => $product->category['id']">
+                <div class="left"></div>
+                <div class="center">{$product->category['name']|lower}</div>
+                <div class="right"></div>
+            </a>
+            <a n:href=":Front:Product: 'id' => $product['id']" n:class="active">
+                <div class="left"></div>
+                <div class="center">{$product['name']|lower}</div>
+                <div class="right"></div>
+            </a>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+
+    {block main}
+    
+    <div class="mainpanel">
+        {*cache $product['id'],tags => ["product/".$product['id']]*} 
+        <div class="productimages">
+            <div class="productimage">
+                <div class="label-recommended" n:if="$product['recommended']"></div>
+                <div class="label-action" n:if="$product['newprice']"></div>
+                <div class="label-new" n:if="$product['saved'] >= $onemonthago"></div>
+                {if $product['productPhoto_id']}
+                    {var bigphoto = Helpers::image($product->productPhoto['image_path'], 1200, 900, $product['name'], TRUE,FALSE,FALSE,FALSE)}
+                    <a href="{$bigphoto->src}" rel="product-gallery" class="fancybox img">{$product->productPhoto['image_path']|image:355,262,$product['name'],FALSE,TRUE,TRUE,FALSE}</a>
+                {/if}
+                {var $pr_tg = $product->product_tag()->where('tag.tagGroup_id',Front_BasePresenter::TAG_KOLEKCE_ID)->fetch()}
+                <a n:if="$product['visualisation_path']" class="tovisualisation" n:href="Visualisation:#choose  'id'=> $pr_tg['tag_id']">do vizualizace</a>    
+                
+                <div class="price">
+                    <div class="left"></div>
+                    <div class="content">
+                        {if $product["newprice"]}
+                            <span class="oldprice">{$product['price']|dph:BasePresenter::DPH|currency}</span><strong>{$product['newprice']|dph:BasePresenter::DPH|currency}</strong> {*/ {$product->unit['name']}*}
+                        {else}
+                            <strong>{$product['price']|dph:BasePresenter::DPH|currency}</strong>
+                        {/if}
+                        <span>/ {$product->unit['name']} s DPH</span>
+                    </div>
+                </div>
+            </div>
+            {if (count($productPhotos) > 0) OR (count($image_products) > 0)}
+            <div class="others">
+                <a class="prev browse left disabled"></a>
+
+                <div id="productPhoto-scrollable">
+                    <div class="items">
+                
+                    {if count($productPhotos) > 0}
+                        {foreach $productPhotos as $productPhoto}
+                            {var $modulus = $iterator->getCounter() % 3}
+                            {first}<div>{/first}
+
+                            {var bigphoto = Helpers::image($productPhoto['image_path'], 1200, 900, 'inspirace', TRUE,FALSE,FALSE,FALSE)}
+                            <a class="fancybox" rel="product-gallery" href="{$bigphoto->src}">
+                                    {$productPhoto['image_path']|image:102,64,'inspirace',FALSE,TRUE,FALSE,FALSE}
+                            </a>
+                            {if $modulus == 0}
+                                </div>
+                                {sep}<div>{/sep}
+                            {/if}
+                            {last}{if $modulus != 0}</div>{/if}{/last}
+                        {/foreach}
+                    {/if}
+                   {* {var $lastcounter = 0}
+                    {if count($productPhotos) > 0}
+                        {foreach $productPhotos as $productPhoto}
+                            {var $modulus = $iterator->getCounter() % 3}
+                            {first}<div>{/first}
+
+                            {var bigphoto = Helpers::image($productPhoto['image_path'], 1200, 900, 'inspirace', TRUE,FALSE,FALSE,FALSE)}
+                            <a class="fancybox" rel="product-gallery" href="{$bigphoto->src}">
+                                    {$productPhoto['image_path']|image:102,64,'inspirace',FALSE,TRUE,FALSE,FALSE}
+                            </a>
+                            {if $modulus == 0}</div>{/if}
+                            {last}{var $lastcounter = $iterator->getCounter()}{/last}
+                        {/foreach}
+                        {if count($image_products) > 0}{else}</div>{/if}
+                    {/if}
+  
+                    {foreach $image_products as $image_product}
+                        {var $counter = $lastcounter + $iterator->getCounter()}
+                        {var $modulus = $counter % 3}
+                        {first} 
+                            {if count($productPhotos) > 0}{if $counter % 4 == 0}<div>{/if}
+                            {else}<div>                       
+                            {/if}
+                        {/first}
+                        {var bigphoto = Helpers::image($image_product->image['image_path'], 1200, 900, 'inspirace', TRUE,FALSE,FALSE,FALSE)}
+                        <a class="fancybox" rel="product-gallery" href="{$bigphoto->src}">
+                            {$image_product->image['image_path']|image:102,64,'inspirace',FALSE,TRUE,FALSE,FALSE}
+                        </a>
+                        {if $modulus == 0}
+                            {if $iterator->isLast()}</div>
+                            {else}</div><div>
+                            {/if}
+                        {elseif $iterator->isLast()}
+                            </div>
+                        {/if}
+                    {/foreach}*}
+                    </div>
+                </div>
+
+                <a class="next browse right disabled"></a>
+
+                <div class="clear"></div>
+            </div>
+            {/if}
+        </div>
+
+        <div class="productdata">
+            {*cache $product['id'],tags => [tagGroups,tag]*} 
+            {foreach $category_tagGroupes as $category_tagGroup}
+            {var $product_tags = $product->product_tag()->where("tag.tagGroup_id",$category_tagGroup->tagGroup['id'])->order("value")}
+            {if $product_tags->count('*') > 0}
+            <div n:class="tag-group" >
+                <div class="name">{$category_tagGroup->tagGroup['name']|lower}:</div>
+                <div n:class="tags,$iterator->getCounter() > 3 ? longtags">
+                    {if $category_tagGroup->tagGroup['images']}
+                        {foreach $product_tags as $product_tag}
+                            {if $product_tag->tag['picture_path']}
+                            <a class="img" n:href="Category: 'id' => $product['category_id'], 'tags' => $product_tag['tag_id']" n:tag-if="$category_tagGroup->tagGroup['filter'] == 1">
+                                {$product_tag->tag['picture_path']|image:NULL,32,$product_tag->tag['value'],FALSE,FALSE,FALSE,FALSE,NULL,NULL,$product_tag->tag['value']}
+                            </a>
+                            {/if}
+                        {/foreach}
+                    {else}
+                        {foreach $product_tags as $product_tag}
+                        <a n:href="Category: 'id' => $product['category_id'], 'tags' => $product_tag['tag_id']" n:tag-if="$category_tagGroup->tagGroup['filter'] == 1"><span n:tag-if="!$category_tagGroup->tagGroup['filter']">
+                            {$product_tag->tag['value']}
+                            </span>
+                        </a>
+                        {sep},  {/sep}
+                        {/foreach}
+                    {/if}
+                </div>
+            </div>
+            {/if}
+            {/foreach}
+            <div n:class="tag-group" n:if="$product['file_name']">
+                <div class="name">příloha:</div>
+                <div n:class="tags">
+                    <a href="{$product['file_path']}">{$product['file_name']}</a>
+                </div>
+            </div>
+            {*/cache*}
+            
+
+            <div class="addbasketbox">
+                <div class="name">DO KOŠÍKU</div>
+                <div class="box">
+                    <a class="addtobasket ajax" n:href="addToBasket! 'product_id' => $product['id']">přidat do košíku</a>
+                    {*{var form => $control['addBasketForm']}
+                    {control $form begin}
+                        {$form['product_id']->control->setValue($product['id'])}
+                        {$form['amount']->control} {$form['amount']->label->setText($product->unit['name'])}
+                        {$form['add']->control}
+                    {control $form end}*}
+                    {*<div class="howmany">
+                        <a class="img" n:href=""><img src="{$staticUri}/images/icon-question.png" alt="icon question"> </a>
+                        <a n:href="">Kolik toho potřebuji?</a>
+                    </div>*}
+                </div>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+        
+        <div class="description" n:if="$product['description_html']">
+                {!$product['description_html']|texy}
+        </div>
+            <div class="clear"></div>
+        {*/cache*}
+        <div class="clear"></div>
+        
+        {ifset $productTypes}
+            <div class="similar">
+            <h2>{='Další varianty produktu'|upper}</h2>
+
+            <a class="prev browse left disabled"></a>
+
+            <div id="productTypes-scrollable">
+                <div class="items">
+                {foreach $productTypes as $product}
+                    {var $modulus = $iterator->getCounter() % 4}
+
+                    {if $iterator->isFirst()}<div class="group">{/if}
+                        <div n:class="product,$iterator->getCounter() % 4 == 0 ? last">
+                            <div class="image">
+                                <div class="label-recommended" n:if="$product['recommended']"></div>
+                                <div class="label-action" n:if="$product['newprice']"></div>
+                                <div class="label-new" n:if="$product['saved'] >= $onemonthago"></div>
+                                <a class="todetail" n:href="Product: 'id' => $product['id']">detail produktu</a>
+                                {var $pr_tg = $product->product_tag()->where('tag.tagGroup_id',Front_BasePresenter::TAG_KOLEKCE_ID)->fetch()}
+                                <a n:if="$product['visualisation_path']" class="tovisualisation" n:href="Visualisation:#choose  'id'=> $pr_tg['tag_id']">do vizualizace</a>    
+                                {*<a class="addbasket" n:href="addToBasket! 'product_id' => $product_tag['product_id']"><span>přidat do košíku</span></a>*}
+                                {if $product['productPhoto_id']}
+                                    <a class="img" n:href="Product: 'id' => $product['id']">
+                                    {$product->productPhoto['image_path']|image:195,140,$product['name'],FALSE,TRUE,FALSE,FALSE}
+                                    </a>
+                                {/if}
+                                <div class="name"><a n:href="Product: 'id' => $product['id']">{$product['name']}</a></div>
+                            </div>
+                             <div class="price">
+                                {if $product["newprice"]}
+                                    <span>{$product['price']|dph:BasePresenter::DPH|currency}</span><strong>{$product['newprice']|dph:BasePresenter::DPH|currency}</strong> {*/ {$product->unit['name']}*}
+                                {else}
+                                    <strong>{$product['price']|dph:BasePresenter::DPH|currency}</strong> / {$product->unit['name']}
+                                {/if}
+                            </div>
+                            <a class="addtobasket ajax" n:href="addToBasket! 'product_id' => $product['id']">přidat do košíku</a>
+                            {*<a class="detail" n:href="Product: 'id' => $product_tag['product_id']">detail produktu</a>*}
+                        </div>
+                    {if $modulus == 0}
+                        {if $iterator->isLast()}</div>
+                        {else}</div><div class="group">
+                        {/if}
+                    {elseif $iterator->isLast()}
+                        </div>
+                    {/if}
+                {/foreach}
+                </div>
+            </div>
+
+            <a class="next browse right disabled"></a>
+
+            <div class="clear"></div>
+        </div>
+        {/ifset}
+        
+        {*cache $product['id'],tags => [inspirations]*} 
+        {if count($image_products) > 0}
+        <div class="inspiration">
+            <h2>{='Inspirace'|upper}</h2>
+
+            <a class="prev browse left disabled"></a>
+
+            <div id="inspiration-scrollable">
+                <div class="items">
+                {*{foreach $inspirations as $image_tag}
+                    {var $modulus = $iterator->getCounter() % 6}
+
+                    {if $iterator->isFirst()}<div>{/if}
+                        {var bigphoto = Helpers::image($image_tag->image['image_path'], 1200, 900, 'inspirace', TRUE,FALSE,FALSE,FALSE)}
+                        <a class="fancybox" rel="inspiration-gallery" href="{$bigphoto->src}">
+                            {$image_tag->image['image_path']|image:123,94,'inspirace',FALSE,TRUE,FALSE,FALSE}
+                        </a>
+                    {if $modulus == 0}
+                        {if $iterator->isLast()}</div>
+                        {else}</div><div>
+                        {/if}
+                    {elseif $iterator->isLast()}
+                        </div>
+                    {/if}
+                {/foreach}*}
+                
+                {foreach $image_products as $image_product}
+                    {var $modulus = $iterator->getCounter() % 6}
+
+                    {if $iterator->isFirst()}<div>{/if}
+                        {var bigphoto = Helpers::image($image_product->image['image_path'], 1200, 900, 'inspirace', TRUE,FALSE,FALSE,FALSE)}
+                        <a class="fancybox" rel="inspiration-gallery" href="{$bigphoto->src}">
+                            {$image_product->image['image_path']|image:123,94,'inspirace',FALSE,TRUE,FALSE,FALSE}
+                        </a>
+                    {if $modulus == 0}
+                        {if $iterator->isLast()}</div>
+                        {else}</div><div>
+                        {/if}
+                    {elseif $iterator->isLast()}
+                        </div>
+                    {/if}
+                {/foreach}
+                </div>
+            </div>
+
+            <a class="next browse right disabled"></a>
+
+            <div class="clear"></div>
+        </div>
+        {/if}
+        {*/cache*}
+        {*cache $product['id'],tags => [products]*} 
+        {if count($similar) > 0}
+        <div class="similar">
+            <h2>{='Podobné produkty'|upper}</h2>
+
+            <a class="prev browse left disabled"></a>
+
+            <div id="similar-scrollable">
+                <div class="items">
+                {foreach $similar as $product_tag}
+                    {var $modulus = $iterator->getCounter() % 4}
+
+                    {if $iterator->isFirst()}<div class="group">{/if}
+                        <div n:class="product,$iterator->getCounter() % 4 == 0 ? last">
+                            <div class="image">
+                                <div class="label-recommended" n:if="$product_tag->product['recommended']"></div>
+                                <div class="label-action" n:if="$product_tag->product['newprice']"></div>
+                                <div class="label-new" n:if="$product_tag->product['saved'] >= $onemonthago"></div>
+                                <a class="todetail" n:href="Product: 'id' => $product_tag['product_id']">detail produktu</a>
+                                {var $pr_tg = $product_tag->product->product_tag()->where('tag.tagGroup_id',Front_BasePresenter::TAG_KOLEKCE_ID)->fetch()}
+                                <a n:if="$product_tag->product['visualisation_path']" class="tovisualisation" n:href="Visualisation:#choose  'id'=> $pr_tg['tag_id']">do vizualizace</a>    
+                                {*<a class="addbasket" n:href="addToBasket! 'product_id' => $product_tag['product_id']"><span>přidat do košíku</span></a>*}
+                                {if $product_tag->product['productPhoto_id']}
+                                    <a class="img" n:href="Product: 'id' => $product_tag['product_id']">
+                                    {$product_tag->product->productPhoto['image_path']|image:195,140,$product_tag->product['name'],FALSE,TRUE,FALSE,FALSE}
+                                    </a>
+                                {/if}
+                                <div class="name"><a n:href="Product: 'id' => $product_tag['product_id']">{$product_tag->product['name']}</a></div>
+                            </div>
+                             <div class="price">
+                                {if $product_tag->product["newprice"]}
+                                    <span>{$product_tag->product['price']|dph:BasePresenter::DPH|currency}</span><strong>{$product_tag->product['newprice']|dph:BasePresenter::DPH|currency}</strong> {*/ {$product->unit['name']}*}
+                                {else}
+                                    <strong>{$product_tag->product['price']|dph:BasePresenter::DPH|currency}</strong> / {$product_tag->product->unit['name']}
+                                {/if}
+                            </div>
+                            <a class="addtobasket ajax" n:href="addToBasket! 'product_id' => $product_tag['product_id']">přidat do košíku</a>
+                            {*<a class="detail" n:href="Product: 'id' => $product_tag['product_id']">detail produktu</a>*}
+                        </div>
+                    {if $modulus == 0}
+                        {if $iterator->isLast()}</div>
+                        {else}</div><div class="group">
+                        {/if}
+                    {elseif $iterator->isLast()}
+                        </div>
+                    {/if}
+                {/foreach}
+                </div>
+            </div>
+
+            <a class="next browse right disabled"></a>
+
+            <div class="clear"></div>
+        </div>
+        {/if}
+        {*/cache*}
+    </div>
+    {/block}
+</div>
+{/block}
+
+{block #scripts}
+    {include #parent}
+    <script type="text/javascript">
+    head.ready(function() {
+
+        $(function() {
+            // initialize scrollable
+            $("#productPhoto-scrollable").scrollable();
+        });
+
+        $(function() {
+            // initialize scrollable
+            $("#inspiration-scrollable").scrollable();
+        });
+
+        $(function() {
+            // initialize scrollable
+            $("#similar-scrollable").scrollable();
+        });
+    });
+    </script>
+{/block}

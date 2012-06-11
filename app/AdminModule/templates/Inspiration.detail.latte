@@ -1,0 +1,184 @@
+{var $title = 'inspirace'}
+
+{block layout}
+<div class="container-fluid">
+
+        <div class="page-header">
+            <h1><a n:href="default"><small><< zpět</small> </a> Inspirační foto </h1>
+        </div>
+        
+        {snippet flashes}
+            <div n:foreach="$flashes as $flash" class="flash alert-message {$flash->type}">
+                <a class="close" href="#">×</a>
+                {$flash->message}
+            </div>
+        {/snippet}
+    <div class="row">
+        
+        <div class="span7">
+            <h2>Přidat štítek</h2>
+            <div class="list">
+                <div class="category closed" n:foreach="CategoryModel::fetch() as $category">
+                    <h5>{$category['name']|lower}</h5>
+                    <div class="groups" style="display:none;">
+                    <div n:foreach="$category->category_tagGroup() as $category_tagGroup" class="group closed">
+                        <h6>{$category_tagGroup->tagGroup['name']|lower}</h6>
+                        <div class="tags" style="display:none;">
+                            {foreach BaseModel::fetchAll('tag')->where('tagGroup_id',$category_tagGroup->tagGroup['id'])->order('value') as $tg}
+                            <a n:href="addTag! 'tag_id'=>$tg['id']" class="ajax">
+                                {$tg['value']|lower}
+                            </a>{sep}, {/sep}
+                            {/foreach}
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="span10">
+            <h2>Štítky:</h2>
+            <div class="row" n:snippet="tags">
+                <div class="span" n:foreach="$category_tagGroups as $category_tagGroup">
+                    <h3>{$category_tagGroup->category['name']}:</h3>
+                    <div class="unstyled" n:foreach="$category_tagGroup->category->category_tagGroup()->where('tagGroup_id',$tagGroup_ids)->group('tagGroup_id') as $ctg">
+                        <span>{$ctg->tagGroup['name']}:</span>
+                        {foreach $image->image_tag()->where('tag.tagGroup_id',$ctg['tagGroup_id']) as $image_tag}
+                            <a class="ajax" n:href="removeTag! 'tag_id'=>$image_tag['tag_id']">{$image_tag->tag['value']} <img src="{$staticUri}/images/tag-cross.png" alt="remove tag"></a>{sep},{/sep}
+                        {/foreach}
+                    </div>
+                </div>
+            </div>
+            <div>
+                {$image['image_path']|image:590,458,'inspirace',FALSE,TRUE,TRUE,FALSE}  
+            </div>
+            <a n:href="delete! 'id'=>$image['id']" class="btn danger ajax">smazat</a>
+        </div>
+        <div class="span7">
+            <h2>Produkty:</h2>
+            {snippet products}
+            <div class="row" n:foreach="$image->image_product() as $image_product">
+                {if $image_product->product['active']}
+                <div class="span">
+                    {if $image_product->product['productPhoto_id']}
+                        {$image_product->product->productPhoto['image_path']|image:140,107,$image_product->product['name'],FALSE,TRUE,FALSE,FALSE}
+                    {/if}
+                </div>
+                <div class="span">
+                    <h2><a n:href="Product:edit 'id' => $image_product->product['id']">{$image_product->product['name']}</a></h2>
+                    <div class="category">{$image_product->product->category['name']}</div>
+                
+                    <div class="price">
+                        {if $image_product->product["newprice"]}
+                            <span>{$image_product->product['price']|dph:BasePresenter::DPH|currency}</span><strong>{$image_product->product['newprice']|dph:BasePresenter::DPH|currency}</strong> {*/ {$product->unit['name']}*}
+                        {else}
+                            <strong>{$image_product->product['price']|dph:BasePresenter::DPH|currency}</strong> / {$image_product->product->unit['name']}
+                        {/if}
+                    </div>
+                    <div>
+                        <a class="ajax" n:href="removeProduct! 'product_id'=>$image_product['product_id']">odebrat <img src="{$staticUri}/images/tag-cross.png" alt="remove product"></a>
+                    </div>
+                </div>
+                {/if}
+            </div>
+            {/snippet}
+            <a data-controls-modal="modal-new"  data-backdrop="static" href="#" class="btn success">přidat produkt</a>
+        </div>
+    </div>    
+</div>
+
+<div class="modal hide fade" id="modal-new" style="display: none;">
+    <div class="modal-header">
+        <a class="close" href="#">×</a>
+        <h3>Přidat produkt</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="span">
+            {var searchform => $control['searchForm']}
+            {control $searchform begin}
+                <div class="clearfix">
+                
+                    {$searchform['text']->control} {$searchform['search']->control->class('btn primary')}
+                </div>
+                
+            {control $searchform end}
+            </div>
+        </div>
+        {snippet search}
+        <div class="products-modal" n:ifset="$products">
+                    {if count($products) > 0}
+                    <div n:foreach="$products as $product" class="row">
+                        <div class="span">
+                            {if $product['productPhoto_id']}
+                                <a class="img" n:href="Product: 'id' => $product['id']">
+                                {$product->productPhoto['image_path']|image:100,100,$product['name'],FALSE,TRUE,FALSE,FALSE}
+                                </a>
+                            {/if}
+                        </div>
+                        <div class="span">
+                            <h2>{$product['name']}</h2>
+                            <div class="category">{$product->category['name']}</div>
+                            <div>
+                            {if $product["newprice"]}
+                                <span>{$product['price']|dph:BasePresenter::DPH|currency}</span><strong>{$product['newprice']|dph:BasePresenter::DPH|currency}</strong> {*/ {$product->unit['name']}*}
+                            {else}
+                                <strong>{$product['price']|dph:BasePresenter::DPH|currency}</strong> / {$product->unit['name']}
+                            {/if}
+                            </div>
+                            <a class="ajax" n:href="addProduct! 'product_id'=>$product['id']">přidat do inspirace</a>
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>
+                    {else}
+                    <p>Na tento dotaz nebyl nalezen žádný produkt.</p>
+                    {/if}
+                </div>
+        {/snippet}
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn close">Hotovo</a>
+    </div>
+</div>
+
+{/block}
+
+
+{block #scripts}
+{include #parent}
+<script type="text/javascript">
+    head.ready(function() {
+       $(".category.closed  h5").live('click',function() {
+            $this = $(this);
+            category = $this.parent('.category');
+            category.removeClass("closed");
+            category.addClass("open");
+            $this.next(".groups").slideDown('slow');
+        });
+        $(".category.open h5").live('click',function() {
+            $this = $(this);
+            category = $this.parent('.category');
+            category.removeClass("open");
+            category.addClass("closed");
+            $this.next(".groups").slideUp('slow');
+        });
+
+        $(".group.closed  h6").live('click',function() {
+            $this = $(this);
+            group = $this.parent('.group');
+            group.removeClass("closed");
+            group.addClass("open");
+            $this.next(".tags").slideDown('slow');
+        });
+        $(".group.open h6").live('click',function() {
+            $this = $(this);
+            group = $this.parent('.group');
+            group.removeClass("open");
+            group.addClass("closed");
+            $this.next(".tags").slideUp('slow');
+        });
+    });
+</script>
+{/block}
+
+

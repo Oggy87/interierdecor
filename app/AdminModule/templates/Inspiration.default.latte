@@ -1,0 +1,93 @@
+{var $title = 'inspirace'}
+
+{block layout}
+<div class="container-fluid">
+    <div class="sidebar">
+        
+        <div class="well">
+            <a n:href="upload" class="btn large primary">nahrát nové</a>
+        </div>
+        
+        <h2>filtr:</h2>
+        <a n:href="this 'tag_id' => NULL">vše</a> , <a n:href="this 'tag_id' => 'without'">bez štítků</a>
+        <hr>
+        <div class="list">
+            <div class="category closed" n:foreach="CategoryModel::fetch() as $category">
+                <h5>{$category['name']|lower}</h5>
+                <div class="groups" style="display:none;">
+                <div n:foreach="$category->category_tagGroup() as $category_tagGroup" class="group closed">
+                    <h6>{$category_tagGroup->tagGroup['name']|lower}</h6>
+                    <div class="tags" style="display:none;">
+                        {foreach BaseModel::fetchAll('tag')->where('tagGroup_id',$category_tagGroup->tagGroup['id'])->order('value') as $tg}
+                        <a n:href="this 'tag_id'=>$tg['id']">
+                            {$tg['value']|lower}
+                        </a>{sep}, {/sep}
+                        {/foreach}
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="page-header">
+            <h1>Inspirace <small n:ifset="$tag"> {$tag->tagGroup['name']} : {$tag['value']}</small><small n:if="$presenter->getParam('tag_id') == 'all'">bez štítků</small></h1>
+        </div>
+        
+        {snippet flashes}
+            <div n:foreach="$flashes as $flash" class="flash alert-message {$flash->type}">
+                <a class="close" href="#">×</a>
+                {$flash->message}
+            </div>
+        {/snippet}
+        
+        <a n:foreach="$images as $image" n:href="detail 'id'=>$image['id']">
+            {$image['image_path']|image:200,150,'inspirace',FALSE,TRUE,TRUE,FALSE}  
+        </a>
+        
+        {control stranka}
+    </div>
+    
+   
+</div>
+{/block}
+
+
+{block #scripts}
+{include #parent}
+<script type="text/javascript">
+    head.ready(function() {
+        $(".category.closed  h5").live('click',function() {
+            $this = $(this);
+            category = $this.parent('.category');
+            category.removeClass("closed");
+            category.addClass("open");
+            $this.next(".groups").slideDown('slow');
+        });
+        $(".category.open h5").live('click',function() {
+            $this = $(this);
+            category = $this.parent('.category');
+            category.removeClass("open");
+            category.addClass("closed");
+            $this.next(".groups").slideUp('slow');
+        });
+
+        $(".group.closed  h6").live('click',function() {
+            $this = $(this);
+            group = $this.parent('.group');
+            group.removeClass("closed");
+            group.addClass("open");
+            $this.next(".tags").slideDown('slow');
+        });
+        $(".group.open h6").live('click',function() {
+            $this = $(this);
+            group = $this.parent('.group');
+            group.removeClass("open");
+            group.addClass("closed");
+            $this.next(".tags").slideUp('slow');
+        });
+    });
+</script>
+{/block}
+
+

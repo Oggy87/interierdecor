@@ -1,0 +1,74 @@
+{layout 'Product.layout.latte'}
+
+{var $title = 'Vizualizace produktu'}
+
+{block #content}
+    <div class="page-header">
+        <h1>Vizualizace produktu {$product['name']}</h1>
+    </div>
+            
+    {snippet flashes}
+    <div n:foreach="$flashes as $flash" class="flash alert-message {$flash->type}">
+        <a class="close" href="#">×</a>
+        {$flash->message}
+    </div>
+    {/snippet}
+            
+    {control $form begin}
+     
+    {snippet formerrors}
+    {assign errors => $form->errors}
+    <div class="alert-message error block-message"  n:if="$errors">
+        <ul>
+            <li n:foreach="$errors as $error">{$error}</li>
+        </ul>
+    </div>
+    {/snippet}
+             
+    <div class="row">
+         <div class="span19">
+             <fieldset>
+                        <div class="clearfix">
+                            <div class="inline-inputs">
+                                {*{$form['height']->label}*}
+                                Výška produktu:
+                                {!$form['visualisation_height']->control->class('mini')} m
+                                
+                                {*{$form['width']->label}*}
+                                <span class="divider">Šířka produktu:</span>
+                                {!$form['visualisation_width']->control->class('mini')} m
+                            </div>
+                        </div>
+                        <div class="clearfix visualisation">
+                            {$form['name']->control}
+                            {$form['tmpname']->control}
+                            
+                            {snippet visualisation}
+                                <div class="thumb">
+                                {if isset($visualisation)}
+                                    {$visualisation['thumb']} 
+                                 {else}
+                                    <ul class="media-grid">
+                                        <li><div class="a"><img class="thumbnail" src="http://placehold.it/50x67" alt="" /></div></li>
+                                    </ul>
+                                 {/if}
+                                </div>
+                             {/snippet}
+                             
+                         </div>
+                         {control upload:visualisation}
+
+                    </fieldset>
+         </div>
+    </div>
+
+    <div class="actions">          
+        {$form['send']->control->class('btn primary large')}
+         <a class="btn danger large" n:href="deleteVisualisation! 'id'=>$product['id']">smazat vizualizaci</a>
+    </div>
+
+    {control $form end}
+
+{/block}
+       
+

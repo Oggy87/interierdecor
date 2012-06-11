@@ -1,0 +1,206 @@
+{var $title = 'inspirace'}
+{if $category}
+    {var $title .= ' - '.$category['name']}
+{/if}
+{if $tag}
+    {var $title .= ' - '.$tag['value']}
+{/if}
+
+{block #content}
+<div id="inspiration">
+    <div class="top">
+        <div class="lefttop">
+        <h1>Inspirace</h1>
+        <div class="clear"></div>
+        <div id="breadcrumbs">
+            <a n:href=":Front:Homepage:" n:class="first">
+                <div class="left"></div>
+                <div class="center">interierdecor</div>
+                <div class="right"></div>
+            </a>
+            <a n:href=":Front:Inspiration: 'category_id'=>NULL, 'tagGroup_id'=>NULL" n:class="active">
+                <div class="left"></div>
+                <div class="center">inspirace</div>
+                <div class="right"></div>
+            </a>
+        </div>
+        </div>
+        <div class="filters">
+            <h2>Získejte inspiraci pro váš byt či dům</h2>
+            <p>Prohlédněte si, jak naše produkty promění váš dům či byt. </p>
+        </div>
+        <div class="clear"></div>
+    </div>
+    
+    <div class="categories">
+        <div n:class="number,$presenter->category_id ? unactive1 : active1">1</div>
+        <h2>Vyberte kategorii</h2>
+         
+         <div class="menu">
+             {*cache $presenter->category_id,tags => [categories,tagGroups]*}
+             <a n:foreach="$categories_tagGroup as $ct" n:href="this 'category_id'=>$ct['category_id'], 'tagGroup_id'=>NULL" n:class="$presenter->isLinkCurrent('Inspiration:',array('category_id'=>$ct['category_id'])) ? active">
+                {$ct->category['name']}
+             </a>
+             {*/cache*}
+         </div>
+         
+         <div class="clear"></div>
+    </div>
+    
+    <div class="categories" n:if="$presenter->category_id">
+        <div n:class="number,$presenter->tagGroup_id ? unactive2 : active2">2</div>
+        <h2>Vyberte podle čeho chcete vybírat</h2>
+        
+        <div class="menu">
+            {*cache $presenter->category_id,$presenter->tagGroup_id,tags => [categories,tagGroups]*}
+             <a n:foreach="$category_tagGroups as $ct" n:href="this 'tagGroup_id'=>$ct['tagGroup_id'],'tag_id'=>NULL" n:class="$presenter->isLinkCurrent('Inspiration:',array('tagGroup_id'=>$ct['tagGroup_id'])) ? active">
+                {$ct->tagGroup['name']}
+             </a>
+            {*/cache*}
+         </div>
+         
+         <div class="clear"></div>
+    </div>
+    
+    <div class="categories" n:if="$presenter->tagGroup_id">
+        <div n:class="number,$presenter->tag_id ? unactive3 : active3">3</div>
+        <h2>Vyberte jakou inspiraci chcete zobrazit</h2>
+        
+        
+        <div class="tags">
+            {*cache [$presenter->category_id,$presenter->tagGroup_id],tags => [categories,tagGroups,images]*}
+            {if $category_tagGroup['hp']}
+            <a class="prev browse left disabled"></a>
+            <div class="tagGroup-scrollable">
+                <div class="items">
+                    {foreach $image_tags as $image_tag}
+                    {var $modulus = $iterator->getCounter() % 5}
+                        {if $iterator->isFirst()}<div class="group">{/if}
+                        <div n:class="tag,$modulus == 0 ? last,$presenter->tag_id == $image_tag['tag_id'] ? active">
+                            <div n:class="image,$modulus == 0 ? last">
+                                <a class="img" n:href="this#carusel 'tag_id' => $image_tag['tag_id']">
+                                    {if $image_tag->tag['picture_path']}
+                                        {$image_tag->tag['picture_path']|image:150,109,$image_tag->tag['value'],FALSE,FALSE,FALSE,FALSE,NULL,NULL,NULL,Image::PNG}  
+                                    {/if}
+                                </a>
+                                
+                                <div class="name"><a n:href="this#carusel 'tag_id' => $image_tag['tag_id']">{$image_tag->tag['value']}</a></div>
+                            </div>
+                        </div>
+                        {if $modulus == 0}
+                            {if $iterator->isLast()}</div>
+                            {else}</div><div class="group">
+                            {/if}
+                        {elseif $iterator->isLast()}
+                            </div>
+                        {/if}
+                    {/foreach}
+                    
+                </div>
+            </div>
+            <a class="next browse right disabled"></a>
+            {else}
+            <div class="list">
+                <a n:foreach="$image_tags as $image_tag" n:href="this#carusel 'tag_id' => $image_tag->tag['id']" n:class="$presenter->linkCurrent ? active">{$image_tag->tag['value']}</a>
+            </div> 
+            {/if}
+            {*/cache*} 
+        </div>
+        
+        <div class="clear"></div>
+    </div>
+    
+    <div class="categories" n:if="$presenter->tag_id"  id="carusel">
+        <div n:class="number,active4">4</div>
+        <h2>Vyberte si inspirační obrázek a podívejte se, které produkty zobrazuje</h2>
+        <div class="clear"></div>
+        <div class="carusel">
+            <a class="prev browse left disabled"></a>
+            <div class="images-scrollable">
+                <div class="items">
+                    {*cache $presenter->category_id,$presenter->tagGroup_id,$presenter->tag_id,tags => [categories,tagGroups,tags,images]*}
+                    <a n:foreach="$tag->image_tag() as $image_tag" data-image_id="{$image_tag['image_id']}" class="img detail" class="fancybox">
+                        {$image_tag->image['image_path']|image:590,458,'inspirace',FALSE,TRUE,TRUE,FALSE}  
+                    </a>
+                    {*/cache*} 
+                </div>
+            </div>
+            <a class="next browse right disabled"></a>
+            
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<div style="display: none;">
+{snippet detail}
+    <div id="detail">
+    {ifset $image}
+        {$image['image_path']|image:590,458,'inspirace',FALSE,TRUE,TRUE,FALSE,'image'}  
+        <div class="products">
+            <div class="product" n:foreach="$image->image_product() as $image_product">
+                {if $image_product->product['active']}
+                <div class="image">
+                    <div class="label-recommended" n:if="$image_product->product['recommended']"></div>
+                    <div class="label-action" n:if="$image_product->product['newprice']"></div>
+                    <div class="label-new" n:if="$image_product->product['saved'] >= $onemonthago"></div>
+                    {if $image_product->product['productPhoto_id']}
+                        <a class="img" n:href="Product: 'id' => $image_product->product['id']">
+                        {$image_product->product->productPhoto['image_path']|image:140,107,$image_product->product['name'],FALSE,TRUE,FALSE,FALSE}
+                        </a>
+                    {/if}
+                </div>
+                <div class="text">
+                    <h2><a n:href="Product: 'id' => $image_product->product['id']">{$image_product->product['name']}</a></h2>
+                    {*<div class="description">{$image_product->product['description_html']|striptags|truncate:140,'...'}</div>*}
+                    <div class="category"><a n:href="Category: 'id'=>$image_product->product['category_id']">{$image_product->product->category['name']}</a></div>
+                
+                    <div class="price">
+                        {if $image_product->product["newprice"]}
+                            <span>{$image_product->product['price']|dph:BasePresenter::DPH|currency}</span><strong>{$image_product->product['newprice']|dph:BasePresenter::DPH|currency}</strong> {*/ {$product->unit['name']}*}
+                        {else}
+                            <strong>{$image_product->product['price']|dph:BasePresenter::DPH|currency}</strong> / {$image_product->product->unit['name']}
+                        {/if}
+                    </div>
+                    <a class="addtobasket ajax" n:href="addToBasket! 'product_id' => $image_product->product['id']">přidat do košíku</a>
+                </div>
+                {/if}
+                <div class="clear"></div>
+            </div>
+        </div>
+    {/ifset}
+    </div>
+{/snippet}           
+</div>
+
+{/block}
+
+{block #scripts}
+    {include #parent}
+    <script type="text/javascript">
+    head.ready(function() {
+
+        $(".tagGroup-scrollable").scrollable();
+            
+        $(".images-scrollable").scrollable();
+
+        $(".detail").click(function() {
+            $this = $(this);
+            $.get({link detail!},{'image_id': $this.data('image_id')}, function(payload) {
+                for(var id in payload.snippets) {
+                    jQuery.nette.updateSnippet(id, payload.snippets[id]);
+                } 
+                $.fancybox({
+                   'content' : $("#detail"),
+                   'autoDimensions'    : false,
+                   'width'              : 970,
+                   'height'             : 460,
+                   'scrolling'         : 'no',
+                   'titleShow'         : false
+               });
+            });
+            
+        })
+    });
+    </script>
+{/block}
+

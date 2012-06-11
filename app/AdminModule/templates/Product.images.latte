@@ -1,0 +1,89 @@
+{layout 'Product.layout.latte'}
+
+{block #css}
+    {include #parent}
+    {control css 'plupload.queue.css'}
+{/block}
+
+{block #js}
+    {include #parent}
+    <script type="text/javascript">
+        head.js("{!$staticUri}/js/jquery.plupload.queue.js"
+        );
+    </script>
+{/block}
+
+{var $title = 'Obrázky produktu'}
+
+{block #content}
+    <div class="page-header">
+        <h1>Obrázky produktu {$product['name']}</h1>
+    </div>
+            
+    {snippet flashes}
+    <div n:foreach="$flashes as $flash" class="flash alert-message {$flash->type}">
+        <a class="close" href="#">×</a>
+        {$flash->message}
+    </div>
+    {/snippet}
+            
+    {control $form begin}
+     
+    {snippet formerrors}
+    {assign errors => $form->errors}
+    <div class="alert-message error block-message"  n:if="$errors">
+        <ul>
+            <li n:foreach="$errors as $error">{$error}</li>
+        </ul>
+    </div>
+    {/snippet}
+            
+    <div class="row">
+        <div class="span16">
+            <fieldset>
+                <legend>Nahrát další obrázky</legend>
+                {control upload:photo}
+            </fieldset>
+        </div>
+    </div>  
+    
+    <div class="row">
+         <div class="span19">
+             <fieldset>
+                 <legend>Obrázky</legend>
+                 {snippet images}
+
+                     <ul class="media-grid">
+                         <li n:foreach="$productPhotos as $productPhoto">
+                            {var bigphoto = Helpers::image($productPhoto['image_path'], 1200, 900, 'image',TRUE,FALSE,FALSE,FALSE)}
+                            <a class="fancybox" rel="product-gallery" href="{$bigphoto->src}">
+                                {$productPhoto['image_path']|image:140,140,'image',FALSE,TRUE,TRUE}
+                            </a>
+                            <a class="action label important ajax" n:href="deleteImage! 'productPhoto_id'=>$productPhoto['id']">smazat obrázek</a>
+                         </li>
+                     </ul>
+
+                 {/snippet}
+             </fieldset>
+         </div>
+    </div>
+
+    {control $form end}
+
+{/block}
+        
+{block #scripts}
+    {include #parent}
+    <script type="text/javascript">
+    head.ready(function() {
+    $(document).ready(function(){
+        var perex_options = {
+            toolbar: ['bold', 'italic', null,'sup','sub',null,'link']
+        }
+        $('[name="product[description_html]"]').texyla(perex_options);
+    
+    });
+    });
+    </script>
+{/block}
+

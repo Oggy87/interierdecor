@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="robots" content="noindex,noarchive">
+	<meta name="generator" content="Nette Framework">
+
+	<title>InvalidStateException</title><!-- session_start(): ps_files_cleanup_dir: opendir(/var/lib/php5) failed: Permission denied (13) -->
+
+	<style type="text/css" class="nette">body{margin:0 0 2em;padding:0}#netteBluescreen{font:9pt/1.5 Verdana,sans-serif;background:white;color:#333;position:absolute;left:0;top:0;width:100%;z-index:23178;text-align:left}#netteBluescreen *{font:inherit;color:inherit;background:transparent;border:none;margin:0;padding:0;text-align:inherit;text-indent:0}#netteBluescreen b{font-weight:bold}#netteBluescreen i{font-style:italic}#netteBluescreenIcon{position:absolute;right:.5em;top:.5em;z-index:23179;text-decoration:none;background:#CD1818;padding:3px}#netteBluescreenError{background:#CD1818;color:white;font:13pt/1.5 Verdana,sans-serif!important;display:block}#netteBluescreen h1{font-size:18pt;font-weight:normal;text-shadow:1px 1px 0 rgba(0,0,0,.4);margin:.7em 0}#netteBluescreen h2{font:14pt/1.5 sans-serif!important;color:#888;margin:.6em 0}#netteBluescreen a{text-decoration:none;color:#328ADC;padding:2px 4px;margin:-2px -4px}#netteBluescreen a abbr{font-family:sans-serif;color:#BBB}#netteBluescreen h3{font:bold 10pt/1.5 Verdana,sans-serif!important;margin:1em 0;padding:0}#netteBluescreen p,#netteBluescreen pre{margin:.8em 0}#netteBluescreen pre,#netteBluescreen code,#netteBluescreen table{font:9pt/1.5 Consolas,monospace!important}#netteBluescreen pre,#netteBluescreen table{background:#FDF5CE;padding:.4em .7em;border:1px dotted silver;overflow:auto}#netteBluescreen table pre{padding:0;margin:0;border:none}#netteBluescreen pre.nette-dump span{color:#C22}#netteBluescreen pre.nette-dump a{color:#333}#netteBluescreen div.panel{padding:1px 25px}#netteBluescreen div.inner{background:#F4F3F1;padding:.1em 1em 1em;border-radius:8px;-moz-border-radius:8px;-webkit-border-radius:8px}#netteBluescreen table{border-collapse:collapse;width:100%}#netteBluescreen .outer{overflow:auto}#netteBluescreen td,#netteBluescreen th{vertical-align:top;text-align:left;padding:2px 6px;border:1px solid #e6dfbf}#netteBluescreen th{width:10%;font-weight:bold}#netteBluescreen tr:nth-child(2n),#netteBluescreen tr:nth-child(2n) pre{background-color:#F7F0CB}#netteBluescreen ol{margin:1em 0;padding-left:2.5em}#netteBluescreen ul{font:7pt/1.5 Verdana,sans-serif!important;padding:2em 4em;margin:1em 0 0;color:#777;background:#F6F5F3 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFEAAAAjCAMAAADbuxbOAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADBQTFRF/fz24d7Y7Onj5uLd9vPu3drUzMvG09LN39zW8e7o2NbQ3NnT29jS0M7J1tXQAAAApvmsFgAAABB0Uk5T////////////////////AOAjXRkAAAKlSURBVHja7FbbsqQgDAwENEgc//9vN+SCWDtbtXPmZR/Wc6o02mlC58LA9ckFAOszvMV8xNgyUjyXhojfMVKvRL0ZHavxXYy5JrmchMdzou8YlTClxajtK8ZGGpWRoBr1+gFjKfHkJPbizabLgzE3pH7Iu4K980xgFvlrVzMZoVBWhtvouCDdcTDmTgMCJdVxJ9MKO6XxnliM7hxi5lbj2ZVM4l8DqYyKoNLYcfqBB1/LpHYxEcfVG6ZpMDgyFUVWY/Q1sSYPpIdSAKWqLWL0XqWiMWc4hpH0OQOMOAgdycY4N9Sb7wWANQs3rsDSdLAYiuxi5siVfOhBWIrtH0G3kNaF/8Q4kCPE1kMucG/ZMUBUCOgiKJkPuWWTLGVgLGpwns1DraUayCtoBqERyaYtVsm85NActRooezvSLO/sKZP/nq8n4+xcyjNsRu8zW6KWpdb7wjiQd4WrtFZYFiKHENSmWp6xshh96c2RQ+c7Lt+qbijyEjHWUJ/pZsy8MGIUuzNiPySK2Gqoh6ZTRF6ko6q3nVTkaA//itIrDpW6l3SLo8juOmqMXkYknu5FdQxWbhCfKHEGDhxxyTVaXJF3ZjSl3jMksjSOOKmne9pI+mcG5QvaUJhI9HpkmRo2NpCrDJvsktRhRE2MM6F2n7dt4OaMUq8bCctk0+PoMRzL+1l5PZ2eyM/Owr86gf8z/tOM53lom5+nVcFuB+eJVzlXwAYy9TZ9s537tfqcsJWbEU4nBngZo6FfO9T9CdhfBtmk2dLiAy8uS4zwOpMx2HqYbTC+amNeAYTpsP4SIgvWfUBWXxn3CMHW3ffd7k3+YIkx7w0t/CVGvcPejoeOlzOWzeGbawOHqXQGUTMZRcfj4XPCgW9y/fuvVn8zD9P1QHzv80uAAQA0i3Jer7Jr7gAAAABJRU5ErkJggg==') 99% 10px no-repeat;border-top:1px solid #DDD}#netteBluescreen .highlight{background:#CD1818;color:white;font-weight:bold;font-style:normal;display:block;padding:0 .4em;margin:0 -.4em}#netteBluescreen .line{color:#9F9C7F;font-weight:normal;font-style:normal}#netteBluescreen a[href^=editor\:]{color:inherit;border-bottom:1px dotted #328ADC}</style>
+</head>
+
+
+
+<body>
+<div id="netteBluescreen">
+	<a id="netteBluescreenIcon" href="#" rel="next"><abbr>&#x25bc;</abbr></a
+
+	><div>
+		<div id="netteBluescreenError" class="panel">
+			<h1>InvalidStateException</h1>
+
+			<p>session_start(): ps_files_cleanup_dir: opendir(/var/lib/php5) failed: Permission denied (13)</p>
+		</div>
+
+
+
+				
+			
+												<div class="panel">
+			<h2><a href="#" rel="netteBsPnl1">Source file <abbr>&#x25ba;</abbr></a></h2>
+
+			<div id="netteBsPnl1" class="nette-collapsed inner">
+				<p><b>File:</b> <a href="editor://open/?file=%2Fvar%2Fwww%2Fwebtoad%2Finterierdecor%2Flibs%2FNette%2FNette%2Floader.php&amp;line=5163">				/var/www/webtoad/interierdecor/libs/Nette/Nette/loader.php</a> &nbsp; <b>Line:</b> 5163</p>
+				<pre><code><span style="color: #06B"><span style="color: #D24; font-weight: bold"><span class='line'>5156:</span>    </span><span style="color: #000">Object</span><span style="color: #D24; font-weight: bold">{const
+<span class='line'>5157:</span>    </span><span style="color: #000">DEFAULT_FILE_LIFETIME</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">10800</span><span style="color: #D24; font-weight: bold">;private</span><span style="color: #000">$regenerationNeeded</span><span style="color: #D24; font-weight: bold">;private
+<span class='line'>5158:</span>    static</span><span style="color: #000">$started</span><span style="color: #D24; font-weight: bold">;private</span><span style="color: #000">$options</span><span style="color: #D24; font-weight: bold">=array(</span><span style="color: #080">'referer_check'</span><span style="color: #D24; font-weight: bold">=&gt;</span><span style="color: #080">''</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #080">'use_cookies'</span><span style="color: #D24; font-weight: bold">=&gt;</span><span style="color: #000">1</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #080">'use_only_cookies'</span><span style="color: #D24; font-weight: bold">=&gt;</span><span style="color: #000">1</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #080">'use_trans_sid'</span><span style="color: #D24; font-weight: bold">=&gt;</span><span style="color: #000">0</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #080">'cookie_lifetime'</span><span style="color: #D24; font-weight: bold">=&gt;</span><span style="color: #000">0</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #080">'cookie_path'</span><span style="color: #D24; font-weight: bold">=&gt;</span><span style="color: #080">'/'</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #080">'cookie_domain'</span><span style="color: #D24; font-weight: bold">=&gt;</span><span style="color: #080">''</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #080">'cookie_secure'</span><span style="color: #D24; font-weight: bold">=&gt;</span><span style="color: #000">FALSE</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #080">'cookie_httponly'</span><span style="color: #D24; font-weight: bold">=&gt;</span><span style="color: #000">TRUE</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #080">'gc_maxlifetime'</span><span style="color: #D24; font-weight: bold">=&gt;</span><span style="color: #000">self</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">DEFAULT_FILE_LIFETIME</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #080">'cache_limiter'</span><span style="color: #D24; font-weight: bold">=&gt;</span><span style="color: #000">NULL</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #080">'cache_expire'</span><span style="color: #D24; font-weight: bold">=&gt;</span><span style="color: #000">NULL</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #080">'hash_function'</span><span style="color: #D24; font-weight: bold">=&gt;</span><span style="color: #000">NULL</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #080">'hash_bits_per_character'</span><span style="color: #D24; font-weight: bold">=&gt;</span><span style="color: #000">NULL</span><span style="color: #D24; font-weight: bold">);function
+<span class='line'>5159:</span>    </span><span style="color: #000">start</span><span style="color: #D24; font-weight: bold">(){if(</span><span style="color: #000">self</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">$started</span><span style="color: #D24; font-weight: bold">){return;}elseif(</span><span style="color: #000">self</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">$started</span><span style="color: #D24; font-weight: bold">===</span><span style="color: #000">NULL</span><span style="color: #D24; font-weight: bold">&amp;&amp;</span><span style="color: #000">defined</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'SID'</span><span style="color: #D24; font-weight: bold">)){throw
+<span class='line'>5160:</span>    new
+<span class='line'>5161:</span>    </span><span style="color: #000">InvalidStateException</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'A&nbsp;session&nbsp;had&nbsp;already&nbsp;been&nbsp;started&nbsp;by&nbsp;session.auto-start&nbsp;or&nbsp;session_start().'</span><span style="color: #D24; font-weight: bold">);}</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">configure</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">options</span><span style="color: #D24; font-weight: bold">);</span><span style="color: #000">Debug</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">tryError</span><span style="color: #D24; font-weight: bold">();</span><span style="color: #000">session_start</span><span style="color: #D24; font-weight: bold">();if(</span><span style="color: #000">Debug</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">catchError</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$e</span><span style="color: #D24; font-weight: bold">)){@</span><span style="color: #000">session_write_close</span><span style="color: #D24; font-weight: bold">();throw
+<span class='line'>5162:</span>    new
+<span class='highlight'>5163:    InvalidStateException($e-&gt;getMessage());}self::$started=TRUE;if($this-&gt;regenerationNeeded){session_regenerate_id(TRUE);$this-&gt;regenerationNeeded=FALSE;}unset($_SESSION['__NT'],$_SESSION['__NS'],$_SESSION['__NM']);$nf=&amp;$_SESSION['__NF'];if(empty($nf)){$nf=array('C'=&gt;0);}else{$nf['C']++;}$browserKey=$this-&gt;getHttpRequest()-&gt;getCookie('nette-browser');if(!$browserKey){$browserKey=String::random();}$browserClosed=!isset($nf['B'])||$nf['B']!==$browserKey;$nf['B']=$browserKey;$this-&gt;sendCookie();if(isset($nf['META'])){$now=time();foreach($nf['META']as$namespace=&gt;$metadata){if(is_array($metadata)){foreach($metadata
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"><span class='line'>5164:</span>    </span><span style="color: #D24; font-weight: bold">as</span><span style="color: #000">$variable</span><span style="color: #D24; font-weight: bold">=&gt;</span><span style="color: #000">$value</span><span style="color: #D24; font-weight: bold">){if((!empty(</span><span style="color: #000">$value</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #080">'B'</span><span style="color: #D24; font-weight: bold">])&amp;&amp;</span><span style="color: #000">$browserClosed</span><span style="color: #D24; font-weight: bold">)||(!empty(</span><span style="color: #000">$value</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #080">'T'</span><span style="color: #D24; font-weight: bold">])&amp;&amp;</span><span style="color: #000">$now</span><span style="color: #D24; font-weight: bold">&gt;</span><span style="color: #000">$value</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #080">'T'</span><span style="color: #D24; font-weight: bold">])||(</span><span style="color: #000">$variable</span><span style="color: #D24; font-weight: bold">!==</span><span style="color: #080">''</span><span style="color: #D24; font-weight: bold">&amp;&amp;</span><span style="color: #000">is_object</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$nf</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #080">'DATA'</span><span style="color: #D24; font-weight: bold">][</span><span style="color: #000">$namespace</span><span style="color: #D24; font-weight: bold">][</span><span style="color: #000">$variable</span><span style="color: #D24; font-weight: bold">])&amp;&amp;(isset(</span><span style="color: #000">$value</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #080">'V'</span><span style="color: #D24; font-weight: bold">])?</span><span style="color: #000">$value</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #080">'V'</span><span style="color: #D24; font-weight: bold">]:</span><span style="color: #000">NULL</span><span style="color: #D24; font-weight: bold">)!==</span><span style="color: #000">ClassReflection</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">from</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$nf</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #080">'DATA'</span><span style="color: #D24; font-weight: bold">][</span><span style="color: #000">$namespace</span><span style="color: #D24; font-weight: bold">][</span><span style="color: #000">$variable</span><span style="color: #D24; font-weight: bold">])-&gt;</span><span style="color: #000">getAnnotation</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'serializationVersion'</span><span style="color: #D24; font-weight: bold">))){if(</span><span style="color: #000">$variable</span><span style="color: #D24; font-weight: bold">===</span><span style="color: #080">''</span><span style="color: #D24; font-weight: bold">){unset(</span><span style="color: #000">$nf</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #080">'META'</span><span style="color: #D24; font-weight: bold">][</span><span style="color: #000">$namespace</span><span style="color: #D24; font-weight: bold">],</span><span style="color: #000">$nf</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #080">'DATA'</span><span style="color: #D24; font-weight: bold">][</span><span style="color: #000">$namespace</span><span style="color: #D24; font-weight: bold">]);continue
+<span class='line'>5165:</span>    </span><span style="color: #000">2</span><span style="color: #D24; font-weight: bold">;}unset(</span><span style="color: #000">$nf</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #080">'META'</span><span style="color: #D24; font-weight: bold">][</span><span style="color: #000">$namespace</span><span style="color: #D24; font-weight: bold">][</span><span style="color: #000">$variable</span><span style="color: #D24; font-weight: bold">],</span><span style="color: #000">$nf</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #080">'DATA'</span><span style="color: #D24; font-weight: bold">][</span><span style="color: #000">$namespace</span><span style="color: #D24; font-weight: bold">][</span><span style="color: #000">$variable</span><span style="color: #D24; font-weight: bold">]);}}}}}</span><span style="color: #000">register_shutdown_function</span><span style="color: #D24; font-weight: bold">(array(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #080">'clean'</span><span style="color: #D24; font-weight: bold">));}function
+<span class='line'>5166:</span>    </span><span style="color: #000">isStarted</span><span style="color: #D24; font-weight: bold">(){return(bool)</span><span style="color: #000">self</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">$started</span><span style="color: #D24; font-weight: bold">;}function
+<span class='line'>5167:</span>    </span><span style="color: #000">close</span><span style="color: #D24; font-weight: bold">(){if(</span><span style="color: #000">self</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">$started</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">clean</span><span style="color: #D24; font-weight: bold">();</span><span style="color: #000">session_write_close</span><span style="color: #D24; font-weight: bold">();</span><span style="color: #000">self</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">$started</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">FALSE</span><span style="color: #D24; font-weight: bold">;}}function
+<span class='line'>5168:</span>    </span><span style="color: #000">destroy</span><span style="color: #D24; font-weight: bold">(){if(!</span><span style="color: #000">self</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">$started</span><span style="color: #D24; font-weight: bold">){throw
+<span class='line'>5169:</span>    new
+<span class='line'>5170:</span>    </span><span style="color: #000">InvalidStateException</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'Session&nbsp;is&nbsp;not&nbsp;started.'</span><span style="color: #D24; font-weight: bold">);}</span><span style="color: #000">session_destroy</span><span style="color: #D24; font-weight: bold">();</span><span style="color: #000">$_SESSION</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">NULL</span><span style="color: #D24; font-weight: bold">;</span><span style="color: #000">self</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">$started</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">FALSE</span><span style="color: #D24; font-weight: bold">;if(!</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getHttpResponse</span><span style="color: #D24; font-weight: bold">()-&gt;</span><span style="color: #000">isSent</span><span style="color: #D24; font-weight: bold">()){</span><span style="color: #000">$params</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">session_get_cookie_params</span><span style="color: #D24; font-weight: bold">();</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getHttpResponse</span><span style="color: #D24; font-weight: bold">()-&gt;</span><span style="color: #000">deleteCookie</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">session_name</span><span style="color: #D24; font-weight: bold">(),</span><span style="color: #000">$params</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #080">'path'</span><span style="color: #D24; font-weight: bold">],</span><span style="color: #000">$params</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #080">'domain'</span><span style="color: #D24; font-weight: bold">],</span><span style="color: #000">$params</span><span style="color: #D24; font-weight: bold">[</span><span style="color: #080">'secure'</span><span style="color: #D24; font-weight: bold">]);}}function
+</span></span></code></pre>
+			</div></div>
+			
+
+
+									<div class="panel">
+				<h2><a href="#" rel="netteBsPnl2">Call stack <abbr>&#x25bc;</abbr></a></h2>
+
+				<div id="netteBsPnl2" class="inner">
+				<ol>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fvar%2Fwww%2Fwebtoad%2Finterierdecor%2Flibs%2FNette%2FNette%2Floader.php&amp;line=543" title="/var/www/webtoad/interierdecor/libs/Nette/Nette/loader.php">
+						Nette/<b>loader.php</b></a> (543)					
+					<a href="#" rel="netteBsSrc1-0">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+					Session->					start
+					()
+					</p>
+
+					
+
+											<pre class="nette-collapsed" id="netteBsSrc1-0"><code><span style="color: #06B"><span style="color: #D24; font-weight: bold"><span class='line'>536:</span>    </span><span style="color: #000">signalReceived</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$signal</span><span style="color: #D24; font-weight: bold">){if(</span><span style="color: #000">$signal</span><span style="color: #D24; font-weight: bold">===</span><span style="color: #080">'submit'</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">fireEvents</span><span style="color: #D24; font-weight: bold">();}else{throw
+<span class='line'>537:</span>    new
+<span class='line'>538:</span>    </span><span style="color: #000">BadSignalException</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">"Missing&nbsp;handler&nbsp;for&nbsp;signal&nbsp;'</span><span style="color: #000">$signal</span><span style="color: #080">'&nbsp;in&nbsp;</span><span style="color: #D24; font-weight: bold">{</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">reflection</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">name</span><span style="color: #D24; font-weight: bold">}</span><span style="color: #080">."</span><span style="color: #D24; font-weight: bold">);}}}class
+<span class='line'>539:</span>    </span><span style="color: #000">Application
+<span class='line'>540:</span>    </span><span style="color: #D24; font-weight: bold">extends
+<span class='line'>541:</span>    </span><span style="color: #000">Object</span><span style="color: #D24; font-weight: bold">{public
+<span class='line'>542:</span>    static</span><span style="color: #000">$maxLoop</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">20</span><span style="color: #D24; font-weight: bold">;public</span><span style="color: #000">$catchExceptions</span><span style="color: #D24; font-weight: bold">;public</span><span style="color: #000">$errorPresenter</span><span style="color: #D24; font-weight: bold">;public</span><span style="color: #000">$onStartup</span><span style="color: #D24; font-weight: bold">;public</span><span style="color: #000">$onShutdown</span><span style="color: #D24; font-weight: bold">;public</span><span style="color: #000">$onRequest</span><span style="color: #D24; font-weight: bold">;public</span><span style="color: #000">$onResponse</span><span style="color: #D24; font-weight: bold">;public</span><span style="color: #000">$onError</span><span style="color: #D24; font-weight: bold">;public</span><span style="color: #000">$allowedMethods</span><span style="color: #D24; font-weight: bold">=array(</span><span style="color: #080">'GET'</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #080">'POST'</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #080">'HEAD'</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #080">'PUT'</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #080">'DELETE'</span><span style="color: #D24; font-weight: bold">);private</span><span style="color: #000">$requests</span><span style="color: #D24; font-weight: bold">=array();private</span><span style="color: #000">$presenter</span><span style="color: #D24; font-weight: bold">;private</span><span style="color: #000">$context</span><span style="color: #D24; font-weight: bold">;function
+<span class='highlight'>543:    run(){$httpRequest=$this-&gt;getHttpRequest();$httpResponse=$this-&gt;getHttpResponse();$session=$this-&gt;getSession();if(!$session-&gt;isStarted()&amp;&amp;$session-&gt;exists()){$session-&gt;start();}if($this-&gt;allowedMethods){$method=$httpRequest-&gt;getMethod();if(!in_array($method,$this-&gt;allowedMethods,TRUE)){$httpResponse-&gt;setCode(IHttpResponse::S501_NOT_IMPLEMENTED);$httpResponse-&gt;setHeader('Allow',implode(',',$this-&gt;allowedMethods));echo'&lt;h1&gt;Method&nbsp;'.htmlSpecialChars($method).'&nbsp;is&nbsp;not&nbsp;implemented&lt;/h1&gt;';return;}}$request=NULL;$repeatedError=FALSE;do{try{if(count($this-&gt;requests)&gt;self::$maxLoop){throw
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"><span class='line'>544:</span>    new
+<span class='line'>545:</span>    </span><span style="color: #000">ApplicationException</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'Too&nbsp;many&nbsp;loops&nbsp;detected&nbsp;in&nbsp;application&nbsp;life&nbsp;cycle.'</span><span style="color: #D24; font-weight: bold">);}if(!</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">onStartup</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">);</span><span style="color: #000">$router</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getRouter</span><span style="color: #D24; font-weight: bold">();</span><span style="color: #000">Debug</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">addPanel</span><span style="color: #D24; font-weight: bold">(new
+<span class='line'>546:</span>    </span><span style="color: #000">RoutingDebugger</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$router</span><span style="color: #D24; font-weight: bold">,</span><span style="color: #000">$httpRequest</span><span style="color: #D24; font-weight: bold">));</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">$router</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">match</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$httpRequest</span><span style="color: #D24; font-weight: bold">);if(!</span><span style="color: #000">$request
+<span class='line'>547:</span>    </span><span style="color: #D24; font-weight: bold">instanceof
+<span class='line'>548:</span>    </span><span style="color: #000">PresenterRequest</span><span style="color: #D24; font-weight: bold">){</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">=</span><span style="color: #000">NULL</span><span style="color: #D24; font-weight: bold">;throw
+<span class='line'>549:</span>    new
+<span class='line'>550:</span>    </span><span style="color: #000">BadRequestException</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'No&nbsp;route&nbsp;for&nbsp;HTTP&nbsp;request.'</span><span style="color: #D24; font-weight: bold">);}if(</span><span style="color: #000">strcasecmp</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$request</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">getPresenterName</span><span style="color: #D24; font-weight: bold">(),</span><span style="color: #000">$this</span><span style="color: #D24; font-weight: bold">-&gt;</span><span style="color: #000">errorPresenter</span><span style="color: #D24; font-weight: bold">)===</span><span style="color: #000">0</span><span style="color: #D24; font-weight: bold">){throw
+</span></span></code></pre>
+					
+					</li>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fvar%2Fwww%2Fwebtoad%2Finterierdecor%2Fapp%2Fbootstrap.php&amp;line=56" title="/var/www/webtoad/interierdecor/app/bootstrap.php">
+						app/<b>bootstrap.php</b></a> (56)					
+					<a href="#" rel="netteBsSrc1-1">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+					Application->					run
+					()
+					</p>
+
+					
+
+											<pre  id="netteBsSrc1-1"><code><span style="color: #06B"><span style="color: #999; font-style: italic"><span class='line'>49:</span>    //&nbsp;Step&nbsp;4:&nbsp;Setup&nbsp;application&nbsp;router
+<span class='line'>50:</span>    </span><span style="color: #000">AppRouter</span><span style="color: #D24; font-weight: bold">::</span><span style="color: #000">initialize</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #000">$application</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>51:</span>    
+<span class='line'>52:</span>    </span><span style="color: #000">define</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">"LANG"</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #080">"cs"</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>53:</span>    
+<span class='line'>54:</span>    
+<span class='line'>55:</span>    </span><span style="color: #999; font-style: italic">//&nbsp;Step&nbsp;5:&nbsp;Run&nbsp;the&nbsp;application!
+<span class='highlight'>56:    $application-&gt;run();
+</span></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"><span class='line'>57:</span>    </span>
+</span></code></pre>
+					
+					</li>
+										<li><p>
+
+											<a href="editor://open/?file=%2Fvar%2Fwww%2Fwebtoad%2Finterierdecor%2Findex.php&amp;line=19" title="/var/www/webtoad/interierdecor/index.php">
+						interierdecor/<b>index.php</b></a> (19)					
+					<a href="#" rel="netteBsSrc1-2">source <abbr>&#x25ba;</abbr></a>&nbsp; 
+										require
+					(<a href="#" rel="netteBsArgs1-2">arguments <abbr>&#x25ba;</abbr></a>)
+					</p>
+
+											<div class="nette-collapsed outer" id="netteBsArgs1-2">
+						<table>
+						<tr><th>#0</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor/app/bootstrap.php" (48)
+</pre></td></tr>
+						</table>
+						</div>
+					
+
+											<pre class="nette-collapsed" id="netteBsSrc1-2"><code><span style="color: #06B"><span style="color: #D24; font-weight: bold"><span class='line'>12:</span>    </span><span style="color: #999; font-style: italic">//&nbsp;absolute&nbsp;filesystem&nbsp;path&nbsp;to&nbsp;the&nbsp;libraries
+<span class='line'>13:</span>    </span><span style="color: #000">define</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'LIBS_DIR'</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">WWW_DIR&nbsp;</span><span style="color: #D24; font-weight: bold">.&nbsp;</span><span style="color: #080">'/libs'</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>14:</span>    
+<span class='line'>15:</span>    </span><span style="color: #999; font-style: italic">//&nbsp;absolute&nbsp;filesystem&nbsp;path&nbsp;to&nbsp;the&nbsp;temporary&nbsp;files
+<span class='line'>16:</span>    </span><span style="color: #000">define</span><span style="color: #D24; font-weight: bold">(</span><span style="color: #080">'TEMP_DIR'</span><span style="color: #D24; font-weight: bold">,&nbsp;</span><span style="color: #000">WWW_DIR&nbsp;</span><span style="color: #D24; font-weight: bold">.&nbsp;</span><span style="color: #080">'/temp'</span><span style="color: #D24; font-weight: bold">);
+<span class='line'>17:</span>    
+<span class='line'>18:</span>    </span><span style="color: #999; font-style: italic">//&nbsp;load&nbsp;bootstrap&nbsp;file
+<span class='highlight'>19:    require&nbsp;APP_DIR&nbsp;.&nbsp;'/bootstrap.php';
+</span></span><span style="color: #D24; font-weight: bold"></span><span style="color: #000"></span><span style="color: #D24; font-weight: bold"></span><span style="color: #080"></span><span style="color: #D24; font-weight: bold"><span class='line'>20:</span>    </span>
+</span></code></pre>
+					
+					</li>
+									</ol>
+			</div></div>
+			
+
+
+			
+
+
+			
+				
+
+
+				<div class="panel">
+		<h2><a href="#" rel="netteBsPnl3">Nette Application <abbr>&#x25ba;</abbr></a></h2>
+
+		<div id="netteBsPnl3" class="nette-collapsed inner">
+			<h3>Requests</h3>
+			<pre class="nette-dump"><span>array</span>(0) 
+</pre>
+			<h3>Presenter</h3>
+			<pre class="nette-dump">NULL
+</pre>		</div></div>
+		
+
+
+		<div class="panel">
+		<h2><a href="#" rel="netteBsPnl4">Environment <abbr>&#x25ba;</abbr></a></h2>
+
+		<div id="netteBsPnl4" class="nette-collapsed inner">
+						<h3><a href="#" rel="netteBsPnl-env-const">Constants <abbr>&#x25bc;</abbr></a></h3>
+			<div class="outer">
+			<table id="netteBsPnl-env-const">
+			<tr><th>SITE</th><td><pre class="nette-dump">""
+</pre></td></tr>
+<tr><th>WWW_DIR</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor" (30)
+</pre></td></tr>
+<tr><th>APP_DIR</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor/app" (34)
+</pre></td></tr>
+<tr><th>LIBS_DIR</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor/libs" (35)
+</pre></td></tr>
+<tr><th>TEMP_DIR</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor/temp" (35)
+</pre></td></tr>
+<tr><th>NETTE</th><td><pre class="nette-dump">TRUE
+</pre></td></tr>
+<tr><th>NETTE_DIR</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor/libs/Nette/Nette" (47)
+</pre></td></tr>
+<tr><th>NETTE_VERSION_ID</th><td><pre class="nette-dump">20000
+</pre></td></tr>
+<tr><th>NETTE_PACKAGE</th><td><pre class="nette-dump">"PHP 5.2" (7)
+</pre></td></tr>
+<tr><th>LANG</th><td><pre class="nette-dump">"cs" (2)
+</pre></td></tr>
+			</table>
+			</div>
+			
+
+			<h3><a href="#" rel="netteBsPnl-env-files">Included files <abbr>&#x25ba;</abbr></a> (14)</h3>
+			<div class="outer">
+			<table id="netteBsPnl-env-files" class="nette-collapsed">
+			<tr><td>/var/www/webtoad/interierdecor/index.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/app/bootstrap.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/Nette/Nette/loader.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/app/models/BaseModel.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/NotORM/NotORM.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/NotORM/NotORM/Structure.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/NotORM/NotORM/Cache.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/NotORM/NotORM/Literal.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/NotORM/NotORM/Result.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/NotORM/NotORM/MultiResult.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/NotORM/NotORM/Row.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/libs/NotORMPanel.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/app/AppRouter.php</td></tr>
+<tr><td>/var/www/webtoad/interierdecor/app/models/TagModel.php</td></tr>
+			</table>
+			</div>
+
+
+			<h3>$_SERVER</h3>
+						<div class="outer">
+			<table>
+			<tr><th>REDIRECT_STATUS</th><td><pre class="nette-dump">"200" (3)
+</pre></td></tr>
+<tr><th>HTTP_HOST</th><td><pre class="nette-dump">"localhost" (9)
+</pre></td></tr>
+<tr><th>HTTP_USER_AGENT</th><td><pre class="nette-dump">"Mozilla/5.0 (X11; Linux x86_64; rv:5.0) Gecko/20100101 Firefox/5.0" (66)
+</pre></td></tr>
+<tr><th>HTTP_ACCEPT</th><td><pre class="nette-dump">"application/json, text/javascript, */*; q=0.01" (46)
+</pre></td></tr>
+<tr><th>HTTP_ACCEPT_LANGUAGE</th><td><pre class="nette-dump">"cs,en-us;q=0.7,en;q=0.3" (23)
+</pre></td></tr>
+<tr><th>HTTP_ACCEPT_ENCODING</th><td><pre class="nette-dump">"gzip, deflate" (13)
+</pre></td></tr>
+<tr><th>HTTP_ACCEPT_CHARSET</th><td><pre class="nette-dump">"ISO-8859-2,utf-8;q=0.7,*;q=0.7" (30)
+</pre></td></tr>
+<tr><th>HTTP_CONNECTION</th><td><pre class="nette-dump">"keep-alive" (10)
+</pre></td></tr>
+<tr><th>HTTP_X_REQUESTED_WITH</th><td><pre class="nette-dump">"XMLHttpRequest" (14)
+</pre></td></tr>
+<tr><th>HTTP_REFERER</th><td><pre class="nette-dump">"http://localhost/webtoad/interierdecor/admin/product/new" (56)
+</pre></td></tr>
+<tr><th>HTTP_COOKIE</th><td><pre class="nette-dump">"__utma=1.819494922.1308229880.1310024696.1310027091.31; __utmz=1.1308229880.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmc=1; nette-debug-p ... " (233)
+</pre></td></tr>
+<tr><th>PATH</th><td><pre class="nette-dump">"/usr/local/bin:/usr/bin:/bin" (28)
+</pre></td></tr>
+<tr><th>SERVER_SIGNATURE</th><td><pre class="nette-dump">"&lt;address&gt;Apache/2.2.17 (Ubuntu) Server at localhost Port 80&lt;/address&gt;
+" (70)
+</pre></td></tr>
+<tr><th>SERVER_SOFTWARE</th><td><pre class="nette-dump">"Apache/2.2.17 (Ubuntu)" (22)
+</pre></td></tr>
+<tr><th>SERVER_NAME</th><td><pre class="nette-dump">"localhost" (9)
+</pre></td></tr>
+<tr><th>SERVER_ADDR</th><td><pre class="nette-dump">"::1" (3)
+</pre></td></tr>
+<tr><th>SERVER_PORT</th><td><pre class="nette-dump">"80" (2)
+</pre></td></tr>
+<tr><th>REMOTE_ADDR</th><td><pre class="nette-dump">"::1" (3)
+</pre></td></tr>
+<tr><th>DOCUMENT_ROOT</th><td><pre class="nette-dump">"/var/www" (8)
+</pre></td></tr>
+<tr><th>SERVER_ADMIN</th><td><pre class="nette-dump">"webmaster@localhost" (19)
+</pre></td></tr>
+<tr><th>SCRIPT_FILENAME</th><td><pre class="nette-dump">"/var/www/webtoad/interierdecor/index.php" (40)
+</pre></td></tr>
+<tr><th>REMOTE_PORT</th><td><pre class="nette-dump">"42664" (5)
+</pre></td></tr>
+<tr><th>REDIRECT_QUERY_STRING</th><td><pre class="nette-dump">"do=availableTags&amp;tagGroup=9" (27)
+</pre></td></tr>
+<tr><th>REDIRECT_URL</th><td><pre class="nette-dump">"/webtoad/interierdecor/admin/product/new" (40)
+</pre></td></tr>
+<tr><th>GATEWAY_INTERFACE</th><td><pre class="nette-dump">"CGI/1.1" (7)
+</pre></td></tr>
+<tr><th>SERVER_PROTOCOL</th><td><pre class="nette-dump">"HTTP/1.1" (8)
+</pre></td></tr>
+<tr><th>REQUEST_METHOD</th><td><pre class="nette-dump">"GET" (3)
+</pre></td></tr>
+<tr><th>QUERY_STRING</th><td><pre class="nette-dump">"do=availableTags&amp;tagGroup=9" (27)
+</pre></td></tr>
+<tr><th>REQUEST_URI</th><td><pre class="nette-dump">"/webtoad/interierdecor/admin/product/new?do=availableTags&amp;tagGroup=9" (68)
+</pre></td></tr>
+<tr><th>SCRIPT_NAME</th><td><pre class="nette-dump">"/webtoad/interierdecor/index.php" (32)
+</pre></td></tr>
+<tr><th>PHP_SELF</th><td><pre class="nette-dump">"/webtoad/interierdecor/index.php" (32)
+</pre></td></tr>
+<tr><th>REQUEST_TIME</th><td><pre class="nette-dump">1310112906
+</pre></td></tr>
+			</table>
+			</div>
+					</div></div>
+
+
+
+		<div class="panel">
+		<h2><a href="#" rel="netteBsPnl5">HTTP request <abbr>&#x25ba;</abbr></a></h2>
+
+		<div id="netteBsPnl5" class="nette-collapsed inner">
+						<h3>Headers</h3>
+			<div class="outer">
+			<table>
+			<tr><th>Host</th><td>localhost</td></tr>
+<tr><th>User-Agent</th><td>Mozilla/5.0 (X11; Linux x86_64; rv:5.0) Gecko/20100101 Firefox/5.0</td></tr>
+<tr><th>Accept</th><td>application/json, text/javascript, */*; q=0.01</td></tr>
+<tr><th>Accept-Language</th><td>cs,en-us;q=0.7,en;q=0.3</td></tr>
+<tr><th>Accept-Encoding</th><td>gzip, deflate</td></tr>
+<tr><th>Accept-Charset</th><td>ISO-8859-2,utf-8;q=0.7,*;q=0.7</td></tr>
+<tr><th>Connection</th><td>keep-alive</td></tr>
+<tr><th>X-Requested-With</th><td>XMLHttpRequest</td></tr>
+<tr><th>Referer</th><td>http://localhost/webtoad/interierdecor/admin/product/new</td></tr>
+<tr><th>Cookie</th><td>__utma=1.819494922.1308229880.1310024696.1310027091.31; __utmz=1.1308229880.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmc=1; nette-debug-panel-dumps=-320:-61; PHPSESSID=fiq5o30clb1ketusosnb27at25; nette-browser=5zr5lnvoo8</td></tr>
+			</table>
+			</div>
+			
+
+						<h3>$_GET</h3>
+						<div class="outer">
+			<table>
+			<tr><th>do</th><td><pre class="nette-dump">"availableTags" (13)
+</pre></td></tr>
+<tr><th>tagGroup</th><td><pre class="nette-dump">"9"
+</pre></td></tr>
+			</table>
+			</div>
+									<h3>$_POST</h3>
+						<p><i>empty</i></p>
+									<h3>$_COOKIE</h3>
+						<div class="outer">
+			<table>
+			<tr><th>__utma</th><td><pre class="nette-dump">"1.819494922.1308229880.1310024696.1310027091.31" (47)
+</pre></td></tr>
+<tr><th>__utmz</th><td><pre class="nette-dump">"1.1308229880.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)" (62)
+</pre></td></tr>
+<tr><th>__utmc</th><td><pre class="nette-dump">"1"
+</pre></td></tr>
+<tr><th>nette-debug-panel-dumps</th><td><pre class="nette-dump">"-320:-61" (8)
+</pre></td></tr>
+<tr><th>PHPSESSID</th><td><pre class="nette-dump">"fiq5o30clb1ketusosnb27at25" (26)
+</pre></td></tr>
+<tr><th>nette-browser</th><td><pre class="nette-dump">"5zr5lnvoo8" (10)
+</pre></td></tr>
+			</table>
+			</div>
+								</div></div>
+
+
+
+		<div class="panel">
+		<h2><a href="#" rel="netteBsPnl6">HTTP response <abbr>&#x25ba;</abbr></a></h2>
+
+		<div id="netteBsPnl6" class="nette-collapsed inner">
+			<h3>Headers</h3>
+						<pre>X-Powered-By: Nette Framework<br>Expires: Thu, 19 Nov 1981 08:52:00 GMT<br>Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0<br>Pragma: no-cache<br></pre>
+					</div></div>
+
+
+		<ul>
+			<li>Report generated at 2011/07/08 10:15:06</li>
+							<li><a href="http://localhost/webtoad/interierdecor/admin/product/new?do=availableTags&amp;tagGroup=9">http://localhost/webtoad/interierdecor/admin/product/new?do=availableTags&amp;tagGroup=9</a></li>
+						<li>PHP 5.3.5-1ubuntu7.2</li>
+			<li>Apache/2.2.17 (Ubuntu)</li>			<li>Nette Framework 2.0-dev <i>(revision 9f535f9 released on 2011-01-10)</i></li>		</ul>
+	</div>
+</div>
+
+<script type="text/javascript">/*<![CDATA[*/var bs=document.getElementById("netteBluescreen");document.body.appendChild(bs);document.onkeyup=function(b){b=b||window.event;b.keyCode==27&&bs.onclick({target:document.getElementById("netteBluescreenIcon")})};
+for(var i=0,styles=document.styleSheets;i<styles.length;i++)if((styles[i].owningElement||styles[i].ownerNode).className!=="nette"){styles[i].oldDisabled=styles[i].disabled;styles[i].disabled=true}else styles[i].addRule?styles[i].addRule(".nette-collapsed","display: none"):styles[i].insertRule(".nette-collapsed { display: none }",0);
+bs.onclick=function(b){b=b||window.event;for(var a=b.target||b.srcElement;a&&a.tagName&&a.tagName.toLowerCase()!=="a";)a=a.parentNode;if(!a||!a.rel)return true;for(var d=a.getElementsByTagName("abbr")[0],c=a.rel==="next"?a.nextSibling:document.getElementById(a.rel);c.nodeType!==1;)c=c.nextSibling;b=c.currentStyle?c.currentStyle.display=="none":getComputedStyle(c,null).display=="none";try{d.innerHTML=String.fromCharCode(b?9660:9658)}catch(e){}c.style.display=b?c.tagName.toLowerCase()==="code"?"inline":
+"block":"none";if(a.id==="netteBluescreenIcon"){a=0;for(d=document.styleSheets;a<d.length;a++)if((d[a].owningElement||d[a].ownerNode).className!=="nette")d[a].disabled=b?true:d[a].oldDisabled}return false};/*]]>*/</script>
+</body>
+</html>

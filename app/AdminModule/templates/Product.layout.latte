@@ -1,0 +1,82 @@
+{layout '@layout.latte'}
+
+{block #css}
+    {include #parent}
+    {control css '../texyla/css/style.css'}
+{/block}
+
+{block #js}
+    {include #parent}
+    <script type="text/javascript">
+        head.js("http://www.google.com/jsapi",
+                "{!$staticUri}/js/plupload.full.js",
+                "{!$staticUri}/js/cs.js",
+                "{!$staticUri}/js/jquery.tourl.js",
+                "{!$staticUri}/texyla/js/texyla.js",
+                "{!$staticUri}/texyla/js/selection.js",
+                "{!$staticUri}/texyla/js/texy.js",
+                "{!$staticUri}/texyla/js/buttons.js",
+                "{!$staticUri}/texyla/js/dom.js",
+                "{!$staticUri}/texyla/js/view.js",
+                "{!$staticUri}/texyla/js/ajaxupload.js",
+                "{!$staticUri}/texyla/js/window.js",
+                "{!$staticUri}/texyla/languages/cs.js",
+                "{!$staticUri}/texyla/plugins/table/table.js"
+        );
+    </script>
+{/block}
+
+{block layout}
+    <div id="product" class="container-fluid">
+        <div class="sidebar">
+            <div  class="pagination">
+            <ul>
+                <li class="prev"><a n:href="Product:">← Zpět na Přehled produktů</a></li>
+            </ul>
+            </div>
+            
+            <ul class="pills">
+                <li n:class="$presenter->isLinkCurrent('Product:edit') ? active"><a n:href="edit 'id'=> $product['id']">editovat produkt</a></li>
+                <li n:class="$presenter->isLinkCurrent('Product:images') ? active"><a n:href="images 'id'=> $product['id']">obrázky produktu ({$product->productPhoto()->where("NOT id",$product['productPhoto_id'])->count("*")|number})</a></li>
+                <li n:class="$presenter->isLinkCurrent('Product:visualisation') ? active"><a n:href="visualisation 'id'=> $product['id']">vizualizace</a></li>
+                <li n:class="$presenter->isLinkCurrent('Product:variants') ? active"><a n:href="variants 'id'=> $product['id']">varianty ({=BaseModel::fetchAll("product")->where("NOT productType_id",NULL)->where("productType_id",$product['productType_id'])->count("*")|number})</a></li>
+            </ul>
+
+            <a n:href="new 'id'=>$product['id']" class="btn success large">nová varianta</a><br><br>
+            <a class="btn danger large" n:href="delete! 'id'=>$product['id']">smazat produkt</a>
+
+        </div>
+        
+        <div class="content">
+            {include #content}
+        </div>
+       
+
+</div>
+{/block}
+
+{block #scripts}
+    {include #parent}
+    <script type="text/javascript">
+    head.ready(function() {
+    $(document).ready(function(){
+
+        var defaultOptions = {
+            baseDir: '{!$staticUri}/texyla',
+            previewPath: '{!$presenter->link("Texyla:preview")}',
+            filesPath: '{!$presenter->link("Texyla:listFiles")}',
+            filesUploadPath: '{!$presenter->link("Texyla:upload")}',
+            filesMkDirPath: '{!$presenter->link("Texyla:mkDir")}',
+            filesRenamePath: '{!$presenter->link("Texyla:rename")}',
+            filesDeletePath: '{$presenter->link("Texyla:delete")}',
+
+            toolbar: ['h2','h3','h4','bold', 'italic', null, 'ul', 'ol', null, 'sup','sub',null,'link', null, "table", null]
+        };
+        
+        $.texyla.setDefaults(defaultOptions);
+       
+    });
+    });
+    </script>
+{/block}
+

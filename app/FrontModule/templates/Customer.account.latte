@@ -1,0 +1,132 @@
+{var $title = 'editace zákazníka'}
+
+{block content}
+<div id="customer">
+    <div class="top">
+        <h1>{='Změna údajů zákazníka'|ucfirst}</h1>
+
+        <div class="clear"></div>
+        
+        <div id="breadcrumbs" n:inner-block="breadcrumbs">
+            <a n:href=":Front:Homepage:" n:class="first">
+                <div class="left"></div>
+                <div class="center">interierdecor</div>
+                <div class="right"></div>
+            </a>
+            <a n:href=":Front:Customer:" n:class="first">
+                <div class="left"></div>
+                <div class="center">zákaznický účet</div>
+                <div class="right"></div>
+            </a>
+            <a n:href=":Front:Customer:account" n:class="active">
+                <div class="left"></div>
+                <div class="center">změna údajů</div>
+                <div class="right"></div>
+            </a>
+        </div>
+        
+         <div class="clear"></div>
+        
+        <div class="menu">
+            <a n:href="default" n:class="$presenter->linkCurrent ? active">objednávky</a>
+            <a n:href="account" n:class="$presenter->linkCurrent ? active">moje údaje</a>
+            <a n:href="password" n:class="$presenter->linkCurrent ? active">změna hesla</a>
+        </div>
+    </div>
+    
+    <div class="mainpanel">
+        <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+        {control $form begin}
+        <!-- errors -->
+        {assign errors => $form->errors}
+        <ul class="error" n:if="$errors">
+            <li n:foreach="$errors as $error">{$error}</li>
+        </ul>
+
+        <div class="box">
+            <h2>{='osobní údaje'|upper}</h2>
+            <div class="cont form">
+                <div class="row">
+                    {$form['email']->label} {$form['email']->control} {if $form['email']->isRequired( )} * {/if}
+                </div>
+                <div class="row">
+                    {$form['name']->label} {$form['name']->control} {if $form['name']->isRequired( )} * {/if}
+                </div>
+                <div class="row">
+                    {$form['phone']->label} {$form['phone']->control} {if $form['phone']->isRequired( )} * {/if}
+                </div>
+
+                <span class="clear"></span>
+            </div>
+        </div>
+
+        <div class="box last">
+            <div class="h">{$form['iscompany']->control} nakupuji na firmu</div>
+            <div class="cont form" id="iscompany">
+                <div class="row">
+                    {$form['company']->label} {$form['company']->control} {if $form['company']->isRequired( )} * {/if}
+                </div>
+                <div class="row">
+                    {$form['ic']->label} {$form['ic']->control} {if $form['ic']->isRequired( )} * {/if}
+                </div>
+                <div class="row">
+                    {$form['dic']->label} {$form['dic']->control} {if $form['dic']->isRequired( )} * {/if}
+                </div>
+
+                <span class="clear"></span>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="box">
+            <h2><span id="iscompanyheading">{='firemní'|upper}</span> {='adresa'|upper}</h2>
+            <div class="cont form">
+                <div class="row">
+                    {$form['city']->label} {$form['city']->control} {if $form['city']->isRequired( )} * {/if}
+                </div>
+                <div class="row">
+                    {$form['street']->label} {$form['street']->control} {if $form['street']->isRequired( )} * {/if}
+                </div>
+                <div class="row">
+                    {$form['postcode']->label} {$form['postcode']->control} {if $form['postcode']->isRequired( )} * {/if}
+                </div> 
+
+                <span class="clear"></span>
+            </div>
+        </div>
+
+        <div class="box last">
+            <div class="h">{$form['shipaddress']->control} doručit jinam</div>
+            <div class="cont form" id="shipaddress">
+                <div class="row">
+                    {$form['shipcity']->label} {$form['shipcity']->control} {if $form['shipcity']->isRequired( )} * {/if}
+                </div>
+                <div class="row">
+                    {$form['shipstreet']->label} {$form['shipstreet']->control} {if $form['shipstreet']->isRequired( )} * {/if}
+                </div>
+                <div class="row">
+                    {$form['shippostcode']->label} {$form['shippostcode']->control} {if $form['shippostcode']->isRequired( )} * {/if}
+                </div>
+
+                <span class="clear"></span>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+        <div n:class="move,next">
+            <div class="center">
+                <div class="text">{$form['submit']->control}</div>
+                <div class="number next3"></div>
+            </div>
+            <div class="right"></div>
+        </div>
+
+        <div class="clear"></div>
+
+        {control $form end}
+
+    </div>
+</div>
+{/block}

@@ -45,7 +45,7 @@ class NotORM_Result extends NotORM_Abstract implements Iterator, ArrayAccess, Co
 	}
 	
 	protected function removeExtraDots($expression) {
-		return preg_replace('~\\b[a-z_][a-z0-9_.]*\\.([a-z_][a-z0-9_]*\\.[a-z_])~i', '\\1', $expression); // rewrite tab1.tab2.col
+		return preg_replace('~\\b[a-z_][a-z0-9_.]*\\.([a-z_][a-z0-9_]*\\.[a-z_*])~i', '\\1', $expression); // rewrite tab1.tab2.col
 	}
 	
 	protected function whereString() {
@@ -84,7 +84,7 @@ class NotORM_Result extends NotORM_Abstract implements Iterator, ArrayAccess, Co
 	
 	protected function createJoins($val) {
 		$return = array();
-		preg_match_all('~\\b([a-z_][a-z0-9_.]*)\\.[a-z_]~i', $val, $matches, PREG_SET_ORDER);
+		preg_match_all('~\\b([a-z_][a-z0-9_.]*)\\.[a-z_*]~i', $val, $matches, PREG_SET_ORDER);
 		foreach ($matches as $match) {
 			$parent = $this->table;
 			if ($match[1] != $parent) { // case-sensitive
@@ -191,7 +191,7 @@ class NotORM_Result extends NotORM_Abstract implements Iterator, ArrayAccess, Co
 		if (!is_array($data)) {
 			return $return->rowCount();
 		}
-		if (!isset($data[$this->primary]) && ($id = $this->notORM->connection->lastInsertId())) {
+		if (!isset($data[$this->primary]) && ($id = $this->notORM->connection->lastInsertId($this->notORM->structure->getSequence($this->table)))) {
 			$data[$this->primary] = $id;
 		}
 		return new NotORM_Row($data, $this);
@@ -219,6 +219,48 @@ class NotORM_Result extends NotORM_Abstract implements Iterator, ArrayAccess, Co
 			return false;
 		}
 		return $return->rowCount();
+	}
+	
+	/** Insert row or update if it already exists
+	* @param array ($column => $value)
+	* @param array ($column => $value)
+	* @param array ($column => $value), empty array means use $insert
+	* @return int number of affected rows or false in case of an error
+	*/
+	function insert_update(array $unique, array $insert, array $update = array()) {
+		if (!$update) {
+			$update = $insert;
+		}
+		$insert = $unique + $insert;
+		$values = "(" . implode(", ", array_keys($insert)) . ") VALUES (" . implode(", ", array_map(array($this, 'quote'), $insert)) . ")";
+		if ($this->notORM->driver == "mysql") {
+			$set = array();
+			foreach ($update as $key => $val) {
+				$set[] = "$key = " . $this->quote($val);
+			}
+			return $this->insert("$values ON DUPLICATE KEY UPDATE " . implode(", ", $set));
+		} else {
+			$connection = $this->notORM->connection;
+			$errorMode = $connection->getAttribute(PDO::ATTR_ERRMODE);
+			$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			try {
+				$return = $this->insert($values);
+				$connection->setAttribute(PDO::ATTR_ERRMODE, $errorMode);
+				return $return;
+			} catch (PDOException $e) {
+				$connection->setAttribute(PDO::ATTR_ERRMODE, $errorMode);
+				if ($e->getCode() == "23000") { // "23000" - duplicate key
+					$clone = clone $this;
+					$return = $clone->where($unique)->update($update);
+					return ($return ? $return + 1 : $return);
+				}
+				if ($errorMode == PDO::ERRMODE_EXCEPTION) {
+					throw $e;
+				} elseif ($errorMode == PDO::ERRMODE_WARNING) {
+					trigger_error("PDOStatement::execute(): " . $e->getMessage(), E_USER_WARNING); // E_WARNING is unusable
+				}
+			}
+		}
 	}
 	
 	/** Delete all rows in result set
@@ -366,6 +408,7 @@ class NotORM_Result extends NotORM_Abstract implements Iterator, ArrayAccess, Co
 	*/
 	function union(NotORM_Result $result, $all = false) {
 		$this->union[] = " UNION " . ($all ? "ALL " : "") . ($this->notORM->driver == "sqlite" || $this->notORM->driver == "oci" ? $result : "($result)");
+		$this->parameters = array_merge($this->parameters, $result->parameters);
 		return $this;
 	}
 	
@@ -477,7 +520,8 @@ class NotORM_Result extends NotORM_Abstract implements Iterator, ArrayAccess, Co
 		$return = array();
 		$clone = clone $this;
 		if ($value != "") {
-			$clone->select = array($key, $value);
+			$clone->select = array();
+			$clone->select("$key, $value"); // MultiResult adds its column
 		} elseif ($clone->select) {
 			array_unshift($clone->select, $key);
 		} else {

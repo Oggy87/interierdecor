@@ -1,0 +1,76 @@
+{var $title = 'registrace nového zákazníka'}
+
+{block content}
+<div id="customer">
+    <div class="top">
+        <h1>{='Registrace nového zákazníka'|ucfirst}</h1>
+
+        <div class="clear"></div>
+        
+        <div id="breadcrumbs" n:inner-block="breadcrumbs">
+            <a n:href=":Front:Homepage:" n:class="first">
+                <div class="left"></div>
+                <div class="center">interierdecor</div>
+                <div class="right"></div>
+            </a>
+            <a n:href=":Front:Customer:register" n:class="active">
+                <div class="left"></div>
+                <div class="center">registrace</div>
+                <div class="right"></div>
+            </a>
+        </div>
+        
+        <div class="clear"></div>
+    </div>
+    
+    <div class="mainpanel">
+        <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+        {control $form begin}
+    
+        <!-- errors -->
+        {assign errors => $form->errors}
+        <ul class="error" n:if="$errors" n:block="#entryerrors">
+            <li n:foreach="$errors as $error">{$error}</li>
+        </ul>
+
+        <div class="fullbox">
+            <h2>Získat pohodlnou objednávku s předvyplněnými údaji</h2>
+            <div class="cont">
+                <div class="row">
+                    <div>
+                        {$form['email']->label}
+                        {$form['email']->control}
+                    </div>
+                    <div>
+                        {$form['password']->label}
+                        {$form['password']->control}
+                    </div>
+                </div>
+            </div>
+            <div class="cont">
+                <div class="row">
+                    <div>
+                        {$form['name']->label}
+                        {$form['name']->control}
+                    </div>
+                    <div>
+                        {$form['surname']->label}
+                        {$form['surname']->control}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="move next">
+            <div class="center">
+                <div class="text">
+                    {$form['send']->control}
+                </div>
+            </div>
+            <div class="right"></div>
+        </div>
+
+        {control $form end}
+    </div>
+</div>
+{/block}

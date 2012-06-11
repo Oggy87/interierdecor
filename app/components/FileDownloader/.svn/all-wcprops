@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/Nette_FileDownloader/!svn/ver/64/trunk/FileDownloader
+END
+FDTools.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/Nette_FileDownloader/!svn/ver/64/trunk/FileDownloader/FDTools.php
+END
+mime.ini
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/Nette_FileDownloader/!svn/ver/41/trunk/FileDownloader/mime.ini
+END
+BaseFileDownload.php
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Nette_FileDownloader/!svn/ver/63/trunk/FileDownloader/BaseFileDownload.php
+END
+FileDownload.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Nette_FileDownloader/!svn/ver/40/trunk/FileDownloader/FileDownload.php
+END
+IDownloader.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/Nette_FileDownloader/!svn/ver/40/trunk/FileDownloader/IDownloader.php
+END
+AppFileDownload.php
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Nette_FileDownloader/!svn/ver/41/trunk/FileDownloader/AppFileDownload.php
+END

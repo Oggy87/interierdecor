@@ -1,0 +1,78 @@
+{extends 'Basket.layout.latte'}
+
+{var $title = 'objednávka odeslána'}
+
+{block breadcrumbs}
+    {include #parent}
+    <a n:href=":Front:Basket:">
+        <div class="left"></div>
+        <div class="center">košík / objednávka</div>
+        <div class="right"></div>
+    </a>
+    <a n:href=":Front:Basket:address">
+        <div class="left"></div>
+        <div class="center">dodací údaje</div>
+        <div class="right"></div>
+    </a>
+    <a n:href=":Front:Basket:preview">
+        <div class="left"></div>
+        <div class="center">náhled objednávky</div>
+        <div class="right"></div>
+    </a>
+    <a n:href=":Front:Basket:order" n:class="active">
+        <div class="left"></div>
+        <div class="center">objednávka odeslána</div>
+        <div class="right"></div>
+    </a>
+{/block}
+
+{block flashes}
+
+{/block}
+
+{block main}
+    <div class="fullbox">
+        <h1>{='děkujeme za objednávku'|upper}</h1>
+        <div class="cont">
+            <div n:foreach="$flashes as $flash" class="flashstatic {$flash->type}">{$flash->message}</div>
+        </div>
+    </div>
+{/block}
+
+{block #scripts}
+    {include #parent}
+    {ifset $order}
+    <script type="text/javascript">
+            //head.ready(function(){
+            {block #ga}
+              _gaq.push(['_addTrans',
+                {$order['id']},           // order ID - required
+                //'Acme Clothing',  // affiliation or store name
+                {$order['total'] * (1-$order['dph'])},          // total - required
+                {$order['dph'] * $order['total']},           // tax
+                {$order['shippingPrice']},              // shipping
+                {$order['city']},       // city
+                //'California',     // state or province
+                //'USA'             // country
+              ]);
+
+               // add item might be called for every item in the shopping cart
+               // where your ecommerce engine loops through each item in the cart and
+               // prints out _addItem for each
+              {foreach BaseModel::fetchAll("saleProduct")->where("sale_id",$order['id']) as $saleProduct} 
+              _gaq.push(['_addItem',
+                {$order['id']},           // order ID - required
+                {$saleProduct['product_id']},           // SKU/code - required
+                {$saleProduct['name']},        // product name
+                {$saleProduct->product->category['name']},   // category or variation
+                {$saleProduct['price']},          // unit price - required
+                {$saleProduct['amount']}               // quantity - required
+              ]);
+              {/foreach}
+              _gaq.push(['_trackTrans']); //submits transaction to the Analytics servers
+              {/block}
+              //});
+        </script>
+    {/ifset}
+{/block}
+

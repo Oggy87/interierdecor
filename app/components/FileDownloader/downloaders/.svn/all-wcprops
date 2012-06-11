@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/Nette_FileDownloader/!svn/ver/58/trunk/FileDownloader/downloaders
+END
+BaseDownloader.php
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/Nette_FileDownloader/!svn/ver/45/trunk/FileDownloader/downloaders/BaseDownloader.php
+END
+NativePHPDownloader.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Nette_FileDownloader/!svn/ver/58/trunk/FileDownloader/downloaders/NativePHPDownloader.php
+END
+AdvancedDownloader.php
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Nette_FileDownloader/!svn/ver/56/trunk/FileDownloader/downloaders/AdvancedDownloader.php
+END

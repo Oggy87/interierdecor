@@ -1,0 +1,127 @@
+{var $title = 'Nová skupina štítků'}
+
+{block #js}
+    {include #parent}
+    <script type="text/javascript">
+        head.js("{!$staticUri}/js/jquery.tourl.js");
+    </script>
+{/block}
+
+{block layout}
+    <div id="product" class="container-fluid">
+        <div class="sidebar">
+            <div  class="pagination">
+            <ul>
+                <li class="prev"><a n:href="TagGroup:">← Zpět na Přehled skupin</a></li>
+            </ul>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="page-header">
+                <h1>Nová skupina štítků</h1>
+            </div>
+            
+            
+            {snippet flashes}
+            <div n:foreach="$flashes as $flash" class="flash alert-message {$flash->type}">
+                <a class="close" href="#">×</a>
+                {$flash->message}
+            </div>
+            {/snippet}
+            
+            {control $form begin}
+            
+            {snippet formerrors}
+                {assign errors => $form->errors}
+                <div class="alert-message error block-message"  n:if="$errors" n:block="#entryerrors">
+                    <ul>
+                        <li n:foreach="$errors as $error">{$error}</li>
+                    </ul>
+                </div>
+            {/snippet}
+            
+            <div class="row">
+                <div class="span8">
+                    <fieldset>
+                        <div class="clearfix">
+                            {$form['category_tagGroup']['category_id']->label}
+                            <div class="input">
+                                {$form['category_tagGroup']['category_id']->control}
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            {$form['tagGroup']['name']->label}
+                            <div class="input">
+                                {$form['tagGroup']['name']->control}
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            {$form['tagGroup']['url_slug']->label}
+                            <div class="input">
+                                {$form['tagGroup']['url_slug']->control}
+                            </div>
+                        </div>
+                         <div class="clearfix">
+                            {$form['category_tagGroup']['sort']->label}
+                            <div class="input">
+                                {$form['category_tagGroup']['sort']->control}
+                            </div>
+                        </div>
+   
+                        <div class="clearfix">
+                            <div class="input">
+                                <div class="inputs-list">
+                                    <label>
+                                        {$form['tagGroup']['filter']->control}
+                                        <span>{$form['tagGroup']['filter']->label->getText()}</span>
+                                    </label>
+                                     <label>
+                                        {$form['tagGroup']['images']->control}
+                                        <span>{$form['tagGroup']['images']->label->getText()}</span>
+                                    </label>
+                                     <label>
+                                        {$form['category_tagGroup']['hp']->control}
+                                        <span>{$form['category_tagGroup']['hp']->label->getText()}</span>
+                                    </label>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                    </fieldset>
+                    
+                </div>
+            </div>
+
+            
+            <div class="actions">
+                
+                {if isset($form['sendNext'])}{$form['sendNext']->control->class('btn primary large')}{/if}
+                {$form['send']->control->class('btn primary large')}
+            </div>
+
+            {control $form end}
+            
+        </div>
+       
+
+</div>
+{/block}
+
+{block #scripts}
+    {include #parent}
+    <script type="text/javascript">
+    head.ready(function() {
+    $(document).ready(function(){
+
+
+        $('[name="tagGroup[name]"]').tourl({ id : 'frmnewTagGroup-tagGroup-url_slug'});
+
+      
+
+    });
+    });
+    </script>
+{/block}
+

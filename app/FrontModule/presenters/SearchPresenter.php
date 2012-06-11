@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * My Application
+ *
+ * @copyright  Copyright (c) 2010 John Doe
+ * @package    MyApplication
+ */
+
+
+
+/**
+ * Homepage presenter.
+ *
+ * @author     John Doe
+ * @package    MyApplication
+ */
+class Front_SearchPresenter extends Front_BasePresenter
+{
+
+
+    public function renderDefault($text) {
+        $this['searchForm']['text']->setDefaultValue($text);
+        
+        $this->template->products = BaseModel::fetchAll('product')->where("active",1)
+                                                ->where("LOWER(name) LIKE LOWER(?)",'%'.$text.'%');
+        
+        
+        $paginator = $this['stranka']->getPaginator();
+        $paginator->itemCount = $this->template->products->count('*');
+        $this->template->products->limit($paginator->itemsPerPage, $paginator->offset);
+    }
+    
+    protected function createComponentStranka($name) {
+        $vp = new VisualPaginator();
+        $vp->paginator->itemsPerPage = 12;
+
+        return $vp;
+    }
+}

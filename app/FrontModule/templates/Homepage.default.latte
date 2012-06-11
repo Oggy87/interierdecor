@@ -1,3 +1,72 @@
-{* This is temporary page, you can delete it *}
-{var $title = 'esho'}
-{block content}
+{var $title = 'Eshop'}
+
+<div id="hp" n:block="content">
+
+    <div class="top">
+        <h1>Chcete dát interiéru svého bytu či domu moderní vzhled?</h1>
+        <blockquote>
+        Oblékněte jej do unikátních tapet, vybavte jej moderním nábytkem a podlahou,
+        dodekurjte jej designovými doplňky a ukažte jej v tom pravém světle.
+        </blockquote>
+    </div>
+
+    <div class="mainpanel" n:inner-block="main">
+        <a n:href=":Front:Category: 'id' =>Front_HomepagePresenter::TAPETY_ID" class="category-main" id="tapety">
+            <span>Tapety</span>
+        </a>
+        <a n:href=":Front:Category: 'id' => Front_HomepagePresenter::OSVETLENI_ID" class="category" id="osvetleni">
+            <span>Osvětlení</span>
+        </a>
+        <a n:href=":Front:Category: 'id' => Front_HomepagePresenter::PODLAHY_ID" class="category even" id="podlahy">
+            <span>Podlahy</span>
+        </a>
+        <a n:href=":Front:Category: 'id' => Front_HomepagePresenter::NABYTEK_ID" class="category" id="nabytek">
+            <span>Nábytek</span>
+        </a>
+        <a n:href=":Front:Category: 'id' => Front_HomepagePresenter::DOPLNKY_ID" class="category even" id="doplnky">
+            <span>Doplňky</span>
+        </a>
+    </div>
+
+    <div class="leftpanel" n:inner-block="left">
+        <div class="virtualisation">
+            <h2>{='unikátní vizualizace tapet'|upper}</h2>
+            <p>“ Chcete vidět naše tapety přímo v interiéru? Promítněte si je v
+            pomocí naší <a n:href="Visualisation:">vizualizace</a> přímo na stěnu. ”</p>
+            <a class="button-virtualisation" n:href="Visualisation:">Vizualizace tapet</a>
+        </div>
+
+        <div class="textbox text">
+            <h2>{='Designové studio Interier Decor'|upper}</h2>
+            <p>je specialistou v oblasti designu interiérů. Nabízíme široké spektrum
+            designových prvků. Naší specialitou jsou unikátní <a n:href=":Front:Category: 'id' => Front_HomepagePresenter::TAPETY_ID">moderní tapety na
+            zeď</a>, které dodají Vašemu interiéru jedinečnost a nový rozměr. </p>
+            <p>Váš interiér vybavíme také <a n:href=":Front:Category: 'id' => Front_HomepagePresenter::DOPLNKY_ID">dekorativními doplňky</a>, <a n:href=":Front:Category: 'id' => Front_HomepagePresenter::NABYTEK_ID">moderním nábytkem</a>,
+            <a n:href=":Front:Category: 'id' => Front_HomepagePresenter::PODLAHY_ID">podlahami</a> a <a n:href=":Front:Category: 'id' => Front_HomepagePresenter::OSVETLENI_ID">designovými svítidly a osvětlením</a>.</p>
+            <img class="fleft" src="{$staticUri}/images/katalogy.png" width="151" height="108" alt="katalogy">
+            {*<div class="fleft">
+                <h3>Vše o tapetách</h3>
+                <ul>
+                    <li><a n:href="">Text</a></li>
+                    <li><a n:href="">Text</a></li>
+                    <li><a n:href="">Text</a></li>
+                    <li><a n:href="">Text</a></li>
+                </ul>
+            </div>*}
+            <div class="fleft last">
+                <h3>O nás</h3>
+                <ul>
+                   {* <li><a n:href="">Novinky</a></li>*}
+                    <li><a n:href="Contact:">Kontakt</a></li>
+                   {* <li><a n:href="">Text</a></li>*}
+                </ul>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+</div>
+
+{block #modalvisual}{/block}

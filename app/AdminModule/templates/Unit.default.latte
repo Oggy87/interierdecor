@@ -1,0 +1,146 @@
+{var $title = 'jednotky'}
+
+{block #js}
+    {include #parent}
+    <script type="text/javascript">
+        head.js("{!$staticUri}/js/datagrid.js");
+        
+    head.ready(function() {
+    $(document).ready(function(){
+
+        $('a[title=smazat]').livequery( function() {
+            $(this).click(function() {
+                $('#snippet-confirmForm-').dialog('open');
+            });
+        });
+        
+        $("a[title=editovat]").livequery('click',function(){
+            $("#modal-edit").modal({ backdrop:true,show:true });
+        })
+
+        $("#snippet-confirmForm-").dialog("destroy");
+
+        $("#snippet-confirmForm-").dialog({
+                            autoOpen: false,
+                            modal: true,
+                            title: 'Potvrzení akce',
+                            width:590,
+                            buttons: {
+
+                            }
+        });
+
+        $("#frmform-no").livequery('click', function(event) {
+            event.preventDefault();
+            $("#snippet-confirmForm-").dialog('close')
+        });
+
+    });
+    });
+    </script>
+{/block}
+
+{block layout}
+<div class="container-fluid">
+    <div class="sidebar">
+        
+        <div class="well">
+            <a data-controls-modal="modal-new"  data-backdrop="static" href="#" class="btn large primary">nová jednotka</a>
+        </div>
+        
+        
+      {*  <div class="well">
+            
+            <h5>produkty v kategorii:</h5>
+            <ul>
+                <li n:foreach="CategoryModel::fetch() as $category"><a n:href="Category: 'id' => $category['id'], 'tags' => NULL" n:class="$presenter->linkCurrent ? active">{$category['name']|lower}</a></li>
+          </ul>
+        </div>*}
+    </div>
+    <div class="content">
+        <div class="page-header">
+            <h1>Jednotky</h1>
+        </div>
+        
+        {snippet flashes}
+            <div n:foreach="$flashes as $flash" class="flash alert-message {$flash->type}">
+                <a class="close" href="#">×</a>
+                {$flash->message}
+            </div>
+        {/snippet}
+            
+        {snippet grid}{control unitsGrid}{/snippet}
+
+        {control confirmForm}
+    </div>
+    
+    <div class="modal hide fade" id="modal-new" style="display: none;">
+        {snippet new}
+        {control $unitform  begin}
+        <div class="modal-header">
+            <a class="close" href="#">×</a>
+            <h3>Nová jednotka</h3>
+        </div>
+        <div class="modal-body">
+            <!-- errors -->
+            {snippet errorsnew}
+            <div n:if="$unitform->hasErrors()">
+                <div class="alert-message error" n:foreach="$unitform->errors as $error">{$error}</div>
+            </div>
+            {/snippet}
+
+            <fieldset>
+                <div class="clearfix">
+                    {$unitform['name']->label}
+                    <div class="input">{$unitform['name']->control}</div>
+                </div>
+                <div class="clearfix">
+                    {$unitform['deci']->label}
+                    <div class="input">
+                        {$unitform['deci']->control}
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="modal-footer">
+            {$unitform['save']->control->class('btn primary')}
+        </div>
+        {control $unitform end}
+        {/snippet}
+    </div>
+    <div class="modal hide fade" id="modal-edit" style="display: none;">
+        {snippet edit}
+        {control $editform  begin}
+        <div class="modal-header">
+            <a class="close" href="#">×</a>
+            <h3>Editovat jednotku</h3>
+        </div>
+        <div class="modal-body">
+            <!-- errors -->
+            {snippet errorsedit}
+            <div n:if="$editform->hasErrors()">
+                <div class="alert-message error" n:foreach="$editform->errors as $error">{$error}</div>
+            </div>
+            {/snippet}
+            {$editform['id']->control}
+            <fieldset>
+                <div class="clearfix">
+                    {$editform['name']->label}
+                    <div class="input">{$editform['name']->control}</div>
+                </div>
+                <div class="clearfix">
+                    {$editform['deci']->label}
+                    <div class="input">
+                        {$editform['deci']->control}
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="modal-footer">
+            {$editform['save']->control->class('btn primary')}
+        </div>
+        {control $editform end}
+        {/snippet}
+    </div>
+</div>
+

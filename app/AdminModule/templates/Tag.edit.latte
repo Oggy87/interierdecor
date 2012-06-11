@@ -1,0 +1,101 @@
+{var $title = 'Editovat štítek'}
+
+{block #js}
+    {include #parent}
+    <script type="text/javascript">
+        head.js("http://www.google.com/jsapi",
+                "{!$staticUri}/js/plupload.full.js",
+                "{!$staticUri}/js/jquery.plupload.queue.js",
+                "{!$staticUri}/js/cs.js",
+                "{!$staticUri}/js/jquery.tourl.js"
+                
+        );
+    </script>
+{/block}
+
+{block layout}
+    <div id="product" class="container-fluid">
+        <div class="sidebar">
+            <div  class="pagination">
+            <ul>
+                <li class="prev"><a n:href="Tag:">← Zpět na Přehled štítků</a></li>
+            </ul>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="page-header">
+                <h1>Editovat štítek {$tag['value']}</h1>
+            </div>
+            
+            
+            {snippet flashes}
+            <div n:foreach="$flashes as $flash" class="flash alert-message {$flash->type}">
+                <a class="close" href="#">×</a>
+                {$flash->message}
+            </div>
+            {/snippet}
+            
+            {control $form begin}
+            
+            {snippet formerrors}
+                {assign errors => $form->errors}
+                <div class="alert-message error block-message"  n:if="$errors">
+                    <ul>
+                        <li n:foreach="$errors as $error">{$error}</li>
+                    </ul>
+                </div>
+            {/snippet}
+            {$form['tag']['tagGroup_id']->control}
+            <div class="row">
+                <div class="span8">
+                    <fieldset>
+                        <div class="clearfix">
+                           {$form['tag']['value']->label}
+                            <div class="input">
+                                {$form['tag']['value']->control}
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            {$form['tag']['url_slug']->label}
+                            <div class="input">
+                                {$form['tag']['url_slug']->control}
+                            </div>
+                        </div>
+                        {$form['image']['name']->control}
+                        {$form['image']['tmpname']->control}
+                        
+                        <div class="clearfix">
+                        {snippet image}
+                            {if isset($image)}
+                                {$image['thumb']}
+                            {else}
+                                <ul class="media-grid">
+                                    <li><div class="a"><img class="thumbnail" src="http://placehold.it/150x109" alt="" /></div></li>
+                                </ul>
+                            {/if}
+                        {/snippet}
+                        </div>
+                        {control upload:tag}
+                    </fieldset>
+                    
+                </div>
+
+                              
+            </div>
+            
+            <div class="actions">
+                
+                {if isset($form['sendNext'])}{$form['sendNext']->control->class('btn primary large')}{/if}
+                {$form['send']->control->class('btn primary large')}
+                <a class="btn danger large" n:href="deleteImage! 'id'=>$tag['id']">smazat obrázek</a>
+            </div>
+
+            {control $form end}
+            
+        </div>
+       
+
+</div>
+{/block}
+

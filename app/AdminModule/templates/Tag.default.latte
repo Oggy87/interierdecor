@@ -1,0 +1,92 @@
+{var $title = 'Štítky'}
+
+{block #js}
+    {include #parent}
+    <script type="text/javascript">
+        head.js("{!$staticUri}/js/datagrid.js");
+        
+    head.ready(function() {
+    $(document).ready(function(){
+
+        $('a[title=smazat]').livequery( function() {
+            $(this).click(function() {
+                $('#snippet-confirmForm-').dialog('open');
+            });
+        });
+
+        $("#snippet-confirmForm-").dialog("destroy");
+
+        $("#snippet-confirmForm-").dialog({
+                            autoOpen: false,
+                            modal: true,
+                            title: 'Potvrzení akce',
+                            width:590,
+                            buttons: {
+
+                            }
+        });
+
+        $("#frmform-no").livequery('click', function(event) {
+            event.preventDefault();
+            $("#snippet-confirmForm-").dialog('close')
+        });
+
+    });
+    });
+    </script>
+{/block}
+
+{block layout}
+<div class="container-fluid">
+    <div class="sidebar">
+        
+        <div class="well" n:if="$presenter->getParam('tagGroup_id')">
+            <a n:href="new" class="btn large primary">nový štítek</a>
+        </div>
+        
+        <div class="well" n:ifset="$tagGroup">
+            
+            <h5>zpět do skupiny:</h5>
+            <ul>
+                <li n:foreach="$tagGroup->category_tagGroup() as $category_tagGroup"><a n:href="TagGroup: 'category_id' => $category_tagGroup['category_id']" n:class="$presenter->linkCurrent ? active">{$category_tagGroup->category['name']|lower}</a></li>
+            </ul>
+        </div>
+       
+    </div>
+    <div class="content">
+        <div class="page-header">
+            <h1>Štítky {ifset $tagGroup}{$tagGroup['name']}{/ifset}</h1>
+        </div>
+        
+        {snippet flashes}
+            <div n:foreach="$flashes as $flash" class="flash alert-message {$flash->type}">
+                <a class="close" href="#">×</a>
+                {$flash->message}
+            </div>
+        {/snippet}
+            
+        {if $presenter->getParam('tagGroup_id')}
+            {snippet grid}{control tagsGrid}{/snippet}
+
+            {control confirmForm}
+        {else}
+            <div class="hero-unit">
+                <p>Vyberte u které skupiny chcete štítky editovat...</p>
+                <p>
+                    <ul>
+                        <li n:foreach="CategoryModel::fetch() as $category">
+                            {$category['name']|lower}
+                            <ul>
+                                <li n:foreach="$category->category_tagGroup()->order('sort') as $category_tagGroup">
+                                    <a n:href="this 'tagGroup_id' => $category_tagGroup['tagGroup_id']" n:class="$presenter->linkCurrent ? active">{$category_tagGroup->tagGroup['name']|lower}</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </p>
+            </div>
+        {/if}
+        
+    </div>
+</div>
+

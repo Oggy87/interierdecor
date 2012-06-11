@@ -1,0 +1,68 @@
+<div id="flash_uploader">
+    <div id="message" class="alert-message error">Váš prohlížeč nepodporuje html5, nebude možné nahrát obrázky.</div>
+    
+</div>
+
+<script type="text/javascript">
+head.ready(function() {
+// Convert divs to queue widgets when the DOM is ready
+$(function() {
+
+	// Setup flash version
+	$("#flash_uploader").pluploadQueue({
+		// General settings
+		runtimes : 'html5,flash',
+		url : {link upload},
+		max_file_size : '10mb',
+		chunk_size : '1mb',
+		unique_names : true,
+		filters : [
+			{ title : "Image files", extensions : "jpg,JPG,gif,GIF,png,PNG"},
+		],
+
+		// Resize images on clientside if we can
+		resize : { width : 1200, height : 900, quality : 90},
+
+		// Flash settings
+		flash_swf_url : '{!$baseUri}/static/js/plupload.flash.swf'
+	});        
+
+        var uploader = $('#flash_uploader').pluploadQueue();
+
+        uploader.bind('Error', function(up, error) {
+            console.log(error);
+
+        });
+        
+        uploader.bind("UploadComplete",function(up, files) {
+            $('form').submit();
+        });    
+        
+        // Client side form validation
+     /*   $('form').submit(function(e) {
+            //kdyz nic nenahrano
+            if (uploader.total.uploaded == 0) {
+                //kdyz neco pripraveno k nahrani
+                if (uploader.files.length > 0) {
+                    e.preventDefault();
+                    alert('Musíte vybrané soubory nahrát.');
+                }
+                else {
+                    e.preventDefault();
+                    alert('Musíte vybrat alespoň jeden soubor.');
+                }
+            }
+            else {
+                if (uploader.total.uploaded == uploader.files.length) {
+                    $('form').submit();
+                }
+                else {
+                    e.preventDefault();
+                    alert('Musíte vybrané soubory nahrát.');
+                }
+            }
+        });*/
+
+});
+});
+</script>

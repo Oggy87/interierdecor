@@ -2,8 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
-        <file>file:/var/www/webtoad/interierdecor/app/presenters/BasePresenter.php</file>
-        <file>file:/var/www/webtoad/interierdecor/app/FrontModule/presenters/HomepagePresenter.php</file>
-        <file>file:/var/www/webtoad/interierdecor/app/FrontModule/presenters/CategoryPresenter.php</file>
+        <file>file:/var/www/webtoad/interierdecor/app/AdminModule/presenters/OrdersPresenter.php</file>
+        <file>file:/var/www/webtoad/interierdecor/app/AdminModule/presenters/ExportPresenter.php</file>
     </open-files>
 </project-private>

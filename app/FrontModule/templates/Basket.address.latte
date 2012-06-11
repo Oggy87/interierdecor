@@ -1,0 +1,211 @@
+{extends 'Basket.layout.latte'}
+
+{var $title = 'objednávka - krok 2'}
+
+{block breadcrumbs}
+    {include #parent}
+    <a n:href=":Front:Basket:">
+        <div class="left"></div>
+        <div class="center">košík / objednávka</div>
+        <div class="right"></div>
+    </a>
+    <a n:href=":Front:Basket:address" n:class="active">
+        <div class="left"></div>
+        <div class="center">dodací údaje</div>
+        <div class="right"></div>
+    </a>
+{/block}
+
+{block main}
+    <div class="fullbox" n:if="!$user->isLoggedIn()">
+        <div class="h"><input type="checkbox" name="login" class="login">už jsem zde nakupoval a <strong>chci se přihlásit a předvyplnit mé údaje</strong></div>
+        <div class="cont logform">
+            {control $signform begin}
+            <!-- errors -->
+            {assign errors => $signform->errors}
+            <ul class="error" n:if="$errors" n:block="#entryerrors">
+                <li n:foreach="$errors as $error">{$error}</li>
+            </ul>
+            <div class="row">
+                <div>
+                    {$signform['email']->label} {$signform['email']->control}
+                </div>
+                <div>
+                    {$signform['password']->label} {$signform['password']->control}
+                </div>
+                <div>
+                    {$signform['send']->control}
+                </div>
+                
+                <span class="clear"></span>
+            </div>
+            <div class="under"><a n:href="Customer:forgottenPassword" class="forgot">zapomněli jste heslo?</a></div>
+            {control $signform end}
+        </div>
+        
+    </div>
+    
+    {control $form begin}
+    <!-- errors -->
+    {assign errors => $form->errors}
+    <ul class="error" n:if="$errors">
+        <li n:foreach="$errors as $error">{$error}</li>
+    </ul>
+    {var $customer = $form['customer']}
+    <div class="box">
+        <h2>{='osobní údaje'|upper}</h2>
+        <div class="cont form">
+            <div class="row">
+                {$customer['email']->label} {$customer['email']->control} {if $customer['email']->isRequired( )} * {/if}
+            </div>
+            <div class="row">
+                {$customer['name']->label} {$customer['name']->control} {if $customer['name']->isRequired( )} * {/if}
+            </div>
+            <div class="row">
+                {$customer['phone']->label} {$customer['phone']->control} {if $customer['phone']->isRequired( )} * {/if}
+            </div>
+            
+            <span class="clear"></span>
+        </div>
+    </div>
+
+    <div class="box last">
+        <div class="h">{$customer['iscompany']->control} chci nakoupit na firmu</div>
+        <div class="cont form" id="iscompany">
+            <div class="row">
+                {$customer['company']->label} {$customer['company']->control} {if $customer['company']->isRequired( )} * {/if}
+            </div>
+            <div class="row">
+                {$customer['ic']->label} {$customer['ic']->control} {if $customer['ic']->isRequired( )} * {/if}
+            </div>
+            <div class="row">
+                {$customer['dic']->label} {$customer['dic']->control} {if $customer['dic']->isRequired( )} * {/if}
+            </div>
+            
+            <span class="clear"></span>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+    
+    <div class="box">
+        <h2><span id="iscompanyheading">{='firemní'|upper}</span> {='adresa'|upper}</h2>
+        <div class="cont form">
+            <div class="row">
+                {$customer['city']->label} {$customer['city']->control} {if $customer['city']->isRequired( )} * {/if}
+            </div>
+            <div class="row">
+                {$customer['street']->label} {$customer['street']->control} {if $customer['street']->isRequired( )} * {/if}
+            </div>
+            <div class="row">
+                {$customer['postcode']->label} {$customer['postcode']->control} {if $customer['postcode']->isRequired( )} * {/if}
+            </div> 
+            
+            <span class="clear"></span>
+        </div>
+    </div>
+
+    <div class="box last">
+        <div class="h">{$customer['shipaddress']->control} doručit jinam</div>
+        <div class="cont form" id="shipaddress">
+            <div class="row">
+                {$customer['shipcity']->label} {$customer['shipcity']->control} {if $customer['shipcity']->isRequired( )} * {/if}
+            </div>
+            <div class="row">
+                {$customer['shipstreet']->label} {$customer['shipstreet']->control} {if $customer['shipstreet']->isRequired( )} * {/if}
+            </div>
+            <div class="row">
+                {$customer['shippostcode']->label} {$customer['shippostcode']->control} {if $customer['shippostcode']->isRequired( )} * {/if}
+            </div>
+            
+            <span class="clear"></span>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+    
+    <div class="fullbox" n:if="$user->isLoggedIn()">
+        <div class="h">{$form['remember']->control} pamatovat si mé údaje pro případné další objednávky</div>
+    </div>
+    
+ {*   <div class="fullbox" n:if="!$user->isLoggedIn()">
+        <div class="h">{$form['register']->control} chci se s odesláním objednávky zaregistrovat a mít předvyplněné údaje pro příští objednávky</div>
+        <div class="cont" id="register">
+            <div class="row">
+                <div>
+                    {$form['password']->label} {$form['password']->control}
+                </div>
+                <div>
+                    {$form['password2']->label} {$form['password2']->control}
+                </div>
+                
+                <span class="clear"></span>
+            </div>
+        </div>
+    </div>*}
+    
+    <a href="{plink Basket:}" class="move previous">
+        <div class="left"></div>
+        <div class="center">
+            <div class="number previous1"></div>
+            <div class="text">{='zpět do košíku'|upper}</div>
+        </div>
+    </a>
+    <div n:class="move,next">
+        <div class="center">
+            <div class="text">{$form['submit']->control}</div>
+            <div class="number next3"></div>
+        </div>
+        <div class="right"></div>
+    </div>
+
+    <div class="clear"></div>
+    
+    {control $form end}
+
+{/block}
+
+{block #scripts}
+{include #parent}
+<script type="text/javascript">
+    head.ready(function() {
+    
+        $('input.amount').live('change',function() {
+            if(this.value != 0) {
+                $.get({link changeAmount!}, { 'product_id' : $(this).data("product_id"), 'amount': this.value}, function(payload) {
+                    if (payload.snippets) {
+                        for (var i in payload.snippets) {
+                            jQuery.nette.updateSnippet(i, payload.snippets[i]);
+                        }
+                    }
+                });
+            }
+            else {
+                $.get({link removeFromBasket!}, { 'product_id' : $(this).data("product_id")}, function(payload) {
+                    if (payload.snippets) {
+                        for (var i in payload.snippets) {
+                            jQuery.nette.updateSnippet(i, payload.snippets[i]);
+                        }
+                    }
+                });
+            }
+        });
+
+        $(window).keydown(function(event){
+            if(event.keyCode == 13) {
+              event.preventDefault();
+              return false;
+            }
+        });
+
+        $("input.login").live('click', function() {
+            $(".logform").slideToggle("fast");
+        })
+        
+        if({$presenter->getParam('do')} == 'signInForm-submit') {
+            $("input.login").attr( 'checked', 'checked'  );
+            $(".logform").css('display','block');
+        }
+    });
+</script>
+{/block}
